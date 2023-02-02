@@ -1,0 +1,1374 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>dayrain-technotes</title>
+        <meta name="robots" content="noindex" />
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Dayrain's notes</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="cert/index.html"><strong aria-hidden="true">1.</strong> Cert 認證考試</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cert/OSCP_notes.html"><strong aria-hidden="true">1.1.</strong> OSCP證照學習筆記</a></li></ol></li><li class="chapter-item expanded "><a href="cybersec/index.html"><strong aria-hidden="true">2.</strong> CyberSec 資訊安全</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cybersec/HTB.html"><strong aria-hidden="true">2.1.</strong> CyberSec - HTB學習筆記</a></li></ol></li><li class="chapter-item expanded "><a href="dbs/index.html"><strong aria-hidden="true">3.</strong> Dbs 資料庫</a></li><li class="chapter-item expanded "><a href="desktop/index.html"><strong aria-hidden="true">4.</strong> Desktop 桌面環境</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="desktop/browser_tune.html"><strong aria-hidden="true">4.1.</strong> Browser tune 瀏覽器優化調整</a></li><li class="chapter-item expanded "><a href="desktop/vscode.html"><strong aria-hidden="true">4.2.</strong> vscode tune</a></li></ol></li><li class="chapter-item expanded "><a href="learning/index.html"><strong aria-hidden="true">5.</strong> Learning 生活學習</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="learning/7_Habits.html"><strong aria-hidden="true">5.1.</strong> 7個習慣</a></li><li class="chapter-item expanded "><a href="learning/IT_skill_tree.html"><strong aria-hidden="true">5.2.</strong> IT職業技能樹</a></li><li class="chapter-item expanded "><a href="learning/tools_bookmark.html"><strong aria-hidden="true">5.3.</strong> 工具網站, Tools Bookmark</a></li><li class="chapter-item expanded "><a href="learning/self-learning .html"><strong aria-hidden="true">5.4.</strong> 漫漫自學學習之旅的心得記錄</a></li></ol></li><li class="chapter-item expanded "><a href="programing/index.html"><strong aria-hidden="true">6.</strong> Programing 程式開發</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programing/debug.html"><strong aria-hidden="true">6.1.</strong> Programing debug 程式除錯</a></li><li class="chapter-item expanded "><a href="programing/golang.html"><strong aria-hidden="true">6.2.</strong> Go lang</a></li><li class="chapter-item expanded "><a href="programing/rust-notes.html"><strong aria-hidden="true">6.3.</strong> Rust notes</a></li><li class="chapter-item expanded "><a href="programing/rust-package.html"><strong aria-hidden="true">6.4.</strong> Rust package</a></li><li class="chapter-item expanded "><a href="programing/rust.html"><strong aria-hidden="true">6.5.</strong> Rust lang</a></li></ol></li><li class="chapter-item expanded "><a href="server/index.html"><strong aria-hidden="true">7.</strong> Server 伺服器主機服務</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="server/remote_control.html"><strong aria-hidden="true">7.1.</strong> Remote control 遠端控制</a></li></ol></li><li class="chapter-item expanded "><a href="system/index.html"><strong aria-hidden="true">8.</strong> System 系統開發</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="system/manjaro_archlinux.html"><strong aria-hidden="true">8.1.</strong> Manjaro/Archlinux OS</a></li></ol></li><li class="chapter-item expanded "><a href="tools/index.html"><strong aria-hidden="true">9.</strong> Tools 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tools/FreeShell.html"><strong aria-hidden="true">9.1.</strong> FreeShell</a></li><li class="chapter-item expanded "><a href="tools/Markdown_software.html"><strong aria-hidden="true">9.2.</strong> Markdown軟體</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">dayrain-technotes</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="dayrain-22githubio"><a class="header" href="#dayrain-22githubio">dayrain-22.github.io</a></h1>
+<h2 id="dayrains-notes"><a class="header" href="#dayrains-notes">Dayrain's notes</a></h2>
+<h3 id="introduction-自我介紹"><a class="header" href="#introduction-自我介紹">Introduction 自我介紹</a></h3>
+<p>IT's 通靈系大叔工程師~下班後的隨筆<br />
+主要是IT技術筆記，專長領域 System/Linux/Network/CyberSec 事物記錄，Learn Anything， 並且持續點滿通靈技能， 平時進行日常生活觀察。</p>
+<ul>
+<li>歡迎來到此地 Welcome~</li>
+<li>保持學習 keep learning...</li>
+</ul>
+<ul>
+<li>網路安全 CyberSecurity</li>
+<li>程式開發 Programing</li>
+<li>系統開發 System</li>
+<li>任何有趣事物 Anything</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cert-認證考試"><a class="header" href="#cert-認證考試">Cert 認證考試</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="oscp證照學習筆記-offensive-security-certified-professional"><a class="header" href="#oscp證照學習筆記-offensive-security-certified-professional">OSCP證照學習筆記, Offensive Security Certified Professional</a></h1>
+<h2 id="1-考試資訊"><a class="header" href="#1-考試資訊">1. 考試資訊</a></h2>
+<p>費用： ＄1499
+機器： 5台
+分數： 70/100
+時間： 24H操作/24H報告
+課程內容：</p>
+<ol>
+<li>教材包
+<ol>
+<li>影片</li>
+<li>PDF講義</li>
+</ol>
+</li>
+<li>VPN</li>
+<li>論壇帳號密碼</li>
+</ol>
+<h2 id="2-環境準備"><a class="header" href="#2-環境準備">2. 環境準備</a></h2>
+<ol>
+<li>Kali系統</li>
+<li>筆記軟體，報告記錄</li>
+<li>WebCAM</li>
+<li>順暢網路</li>
+<li>身份證明文件，護照</li>
+</ol>
+<h2 id="3-實作操作"><a class="header" href="#3-實作操作">3. 實作操作</a></h2>
+<ol>
+<li>
+<p>資料收集</p>
+<ol>
+<li>passive recon
+<ol>
+<li>google hacking</li>
+<li>email password dump</li>
+</ol>
+</li>
+<li>active recon
+<ol>
+<li>port scanning</li>
+<li>service enumium</li>
+</ol>
+</li>
+<li>Vulnerability scanning</li>
+</ol>
+</li>
+<li>
+<p>網頁攻擊</p>
+<ol>
+<li>XSS</li>
+<li>Directory traversal</li>
+<li>File inclusion</li>
+<li>SQL injection</li>
+</ol>
+</li>
+<li>
+<p>Buffer Overflow</p>
+<ol>
+<li>windows</li>
+<li>linux</li>
+<li>return address + shellcode</li>
+</ol>
+</li>
+<li>
+<p>Client-Side Attacks: HTA, Microsoft Word</p>
+</li>
+<li>
+<p>public exploit</p>
+</li>
+<li>
+<p>file transfer</p>
+</li>
+<li>
+<p>避開防毒</p>
+</li>
+<li>
+<p>Privilege Escalation</p>
+</li>
+<li>
+<p>密碼暴力破解</p>
+</li>
+<li>
+<p>port forwarding 跟 tunneling</p>
+</li>
+<li>
+<p>Metasploit</p>
+</li>
+<li>
+<p>Powershell Empire</p>
+</li>
+</ol>
+<h2 id="參考網頁"><a class="header" href="#參考網頁">參考網頁</a></h2>
+<p><a href="https://tech-blog.cymetrics.io/posts/crystal/oscp-review/">我們與 OSCP 的距離</a></p>
+<p><a href="https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA">IppSec</a></p>
+<p><a href="https://0xdf.gitlab.io">Oxdf</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="cybersec-資訊安全"><a class="header" href="#cybersec-資訊安全">CyberSec 資訊安全</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="htb學習筆記"><a class="header" href="#htb學習筆記">HTB學習筆記</a></h1>
+<ul>
+<li>
+<p><a href="https://www.hackthebox.com/achievement/machine/1341051/394">Meow</a></p>
+</li>
+<li>
+<p><a href="https://www.hackthebox.com/achievement/machine/1341051/393">Fawn</a></p>
+</li>
+<li>
+<p><a href="https://www.hackthebox.com/achievement/machine/1341051/395">Dancing</a></p>
+</li>
+<li>
+<p><a href="https://www.hackthebox.com/achievement/machine/1341051/472">Redeemer</a></p>
+</li>
+<li>
+<p><a href="https://www.hackthebox.com/achievement/machine/1341051/403">Sequel</a></p>
+</li>
+<li>
+<p><a href="https://www.hackthebox.com/achievement/machine/1341051/404">Crocodile</a></p>
+</li>
+<li>
+<p><a href="https://www.hackthebox.com/achievement/machine/1341051/461">Responder</a></p>
+</li>
+<li>
+<p>Local File Inclusion<br />
+插入主機端本地路徑，如  page=../../../etc/hosts</p>
+</li>
+<li>
+<p>Remote File Inclusion<br />
+插入主機端轉向遠端路徑，如 page=//9.9.9.9/somefile</p>
+</li>
+</ul>
+<h2 id="使用到的工具"><a class="header" href="#使用到的工具">使用到的工具</a></h2>
+<p>nmap<br />
+gobuster<br />
+dirsearch<br />
+responder，監聽網路中的回應，NBT-NS (NetBIOS Name Service)，LLMNR，MDNS poisoner<br />
+evil-winrm</p>
+<h2 id="問題記錄"><a class="header" href="#問題記錄">問題記錄</a></h2>
+<ul>
+<li>ruby出現加密連線失敗
+<ul>
+<li>修改 openssl.cnf 加入</li>
+</ul>
+</li>
+</ul>
+<pre><code>[provider_sect]
+default = default_sect
+legacy = legacy_sect
+
+[default_sect]
+activate = 1
+
+[legacy_sect]
+activate = 1
+</code></pre>
+<h2 id="參考網頁-1"><a class="header" href="#參考網頁-1">參考網頁</a></h2>
+<p><a href="https://forum.hackthebox.com/t/evil-winrm-error-on-connection-to-host/257342/14">evil-winrm執行錯誤</a><br />
+<a href="https://www.kali.org/tools/responder/">kali responder介紹</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="dbs-資料庫"><a class="header" href="#dbs-資料庫">Dbs 資料庫</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="desktop-桌面環境"><a class="header" href="#desktop-桌面環境">Desktop 桌面環境</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="browser"><a class="header" href="#browser">browser</a></h1>
+<h2 id="h264-decoder"><a class="header" href="#h264-decoder">H264 decoder</a></h2>
+<p>由於使用新NB，剛好可以記錄一下在Linux上使用時會遇到的問題，更新vivaldi後，跳出無法使用播放HTML5播放器的訊息</p>
+<hr />
+<ul>
+<li>使用環境: manjaro linux</li>
+<li>瀏覽器: vivaldi</li>
+<li>解決方式：使用pacman安裝openh264</li>
+</ul>
+<ul>
+<li>指令</li>
+</ul>
+<pre><code>sudo pacman -Ss openh264
+</code></pre>
+<h2 id="將vivaldi-cache目錄改至記憶體-shm-dev"><a class="header" href="#將vivaldi-cache目錄改至記憶體-shm-dev">將vivaldi cache目錄改至記憶體 shm dev</a></h2>
+<ul>
+<li>將此行加入至/etc/fstab</li>
+</ul>
+<pre><code>tmpfs	/home/your_name/.cache/vivaldi/	tmpfs	rw,noatime	0	0
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="將markdown格式轉成html"><a class="header" href="#將markdown格式轉成html">將markdown格式轉成HTML</a></h1>
+<p>由於平常都用 markdown 格式在記錄文件<br />
+在 blogger上使用時，看起來有點麻煩，不太想用 js 方式載入載換器，載入別人的 code 總感覺怪怪的 XD<br />
+那不如就先轉換成 HTML 後貼到 blogger 吧</p>
+<ul>
+<li>
+<p>vscode 中的 extensions 中 Markdown Convert<br />
+照著說明教學步驟</p>
+<ol>
+<li>打開 vscode File/Preferences</li>
+<li>搜尋 markdownConverter.ConversionType</li>
+<li>編輯此項功能的設定，將預設值 PDF 改成 HTML</li>
+<li>ctrl+shift+p 開啟指令功能選單</li>
+<li>選擇 Markdown: Convert Document</li>
+<li>即產生的同名的.html檔案輸出在同一個目錄中</li>
+<li>再用 vscode 打開檢查 HTML code，發現驚人的大size，直接就不用這個了</li>
+</ol>
+</li>
+<li>
+<p>rust crate.io 中的 markdown2html-convert<br />
+<a href="https://magiclen.org/markdown2html-converter">markdown2html</a></p>
+<ol>
+<li>先安裝rust</li>
+<li>執行安裝指令 cargo install markdown2html</li>
+<li>安裝完檔案會被放在 /home/dayrain/.cargo/bin/markdown2html-converter</li>
+<li>/home/dayrain/.cargo/bin/markdown2html-converter xxx.md</li>
+<li>產生出 xxx.html</li>
+<li>放入 blogger 會看不到文字，可能有什麼參數導致，待查</li>
+</ol>
+</li>
+<li>
+<p>rust crate.io 中的 markly</p>
+<ol>
+<li>先安裝rust</li>
+<li>執行安裝指令 cargo install markly</li>
+<li>安裝完檔案會被放在 /home/dayrain/.cargo/bin/markly</li>
+<li>/home/dayrain/.cargo/bin/markdown2html-converter xxx.md</li>
+<li>會將 html 內容，直接輸出在 stdout 畫面上，看起來 HTML 部份蠻精簡的，跟 codebeautify 的 Markdown to HTML 接近</li>
+<li>將輸出內容放上 blogger 即可</li>
+</ol>
+</li>
+</ul>
+<p>檔案大小比較如下</p>
+<pre><code>原始檔
+4.0K -rw-r--r-- 1 dayrain dayrain  648 12月  9 02:22 xxx.md
+使用 Markdown Convert
+1.2M -rw-r--r-- 1 dayrain dayrain 1.2M 12月  9 02:24 xxx.html
+使用 rust 的 markdown2html-convert 
+ 24K -rw-r--r-- 1 dayrain dayrain  24K 12月  9 02:37 xxx.html
+使用markly
+4.0K -rw-r--r-- 1 dayrain dayrain 2.3K 12月  9 03:19 xxx.html  
+</code></pre>
+<p>結論： rust markly的輸出精簡，足夠基本的使用，不過當在vscode複製貼上markdown內容，其實也會將vscode的theme顏色也一併產生，我反而覺得配色比較好看，缺點就是寬度不會跟著限縮，有空再來研究看看是哪裡要改善。  </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="learning-生活學習"><a class="header" href="#learning-生活學習">Learning 生活學習</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="7個習慣"><a class="header" href="#7個習慣">7個習慣</a></h1>
+<ul>
+<li>個人成功</li>
+</ul>
+<ol>
+<li>積極主動，減少抱怨，將注意力集中在自己可以控制的範圍內</li>
+<li>人生明確目標，死亡的想像，設想人生最後，成為週遭評價成什麼樣的人，以人生目標建立原則，並以此人生為中心，去度量所有可能性的尺度</li>
+<li>要事第一，重要不表示都要自己執行，部份重要的事可以拆分出去
+<ol>
+<li>緊急且重要</li>
+<li>重要，不緊急</li>
+<li>緊急，不重要</li>
+<li>不重要，不緊急</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>群體成功</li>
+</ul>
+<ol start="4">
+<li>雙贏思維，</li>
+<li>知彼知己，建立信任，實現共情</li>
+<li>統合效應，1+1大於2</li>
+<li>不斷更新
+<ol>
+<li>肉體健康</li>
+<li>精神，冥想放鬆，相信自己能成功</li>
+<li>知識更新</li>
+<li>人際關係</li>
+</ol>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="it-職業技能樹"><a class="header" href="#it-職業技能樹">IT 職業技能樹</a></h1>
+<ol>
+<li>特徵 tag</li>
+<li>平台環境 platform
+<ol>
+<li>Android</li>
+<li>Apple/MacOS</li>
+<li>Linux</li>
+<li>MS</li>
+<li>UNIX</li>
+</ol>
+</li>
+<li>應用範圍
+<ol>
+<li>UI前端</li>
+<li>UI後端</li>
+<li>Server</li>
+<li>Client</li>
+<li>服務</li>
+<li>系統</li>
+<li>桌面環境</li>
+<li>手機環端</li>
+<li>雲端環境</li>
+<li>虛擬環境</li>
+</ol>
+</li>
+<li>動作
+<ol>
+<li>攻擊
+<ol>
+<li>弱點掃描</li>
+<li>浸透測試</li>
+</ol>
+</li>
+<li>防護
+<ol>
+<li>Server 防火牆
+<ol>
+<li>實體</li>
+<li>軟體</li>
+<li>Kernel</li>
+</ol>
+</li>
+<li>Client 防火牆</li>
+<li>掃毒</li>
+<li>VPN</li>
+<li>內容稽核</li>
+<li>系統追蹤</li>
+<li>日誌記錄</li>
+</ol>
+</li>
+<li>代理</li>
+<li>控制</li>
+<li>記錄</li>
+</ol>
+</li>
+<li>使用效果
+<ol>
+<li>權限提升</li>
+<li>資料加密/破壞</li>
+</ol>
+</li>
+<li>等級/數值</li>
+</ol>
+<h2 id="android-系"><a class="header" href="#android-系">Android 系</a></h2>
+<h2 id="apple-系"><a class="header" href="#apple-系">Apple 系</a></h2>
+<h2 id="linux-系"><a class="header" href="#linux-系">Linux 系</a></h2>
+<h2 id="ms-系"><a class="header" href="#ms-系">MS 系</a></h2>
+<h2 id="unix-系"><a class="header" href="#unix-系">Unix 系</a></h2>
+<h2 id="攻擊"><a class="header" href="#攻擊">攻擊</a></h2>
+<h2 id="防護"><a class="header" href="#防護">防護</a></h2>
+<h3 id="管理軟體"><a class="header" href="#管理軟體">管理軟體</a></h3>
+<h3 id="版本控制"><a class="header" href="#版本控制">版本控制</a></h3>
+<h3 id="應用軟體"><a class="header" href="#應用軟體">應用軟體</a></h3>
+<h3 id="社群軟體"><a class="header" href="#社群軟體">社群軟體</a></h3>
+<h3 id="ide軟體"><a class="header" href="#ide軟體">IDE軟體</a></h3>
+<h2 id="參考網頁-2"><a class="header" href="#參考網頁-2">參考網頁</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="工具網站-tools-bookmark"><a class="header" href="#工具網站-tools-bookmark">工具網站, Tools Bookmark</a></h1>
+<h2 id="證照認證-cert"><a class="header" href="#證照認證-cert">證照/認證, Cert</a></h2>
+<h3 id="課程研討會-course--conference"><a class="header" href="#課程研討會-course--conference">課程/研討會, Course / Conference</a></h3>
+<p><a href="https://www.brighttalk.com">BrightTALK 註解：看完課程有上課證明下載，可做為證照持續學習點數使用</a></p>
+<h2 id="資訊安全-cybersecurity"><a class="header" href="#資訊安全-cybersecurity">資訊安全, CyberSecurity</a></h2>
+<h3 id="ctf"><a class="header" href="#ctf">CTF</a></h3>
+<p><a href="https://ctftime.org">CTFTIME 註解：CTF世界概況</a><br />
+<a href="https://pwn.college">pwn.college 註解：供學生（和其他相關方）以實踐方式學習和實踐核心網絡安全概念</a><br />
+<a href="https://crackmes.one">crackmes.one 註解：提高您的逆向工程技能</a></p>
+<h3 id="逆向工程-reverse-engine"><a class="header" href="#逆向工程-reverse-engine">逆向工程， Reverse engine</a></h3>
+<p><a href="https://bin.re">bin.re</a></p>
+<h3 id="雜誌-magazine"><a class="header" href="#雜誌-magazine">雜誌， Magazine</a></h3>
+<p><a href="https://www.infosecurity-magazine.com">infosecurity-magazine</a>  </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="漫漫自學學習之旅的心得記錄"><a class="header" href="#漫漫自學學習之旅的心得記錄">漫漫自學學習之旅的心得記錄</a></h1>
+<ul>
+<li>自學要看每個人的主動性與自制力</li>
+</ul>
+<p>1，平時多看國內外linux相關的科技新閒<br />
+2，對感興趣主題多方搜尋研究，先求廣，再求深<br />
+3，持續記錄，累積這些過程和方法<br />
+4，從書本、課程或證照中的系統化教學可以學習，從中獲取正確觀念</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="programing-程式開發"><a class="header" href="#programing-程式開發">Programing 程式開發</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="program-debug"><a class="header" href="#program-debug">program debug</a></h1>
+<h2 id="工具"><a class="header" href="#工具">工具</a></h2>
+<p><a href="https://github.com/namhyung/uftrace">uftrace github</a></p>
+<h2 id="參考網頁-3"><a class="header" href="#參考網頁-3">參考網頁</a></h2>
+<p><a href="https://hackmd.io/@st9540808/Hka7sdhzI">uftrace, Function Tracing</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="go-lang"><a class="header" href="#go-lang">Go Lang</a></h1>
+<h2 id="參考網頁-4"><a class="header" href="#參考網頁-4">參考網頁</a></h2>
+<p><a href="https://blog.canopas.com/1-min-guide-to-golang-development-best-practices-in-2022-b50d846fd6c">1 min guide to Golang development best practices in 2022</a>  </p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="rust-notes"><a class="header" href="#rust-notes">rust notes</a></h1>
+<ol>
+<li>future</li>
+<li>tokio</li>
+<li>不解決memory leak問題，而採取安全內存管理模型機制進行事先檢查審核
+<ol>
+<li>所有權機制</li>
+<li>借用</li>
+<li>生命週期</li>
+<li>RAII </li>
+<li>affine type</li>
+<li>FFI, C-ABI</li>
+<li>safe / unsafe(外部/kernel)</li>
+</ol>
+</li>
+<li>unsafe
+<ol>
+<li>盡量用safe</li>
+<li>有性能需求可以用unsafe</li>
+<li>確保沒有UB(undefined behaivor)</li>
+<li>無法抽象 safe 時，標記成unsafe</li>
+</ol>
+</li>
+</ol>
+<h1 id="2022年11月技術筆記"><a class="header" href="#2022年11月技術筆記">2022年11月技術筆記</a></h1>
+<h2 id="rust-load-shared-lib"><a class="header" href="#rust-load-shared-lib">rust load shared lib</a></h2>
+<p><a href="https://doc.rust-lang.org/reference/linkage.html">Linkage</a></p>
+<h2 id="open-source"><a class="header" href="#open-source">open source</a></h2>
+<p>https://guix.gnu.org</p>
+<h2 id="icon"><a class="header" href="#icon">icon</a></h2>
+<p>https://icons8.com</p>
+<h2 id="參考網頁-5"><a class="header" href="#參考網頁-5">參考網頁</a></h2>
+<p><a href="https://segmentfault.com/a/1190000040591394">Rust 使用 libloading 的入门笔记</a>  </p>
+<div style="break-before: page; page-break-before: always;"></div><p>＃ rust package</p>
+<h2 id="cargo"><a class="header" href="#cargo">cargo</a></h2>
+<ul>
+<li>安裝 crate.io 上的程式
+<ul>
+<li>cargo install markdown2html<br />
+<a href="https://magiclen.org/markdown2html-converter">markdown2html</a>  </li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><ul>
+<li><a href="programing/rust.html#rust">Rust</a>
+<ul>
+<li><a href="programing/rust.html#%E8%A8%AD%E8%A8%88%E5%93%B2%E5%AD%B8">設計哲學</a>
+<ul>
+<li><a href="programing/rust.html#%E5%9F%BA%E6%9C%AC%E6%9E%B6%E6%A7%8B">基本架構</a></li>
+<li><a href="programing/rust.html#cargo%E5%BB%BA%E7%BD%AE%E7%B3%BB%E7%B5%B1%E8%88%87%E5%A5%97%E4%BB%B6%E7%AE%A1%E7%90%86">Cargo建置系統與套件管理</a></li>
+<li><a href="programing/rust.html#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85">注意事項</a></li>
+</ul>
+</li>
+<li><a href="programing/rust.html#1-%E7%92%B0%E5%A2%83%E5%BB%BA%E5%88%B6">1. 環境建制</a></li>
+<li><a href="programing/rust.html#2-%E5%AE%9A%E7%BE%A9%E8%88%87%E8%A6%8F%E5%89%87">2. 定義與規則</a>
+<ul>
+<li><a href="programing/rust.html#%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88%E6%A6%82%E5%BF%B5">程式設計概念</a></li>
+<li><a href="programing/rust.html#%E7%B5%90%E6%A7%8B%E9%AB%94structure">結構體（structure）</a></li>
+<li><a href="programing/rust.html#%E6%9E%9A%E8%88%89enumerations-enum%E6%9C%80%E6%8E%A5%E8%BF%91%E6%96%BC%E5%87%BD%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%9A%84%E4%BB%A3%E6%95%B8%E5%9E%8B%E5%88%A5algebraic-data-types">枚舉（enumerations, enum），最接近於函式語言的代數型別（algebraic data types）</a></li>
+<li><a href="programing/rust.html#%E6%A8%A1%E7%B5%84%E7%B3%BB%E7%B5%B1module-system">模組系統（module system）</a></li>
+<li><a href="programing/rust.html#%E9%9B%86%E5%90%88collections">集合（collections）</a></li>
+<li><a href="programing/rust.html#%E9%8C%AF%E8%AA%A4%E8%99%95%E7%90%86">錯誤處理</a></li>
+<li><a href="programing/rust.html#%E6%B3%9B%E5%9E%8B%E5%9E%8B%E5%88%A5%E7%89%B9%E5%BE%B5%E8%88%87%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F">泛型型別、特徵與生命週期</a>
+<ul>
+<li><a href="programing/rust.html#%E7%94%9F%E5%91%BD%E9%80%B1%E6%9C%9F">生命週期</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="programing/rust.html#3-%E5%9F%BA%E6%9C%AC%E6%8C%87%E4%BB%A4">3. 基本指令</a></li>
+<li><a href="programing/rust.html#4-%E8%BC%89%E5%85%A5c-lib">4. 載入c lib</a></li>
+<li><a href="programing/rust.html#5-debug">5. debug</a></li>
+<li><a href="programing/rust.html#6-%E5%8F%83%E8%80%83%E7%B6%B2%E9%A0%81">6. 參考網頁</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="rust"><a class="header" href="#rust">Rust</a></h1>
+<h2 id="設計哲學"><a class="header" href="#設計哲學">設計哲學</a></h2>
+<ol>
+<li>記憶體抽象</li>
+<li>零成本抽象</li>
+<li>實用性</li>
+</ol>
+<p>記憶體管理模型</p>
+<ol>
+<li>所有權系統，有獨佔所有權指標</li>
+<li>借用和生命週期，每個變數</li>
+</ol>
+<ul>
+<li>RAII<br />
+資源取得即初始化（英語：Resource Acquisition Is Initialization）</li>
+</ul>
+<h3 id="基本架構"><a class="header" href="#基本架構">基本架構</a></h3>
+<ol>
+<li>source code 主要程式與程式庫</li>
+<li>Cargo package  套件管理</li>
+<li>target 編繹後輸出存放目錄</li>
+</ol>
+<pre><code>.
+├── Cargo.lock
+├── Cargo.toml
+├── src
+│   └── main.rs
+└── target
+    ├── CACHEDIR.TAG
+    └── debug
+        ├── build
+        ├── deps
+        ├── examples
+        └── incremental
+</code></pre>
+<h3 id="cargo建置系統與套件管理"><a class="header" href="#cargo建置系統與套件管理">Cargo建置系統與套件管理</a></h3>
+<p>建構與package管理系統</p>
+<ul>
+<li>
+<p>管理</p>
+<ol>
+<li>建置程式</li>
+<li>下載函式庫</li>
+<li>建置函式庫</li>
+</ol>
+</li>
+<li>
+<p>檔案目錄結構
+src/main.rs<br />
+target/debug/hello_cargo # build完的binary exec檔<br />
+target/release/hello_cargo
+Cargo.toml  # 設定檔<br />
+Cargo.lock # 追蹤dependencies，不需手動更改</p>
+</li>
+</ul>
+<p>第三方/外部程式包稱做 crate</p>
+<pre><code>[package]
+
+name = &quot;test&quot;
+version = &quot;0.0.1&quot;
+authors = [&quot;test&lt;test@test.com&gt;&quot;]
+</code></pre>
+<ul>
+<li>
+<ol>
+<li>建立/執行專案<br />
+執行 cargo build  或是 cargo run<br />
+產生出  ./target/debug/test</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>建立發行版本，並且最佳化<br />
+cargo build --release</li>
+</ol>
+</li>
+<li>
+<p>建立新專案<br />
+cargo new rain_test --bin</p>
+</li>
+<li>
+<p>檢查<br />
+cargo check</p>
+</li>
+<li>
+<p>編繹與優化<br />
+cargo build --release</p>
+</li>
+</ul>
+<h3 id="注意事項"><a class="header" href="#注意事項">注意事項</a></h3>
+<ol>
+<li>需要事先編繹(ahead of time compiled)</li>
+<li>函式的內容都要用大括號（{ 及 }）包起來</li>
+<li>第一個大括號放在函式宣告的同一行，在中間留一個空白 <code>fn main() {</code></li>
+<li>縮排是四個空白，而不是 tabs</li>
+<li>println! 是巨集（macro）</li>
+</ol>
+<h2 id="1-環境建制"><a class="header" href="#1-環境建制">1. 環境建制</a></h2>
+<ul>
+<li>安裝<br />
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh<br />
+. ~/.cargo/env</li>
+</ul>
+<h2 id="2-定義與規則"><a class="header" href="#2-定義與規則">2. 定義與規則</a></h2>
+<p>Rust是靜態型別語言，必須在編譯時知道所有變數的型別<br />
+陳述式（statements），進行一些動作的指令，且不回傳任何數值<br />
+表達式（Expressions），計算並產生數值<br />
+作用域（scope），即是在{ }範圍內的才作用</p>
+<ul>
+<li>Rustaceans 初學者常常會卡在三個環節</li>
+</ul>
+<ol>
+<li>Rust 傾向於回報可能的錯誤</li>
+<li>字串的資料結構比開發者所熟悉的還要複雜</li>
+<li>UTF-8</li>
+</ol>
+<h3 id="程式設計概念"><a class="header" href="#程式設計概念">程式設計概念</a></h3>
+<ul>
+<li>
+<p>純量型別（scalar）</p>
+<ul>
+<li>整數型別
+<ul>
+<li>不帶號整數的話則是用 u</li>
+<li>帶號整數的話則是用 i</li>
+<li>在除錯模式編譯的話，Rust 會包含整數溢位的檢查，造成你的程式在執行時恐慌（panic）</li>
+<li>在發佈模式下用 --release 來編譯的話，Rust 則不會加上整數溢位的檢查而造成恐慌。</li>
+<li>整數溢位，Rust 會作出二補數包裝的動作。超出最大值的數值以 u8 為例的話，256 會變成 0、257 會變成 1，以此類推。</li>
+<li>長度: 8位元 i8 u8
+<ul>
+<li>十進制	98_222</li>
+<li>十六進制	0xff</li>
+<li>八進制	0o77</li>
+<li>二進制	0b1111_0000</li>
+<li>位元組（僅限u8）	b'A'</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浮點型別
+<ul>
+<li>所有的浮點數型別都是帶號的（signed）</li>
+<li>長度: f32 f64</li>
+</ul>
+</li>
+<li>布林型別</li>
+<li>字元型別</li>
+</ul>
+</li>
+<li>
+<p>複合型別（compound）</p>
+<ul>
+<li>元組（tuples）
+<ul>
+<li>將許多不同型別的數值合成一個複合型別</li>
+<li>固定長度</li>
+<li>沒有任何數值的元組 ()，此型別稱爲 單元型別 而其數值稱爲 單元數值。表達式要是沒有回傳任何數值的話，它們就會隱式回傳單元型別。</li>
+<li>例：let tup: (i32, f64, u8) = (500, 6.4, 1);</li>
+<li>解構（destructuring）
+<ul>
+<li>let (x, y, z) = tup;</li>
+<li>索引 tup.1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>陣列（arrays）
+<ul>
+<li>let a: [i32; 5] = [1, 2, 3, 4, 5];  //let a = [3, 3, 3, 3, 3];</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>所有權規則</p>
+<ul>
+<li>Rust 中每個數值都會有一個變數作為它的擁有者（owner）。</li>
+<li>同時間只能有一個擁有者。</li>
+<li>當擁有者離開作用域時，數值就會被丟棄。</li>
+</ul>
+</li>
+<li>
+<p>堆疊（Stack），後進先出（last in, first out）</p>
+<ul>
+<li>推入堆疊（pushing onto the stack）</li>
+<li>彈出堆疊（popping off the stack）</li>
+</ul>
+</li>
+<li>
+<p>堆積（Heap），記憶體分配器（memory allocator）會找到一塊夠大的空位，標記為已佔用，然後回傳一個指標（pointer），指著該位置的位址</p>
+<ul>
+<li>在堆積上分配（allocating on the heap），或者有時直接簡稱為分配（allocating）</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>所有在堆疊上的資料都必須是已知固定大小。</li>
+<li>在編譯時屬於未知或可能變更大小的資料必須儲存在堆積。</li>
+</ul>
+<ul>
+<li>
+<p>垃圾回收機制（garbage collector, GC）</p>
+</li>
+<li>
+<p>變數與資料互動的方式：移動（Move）</p>
+</li>
+<li>
+<p>變數與資料互動的方式：克隆（Clone）</p>
+</li>
+<li>
+<p>淺拷貝（shallow copy）和深拷貝（deep copy）</p>
+</li>
+<li>
+<p>只在堆疊上的資料：拷貝（Copy）</p>
+<ul>
+<li>Rust 有個特別的標記叫做 Copy 特徵（trait）可以用在標記像整數這樣存在堆疊上的型別（我們會在第十章討論什麼是特徵）</li>
+</ul>
+</li>
+<li>
+<p>引用（references），在不轉移所有權的狀況下使用數值，建立引用這樣的動作叫做借用（borrowing）</p>
+<ul>
+<li>符號 &amp;，例: &amp;s1</li>
+</ul>
+</li>
+<li>
+<p>解引用（dereferencing）</p>
+<ul>
+<li>符號 *，例: *s1</li>
+<li>當要變更數值時，要先解除&quot;引用&quot;</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>在任何時候，我們要嘛只能有一個可變引用，要嘛可以有任意數量的不可變引用</p>
+</li>
+<li>
+<p>引用必須永遠有效</p>
+</li>
+<li>
+<p>可變引用有個很大的限制：同一時間中對一個特定資料只能有一個可變引用<br />
+let a = &amp;mut s1;<br />
+let b = &amp;mut s1;<br />
+會錯誤</p>
+</li>
+<li>
+<p>編譯器這樣能辨別出引用何時在作用域之前不再被使用的能力叫做 Non-Lexical Lifetimes （NLL）</p>
+</li>
+<li>
+<p>迷途指標（dangling pointer）</p>
+</li>
+</ul>
+<ul>
+<li>引用型別：切片（slices）</li>
+</ul>
+<pre><code>    let s = String::from(&quot;hello world&quot;);
+    let hello = &amp;s[0..5]; // &amp;s[..5]
+    let world = &amp;s[6..11]; //&amp;s[6..]
+    let hello_world = &amp;s[..]; all
+</code></pre>
+<ul>
+<li>疊代器（iterator）</li>
+<li>強制解引用（deref coercion）</li>
+</ul>
+<h3 id="結構體structure"><a class="header" href="#結構體structure">結構體（structure）</a></h3>
+<ul>
+<li>封裝並命名數個相關數值為單一組合的自定型別</li>
+<li>欄位（fields）
+<ul>
+<li>參數名稱與結構體欄位名稱相同，我們可以使用欄位初始化簡寫（field init shorthand），username: username,只寫username,</li>
+</ul>
+</li>
+</ul>
+<pre><code>struct User {
+    active: bool,
+    username: String,
+    email: String,
+    sign_in_count: u64,
+}
+</code></pre>
+<ul>
+<li>實例（instance），指定每個欄位的實際數值來建立結構體
+<ul>
+<li>使用結構體更新語法從其他結構體建立實例，可以使用結構體更新語法（struct update syntax）。</li>
+</ul>
+</li>
+</ul>
+<pre><code>    let user2 = User {
+        active: user1.active,
+        username: user1.username,
+        email: String::from(&quot;another@example.com&quot;),
+        sign_in_count: user1.sign_in_count,
+    };
+
+    let user2 = User {
+        email: String::from(&quot;another@example.com&quot;),
+        ..user1
+    };
+</code></pre>
+<ul>
+<li>元組結構體（tuple structs）</li>
+</ul>
+<pre><code>struct Color(i32, i32, i32);  
+</code></pre>
+<ul>
+<li>
+<p>類單元結構體（unit-like structs）</p>
+</li>
+<li>
+<p>方法（method），針對結構體定義的或是枚舉和特徵物件</p>
+<ul>
+<li>impl（implementation）</li>
+<li>關聯函式（associated functions），所有在 impl 區塊內的方法都屬於關聯函式
+<ul>
+<li>呼叫方式：let sq = Rectangle::square(3);</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="枚舉enumerations-enum最接近於函式語言的代數型別algebraic-data-types"><a class="header" href="#枚舉enumerations-enum最接近於函式語言的代數型別algebraic-data-types">枚舉（enumerations, enum），最接近於函式語言的代數型別（algebraic data types）</a></h3>
+<pre><code>enum IpAddrKind {
+    V4,  //變體
+    V6,  //變體
+}
+
+let four = IpAddrKind::V4;
+let six = IpAddrKind::V6;
+
+enum IpAddr {
+      V4(u8, u8, u8, u8),
+      V6(String),
+  }
+
+let home = IpAddr::V4(127, 0, 0, 1);
+let loopback = IpAddr::V6(String::from(&quot;::1&quot;));
+</code></pre>
+<ul>
+<li>
+<p>變體（variants）</p>
+</li>
+<li>
+<p>對&quot;結構體&quot;定義&quot;方法&quot;</p>
+</li>
+</ul>
+<pre><code>impl Message {
+        fn call(&amp;self) {
+            // 在此定義方法本體
+        }
+}
+
+let m = Message::Write(String::from(&quot;hello&quot;));
+m.call();
+</code></pre>
+<ul>
+<li>Option 枚舉<br />
+Rust 並沒有空值</li>
+</ul>
+<pre><code>enum Option&lt;T&gt; {
+    None,
+    Some(T),
+}
+</code></pre>
+<ul>
+<li><T> 指的是 Option 枚舉中的 Some 變體可以是任意型別</li>
+</ul>
+<ul>
+<li>match 控制流建構子</li>
+</ul>
+<ul>
+<li>Rust 中的配對必須是徹底（exhaustive）的：我們必須列舉出所有可能的情形，程式碼才能夠被視為有效</li>
+</ul>
+<ul>
+<li>工作空間（workspaces）</li>
+</ul>
+<h3 id="模組系統module-system"><a class="header" href="#模組系統module-system">模組系統（module system）</a></h3>
+<p>套件（Package）： 讓你建構、測試並分享 crate 的 Cargo 功能<br />
+Crates： 產生函式庫或執行檔的模組集合<br />
+模組（Modules） 與 use： 讓你控制組織、作用域與路徑的隱私權<br />
+路徑（Paths）: 對一個項目的命名方式，像是一個結構體、函式或模組<br />
+- 絕對路徑（absolute path）<br />
+- 相對路徑（relative path）<br />
+- 使用 self、super 或是當前模組的標識符（identifiers）<br />
+- 使用雙冒號（::）區隔<br />
+- 隱私界限（privacy boundary）</p>
+<ul>
+<li>模組樹（module tree）
+<ul>
+<li>同輩（siblings）</li>
+<li>下一代（child）</li>
+<li>上一代（parent）</li>
+</ul>
+</li>
+</ul>
+<pre><code>mod front_of_house {
+    pub mod hosting {
+        pub fn add_to_waitlist() {}
+    }
+}
+
+絕對路徑
+use crate::front_of_house::hosting;
+use crate::front_of_house::hosting::add_to_waitlist;
+差異在呼叫時是否能區別本地fn或是外部fn
+hosting::add_to_waitlist();
+add_to_waitlist();
+
+相對路徑
+use self::front_of_house::hosting;
+
+use std::fmt::Result;
+use std::io::Result as IoResult;
+另外命名才能區分
+fn function1() -&gt; Result {
+fn function2() -&gt; IoResult&lt;()&gt; {
+</code></pre>
+<ul>
+<li>
+<p>重新匯出（re-exporting）</p>
+<ul>
+<li>pub + use<br />
+pub use crate::front_of_house::hosting;</li>
+</ul>
+</li>
+<li>
+<p>巢狀路徑（nested paths）</p>
+</li>
+</ul>
+<pre><code>use std::cmp::Ordering;  
+use std::io;  
+整合成  
+use std::{cmp::Ordering, io};  
+
+use std::io;  
+use std::io::Write;  
+整合成  
+use std::io::{self, Write};  
+</code></pre>
+<ul>
+<li>全域（glob）運算子 *<br />
+use std::collections::*;</li>
+</ul>
+<h3 id="集合collections"><a class="header" href="#集合collections">集合（collections）</a></h3>
+<ul>
+<li>向量（Vector）
+<ul>
+<li>泛型（generics）實作<br />
+let v: Vec<i32> = Vec::new();</li>
+<li>巨集方式<br />
+let v = vec![1, 2, 3];</li>
+<li>push 更新向量</li>
+</ul>
+</li>
+</ul>
+<pre><code>let mut v = Vec::new();
+
+    v.push(5);
+    v.push(6);
+    v.push(7);
+    v.push(8);
+</code></pre>
+<ul>
+<li>
+<p>索引語法 或 get 讀取向量<br />
+let third: &amp;i32 = &amp;v[2];<br />
+match v.get(2) {</p>
+</li>
+<li>
+<p>字串（String）</p>
+<ul>
+<li>str 和 &amp;str字串切片</li>
+<li>預設是UTF-8編碼</li>
+<li>format! 產生的程式碼使用的是引用，所以此呼叫不會取走任何參數的所有權</li>
+<li>字串並不支援索引得index</li>
+<li>字串建立</li>
+</ul>
+</li>
+</ul>
+<pre><code>let data = &quot;初始內容&quot;;
+let s = data.to_string();
+let s = &quot;初始內容&quot;.to_string();
+let s = String::from(&quot;初始內容&quot;);
+let s1 = String::from(&quot;Hello, &quot;);
+let s2 = String::from(&quot;world!&quot;);
+let s3 = s1 + &amp;s2;  //此陳述式實際上是取得 s1 的所有權、追加一份 s2 的複製內容、然後回傳最終結果的所有權
+</code></pre>
+<ul>
+<li>雜湊映射（Hash map）
+<ul>
+<li>雜湊函式宣告後就都得是同類的，所有的鍵都必須是同型別，且所有的值也都必須是同型別</li>
+<li>建立</li>
+</ul>
+</li>
+</ul>
+<pre><code>use std::collections::HashMap;
+let mut scores = HashMap::new();
+scores.insert(String::from(&quot;藍隊&quot;), 10);
+scores.insert(String::from(&quot;黃隊&quot;), 50);
+
+use std::collections::HashMap;
+let teams = vec![String::from(&quot;藍隊&quot;), String::from(&quot;黃隊&quot;)];
+let initial_scores = vec![10, 50];
+let mut scores: HashMap&lt;_, _&gt; =
+        teams.into_iter().zip(initial_scores.into_iter()).collect();
+
+let team_name = String::from(&quot;藍隊&quot;);
+let score = scores.get(&amp;team_name);
+</code></pre>
+<h3 id="錯誤處理"><a class="header" href="#錯誤處理">錯誤處理</a></h3>
+<ol>
+<li>可復原的（recoverable）
+<ul>
+<li>Result&lt;T, E&gt; 型別</li>
+</ul>
+</li>
+<li>不可復原的（unrecoverable） 
+<ul>
+<li>panic! 巨集  //將程式停止執行
+<ul>
+<li>
+<ol>
+<li>開始做解開（unwind）堆疊的動作，這代表 Rust 會回溯整個堆疊，並清理每個它遇到的函式資料</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>直接終止（abort）程式而不清理，程式使用的記憶體會需要由作業系統來清理</li>
+</ol>
+<ul>
+<li>在 Cargo.toml 檔案中的 [profile] 段落加上 panic = 'abort'</li>
+<li>[profile.release]段落加上 panic = 'abort'</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>let f = File::open(&quot;hello.txt&quot;);
+let f = match f {
+   Ok(file) =&gt; file,
+   Err(error) =&gt; match error.kind() {
+      ErrorKind::NotFound =&gt; match File::create(&quot;hello.txt&quot;) {
+          Ok(fc) =&gt; fc,
+          Err(e) =&gt; panic!(&quot;建立檔案時發生問題：{:?}&quot;, e),
+      },
+      other_error =&gt; {
+          panic!(&quot;開啟檔案時發生問題：{:?}&quot;, other_error)
+      }
+   },
+};
+</code></pre>
+<pre><code> - 3. 錯誤發生時產生恐慌的捷徑：unwrap 與 expect  
+   - let f = File::open(&quot;hello.txt&quot;).unwrap();  
+   - let f = File::open(&quot;hello.txt&quot;).expect(&quot;開啟 hello.txt 失敗&quot;);  
+ - 4. 傳播錯誤的捷徑：? 運算子  
+   - f.read_to_string(&amp;mut s)?;  
+      Ok(s)  
+ - main的特別回傳 Result&lt;(), Box&lt;dyn Error&gt;&gt;  就能允許在 Result 數值上使用 ? 運算子  
+   - 並在結尾的回傳數值加上 Ok(())  
+ - 5. 錯誤處理的指導原則  
+   - 當你的程式碼可能會導致嚴重狀態的話，就建議讓你的程式恐慌  
+</code></pre>
+<h3 id="泛型型別特徵與生命週期"><a class="header" href="#泛型型別特徵與生命週期">泛型型別、特徵與生命週期</a></h3>
+<ul>
+<li>泛型（generics）
+<ul>
+<li>在編譯時對使用泛型的程式碼進行單態化（monomorphization）</li>
+</ul>
+</li>
+<li>特徵（trait）
+<ul>
+<li>特徵界限（trait bounds）來指定泛型型別為擁有特定行為的任意型別</li>
+</ul>
+</li>
+</ul>
+<pre><code>特徵界限語法
+pub fn notify(item: &amp;impl Summary) {
+    println!(&quot;頭條新聞！{}&quot;, item.summarize());
+}
+泛型型別的特徵界限
+pub fn notify&lt;T: Summary&gt;(item: &amp;T) {
+    println!(&quot;頭條新聞！{}&quot;, item.summarize());
+}
+
+特徵界限語法
+pub fn notify(item1: &amp;impl Summary, item2: &amp;impl Summary) {
+泛型型別的特徵界限
+pub fn notify&lt;T: Summary&gt;(item1: &amp;T, item2: &amp;T) {
+
+透過 + 來指定多個特徵界限
+pub fn notify(item: &amp;(impl Summary + Display)) {
+泛型型別的特徵界限
+pub fn notify&lt;T: Summary + Display&gt;(item: &amp;T) {
+
+fn some_function&lt;T: Display + Clone, U: Clone + Debug&gt;(t: &amp;T, u: &amp;U) -&gt; i32 {
+相當於
+fn some_function&lt;T, U&gt;(t: &amp;T, u: &amp;U) -&gt; i32
+    where T: Display + Clone,
+          U: Clone + Debug
+{
+</code></pre>
+<h4 id="生命週期"><a class="header" href="#生命週期">生命週期</a></h4>
+<p>生命週期最主要的目的 - 預防迷途引用（dangling references），導致程式引用到其他資料，而非它原本想要的引用<br />
+借用檢查器（borrow checker）- 比較作用域中，檢測所有的借用是否有效</p>
+<p>生命週期省略規則（lifetime elision rules）</p>
+<h2 id="3-基本指令"><a class="header" href="#3-基本指令">3. 基本指令</a></h2>
+<ul>
+<li>查看離線文件<br />
+rustup doc</li>
+</ul>
+<h2 id="4-載入c-lib"><a class="header" href="#4-載入c-lib">4. 載入c lib</a></h2>
+<ul>
+<li>libloading<br />
+<a href="https://www.gnu.org/software/libc/manual/html_node/POSIX-Safety-Concepts.html">MT(Multi Thread)-Safe or Thread-Safe  </a></li>
+</ul>
+<h2 id="5-debug"><a class="header" href="#5-debug">5. debug</a></h2>
+<ul>
+<li>宣告環境變數<br />
+export RUST_BACKTRACE=1<br />
+export RUST_BACKTRACE=full</li>
+</ul>
+<h2 id="6-參考網頁"><a class="header" href="#6-參考網頁">6. 參考網頁</a></h2>
+<p><a href="https://www.rust-lang.org">Welcome to Rust Taiwan</a><br />
+<a href="https://www.rust-lang.org/zh-TW">正體中文官網</a><br />
+<a href="https://forge.rust-lang.org/infra/other-installation-methods.html">Rust安裝方式</a><br />
+<a href="https://www.rust-lang.org/tools/install">Rust工具安裝</a></p>
+<ul>
+<li>
+<p>cn wiki 
+<a href="https://rustwiki.org">CN - Rust 官方文档中文教程</a><br />
+https://rust.ffactory.org<br />
+<a href="https://rustcc.gitbooks.io/rustprimer/content/">给初学者的Rust中文教程 The Rust primer for beginners</a></p>
+</li>
+<li>
+<p>doc<br />
+<a href="https://rust-lang.tw/book-tw/">Rust 程式設計語言</a></p>
+</li>
+<li>
+<p>example<br />
+<a href="https://doc.rust-lang.org/stable/rust-by-example/">Rust by Example</a></p>
+</li>
+<li>
+<p>rustlings<br />
+<a href="https://github.com/rust-lang/rustlings/">Rustlings 課程</a></p>
+</li>
+</ul>
+<p><a href="https://medium.com/@moz2000tw/rust%E8%AA%9E%E8%A8%80%E6%98%AF%E4%BB%80%E9%BA%BC-%E6%BC%AB%E7%95%AB%E5%9C%96%E8%A7%A3%E8%AE%93%E4%BD%A0%E4%B8%80%E7%9B%AE%E4%BA%86%E7%84%B6-bf9fc9f4dfe">Rust是什麼</a><br />
+<a href="https://askeing.github.io/rust-book/">Rust程式語言-askeing</a></p>
+<ul>
+<li>
+<p>libtsk<br />
+https://github.com/forensicmatt/libtsk-rs</p>
+</li>
+<li>
+<p>write c lib<br />
+<a href="http://blog.asleson.org/2021/02/23/how-to-writing-a-c-shared-library-in-rust/">How-to: Writing a C shared library in rust</a><br />
+<a href="https://docs.rs/sharedlib/latest/sharedlib/">Crate sharedlib</a></p>
+</li>
+<li>
+<p>load share lib<br />
+https://docs.rs/libloading/latest/libloading/</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="server-伺服器主機服務"><a class="header" href="#server-伺服器主機服務">Server 伺服器主機服務</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="遠端桌面存取"><a class="header" href="#遠端桌面存取">遠端桌面存取</a></h1>
+<h2 id="server"><a class="header" href="#server">Server</a></h2>
+<p><a href="https://www.meshcommander.com/meshcentral2">meshcentral</a><br />
+<a href="https://github.com/Ylianst/MeshCentral">meshcentral github</a><br />
+<a href="https://retgal.github.io/Dayon/index.html">dayon</a><br />
+<a href="https://github.com/retgal/dayon">dayon github</a><br />
+<a href="https://github.com/immense/remotely">Remotely github</a> 來原 https://lucency.co/Projects</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="system-系統開發"><a class="header" href="#system-系統開發">System 系統開發</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="manjaro-archlinux"><a class="header" href="#manjaro-archlinux">manjaro archlinux</a></h1>
+<h2 id="問題排除"><a class="header" href="#問題排除">問題排除</a></h2>
+<p>manjaro更新時，停止在archlinux-keyring</p>
+<h3 id="狀況描述"><a class="header" href="#狀況描述">狀況描述</a></h3>
+<p>執行 sudo pacman -Syu 時，停止在archlinux-</p>
+<ol>
+<li>網路正常</li>
+<li>DNS解析正常</li>
+<li>DB也顯示為最新</li>
+</ol>
+<p>但就是不會進行下載動作，在用archlinux沒遇過，順便記錄一下此問題<br />
+我想應該是因為在manjaro上，用了archlinux的mirrorlist site更新的關係</p>
+<h3 id="解決方式"><a class="header" href="#解決方式">解決方式</a></h3>
+<ol start="0">
+<li>清理keyring檔案</li>
+</ol>
+<pre><code>sudo rm /usr/share/pacman/keyrings/archlinux*
+sudo rm -rf /etc/pacman.d/gnupg/*
+sudo pacman-key --init
+</code></pre>
+<ol>
+<li>重新更新mirrorlist</li>
+</ol>
+<pre><code>sudo pacman-mirrors --country Taiwan,Japan,Singapore
+</code></pre>
+<ol start="2">
+<li>再更新一次DB/Keyring</li>
+</ol>
+<pre><code>sudo pacman -Syy
+sudo pacman-key --refresh-keys
+sudo pacman-key --populate archlinux manjaro
+</code></pre>
+<ol start="3">
+<li>重新更新package，因為archlinux與manjaro有版本差異，混合在一起很難說有什麼問題，最好是重新downgrade差異的package版本</li>
+</ol>
+<h2 id="參考網頁-6"><a class="header" href="#參考網頁-6">參考網頁</a></h2>
+<p>https://forum.manjaro.org/t/howto-solve-keyring-related-issues-in-manjaro/96949<br />
+https://wiki.manjaro.org/index.php/Downgrading_packagess</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="工具-1"><a class="header" href="#工具-1">工具</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="free-shell-accounts"><a class="header" href="#free-shell-accounts">Free Shell Accounts</a></h1>
+<p>收集/試用 網路上公開申請註冊的 Shell 主機</p>
+<h2 id="參考網頁-7"><a class="header" href="#參考網頁-7">參考網頁</a></h2>
+<p><a href="https://shells.red-pill.eu">Free sheel accounts</a><br />
+http://sdf.org</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="markdown軟體"><a class="header" href="#markdown軟體">Markdown軟體</a></h1>
+<p>試用Linux上各種markdown筆記軟體</p>
+<ol>
+<li>Zettlr</li>
+<li>VS code插件 Dendron</li>
+<li>trium</li>
+</ol>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+        <script>
+        window.addEventListener('load', function() {
+            window.setTimeout(window.print, 100);
+        });
+        </script>
+
+    </body>
+</html>
