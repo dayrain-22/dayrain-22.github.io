@@ -33,6 +33,7 @@
 
     </head>
     <body>
+    <div id="body-container">
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
@@ -70,10 +71,12 @@
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
             var html = document.querySelector('html');
-            var sidebar = 'hidden';
+            var sidebar = null;
             if (document.body.clientWidth >= 1080) {
                 try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
                 sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
             }
             html.classList.remove('sidebar-visible');
             html.classList.add("sidebar-" + sidebar);
@@ -81,7 +84,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Dayrain's notes</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="cert/index.html"><strong aria-hidden="true">1.</strong> Cert 認證考試</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cert/OSCP_notes.html"><strong aria-hidden="true">1.1.</strong> OSCP證照學習筆記</a></li></ol></li><li class="chapter-item expanded "><a href="cybersec/index.html"><strong aria-hidden="true">2.</strong> CyberSec 資訊安全</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cybersec/HTB.html"><strong aria-hidden="true">2.1.</strong> CyberSec - HTB學習筆記</a></li></ol></li><li class="chapter-item expanded "><a href="dbs/index.html"><strong aria-hidden="true">3.</strong> Dbs 資料庫</a></li><li class="chapter-item expanded "><a href="desktop/index.html"><strong aria-hidden="true">4.</strong> Desktop 桌面環境</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="desktop/browser_tune.html"><strong aria-hidden="true">4.1.</strong> Browser tune 瀏覽器優化調整</a></li><li class="chapter-item expanded "><a href="desktop/vscode.html"><strong aria-hidden="true">4.2.</strong> vscode tune</a></li></ol></li><li class="chapter-item expanded "><a href="learning/index.html"><strong aria-hidden="true">5.</strong> Learning 生活學習</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="learning/7_Habits.html"><strong aria-hidden="true">5.1.</strong> 7個習慣</a></li><li class="chapter-item expanded "><a href="learning/IT_skill_tree.html"><strong aria-hidden="true">5.2.</strong> IT職業技能樹</a></li><li class="chapter-item expanded "><a href="learning/tools_bookmark.html"><strong aria-hidden="true">5.3.</strong> 工具網站, Tools Bookmark</a></li><li class="chapter-item expanded "><a href="learning/self-learning .html"><strong aria-hidden="true">5.4.</strong> 漫漫自學學習之旅的心得記錄</a></li></ol></li><li class="chapter-item expanded "><a href="programing/index.html"><strong aria-hidden="true">6.</strong> Programing 程式開發</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programing/debug.html"><strong aria-hidden="true">6.1.</strong> Programing debug 程式除錯</a></li><li class="chapter-item expanded "><a href="programing/golang.html"><strong aria-hidden="true">6.2.</strong> Go lang</a></li><li class="chapter-item expanded "><a href="programing/rust-notes.html"><strong aria-hidden="true">6.3.</strong> Rust notes</a></li><li class="chapter-item expanded "><a href="programing/rust-package.html"><strong aria-hidden="true">6.4.</strong> Rust package</a></li><li class="chapter-item expanded "><a href="programing/rust.html"><strong aria-hidden="true">6.5.</strong> Rust lang</a></li></ol></li><li class="chapter-item expanded "><a href="server/index.html"><strong aria-hidden="true">7.</strong> Server 伺服器主機服務</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="server/remote_control.html"><strong aria-hidden="true">7.1.</strong> Remote control 遠端控制</a></li></ol></li><li class="chapter-item expanded "><a href="system/index.html"><strong aria-hidden="true">8.</strong> System 系統開發</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="system/manjaro_archlinux.html"><strong aria-hidden="true">8.1.</strong> Manjaro/Archlinux OS</a></li></ol></li><li class="chapter-item expanded "><a href="tools/index.html"><strong aria-hidden="true">9.</strong> Tools 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tools/FreeShell.html"><strong aria-hidden="true">9.1.</strong> FreeShell</a></li><li class="chapter-item expanded "><a href="tools/Markdown_software.html"><strong aria-hidden="true">9.2.</strong> Markdown軟體</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Dayrain's notes</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="AI/AI.html"><strong aria-hidden="true">1.</strong> AI 人工智慧</a></li><li class="chapter-item expanded "><a href="cert/index.html"><strong aria-hidden="true">2.</strong> Cert 認證考試</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cert/OSCP_notes.html"><strong aria-hidden="true">2.1.</strong> OSCP證照學習筆記</a></li></ol></li><li class="chapter-item expanded "><a href="cybersec/index.html"><strong aria-hidden="true">3.</strong> CyberSec 資訊安全</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cybersec/HTB.html"><strong aria-hidden="true">3.1.</strong> CyberSec - HTB學習筆記</a></li></ol></li><li class="chapter-item expanded "><a href="dbs/index.html"><strong aria-hidden="true">4.</strong> Dbs 資料庫</a></li><li class="chapter-item expanded "><a href="desktop/index.html"><strong aria-hidden="true">5.</strong> Desktop 桌面環境</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="desktop/browser_tune.html"><strong aria-hidden="true">5.1.</strong> Browser tune 瀏覽器優化調整</a></li><li class="chapter-item expanded "><a href="desktop/vscode.html"><strong aria-hidden="true">5.2.</strong> vscode tune</a></li></ol></li><li class="chapter-item expanded "><a href="learning/index.html"><strong aria-hidden="true">6.</strong> Learning 生活學習</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="learning/7_Habits.html"><strong aria-hidden="true">6.1.</strong> 7個習慣</a></li><li class="chapter-item expanded "><a href="learning/IT_skill_tree.html"><strong aria-hidden="true">6.2.</strong> IT職業技能樹</a></li><li class="chapter-item expanded "><a href="learning/tools_bookmark.html"><strong aria-hidden="true">6.3.</strong> 工具網站, Tools Bookmark</a></li><li class="chapter-item expanded "><a href="learning/self-learning .html"><strong aria-hidden="true">6.4.</strong> 漫漫自學學習之旅的心得記錄</a></li></ol></li><li class="chapter-item expanded "><a href="programing/index.html"><strong aria-hidden="true">7.</strong> Programing 程式開發</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programing/debug.html"><strong aria-hidden="true">7.1.</strong> Programing debug 程式除錯</a></li><li class="chapter-item expanded "><a href="programing/golang.html"><strong aria-hidden="true">7.2.</strong> Go lang</a></li><li class="chapter-item expanded "><a href="programing/rust-notes.html"><strong aria-hidden="true">7.3.</strong> Rust notes</a></li><li class="chapter-item expanded "><a href="programing/rust-package.html"><strong aria-hidden="true">7.4.</strong> Rust package</a></li><li class="chapter-item expanded "><a href="programing/rust.html"><strong aria-hidden="true">7.5.</strong> Rust lang</a></li></ol></li><li class="chapter-item expanded "><a href="server/index.html"><strong aria-hidden="true">8.</strong> Server 伺服器主機服務</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="server/remote_control.html"><strong aria-hidden="true">8.1.</strong> Remote control 遠端控制</a></li></ol></li><li class="chapter-item expanded "><a href="system/index.html"><strong aria-hidden="true">9.</strong> System 系統開發</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="system/manjaro_archlinux.html"><strong aria-hidden="true">9.1.</strong> Manjaro/Archlinux OS</a></li></ol></li><li class="chapter-item expanded "><a href="tools/index.html"><strong aria-hidden="true">10.</strong> Tools 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tools/FreeShell.html"><strong aria-hidden="true">10.1.</strong> FreeShell</a></li><li class="chapter-item expanded "><a href="tools/Markdown_software.html"><strong aria-hidden="true">10.2.</strong> Markdown軟體</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -166,6 +169,20 @@
 <p><strong>Email:</strong> dayrain at dusk.com<br />
 <strong>Website:</strong> https://dayrain-22.github.io/</p>
 </blockquote>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="ai"><a class="header" href="#ai">AI</a></h1>
+<h2 id="程式生成除錯"><a class="header" href="#程式生成除錯">程式生成/除錯</a></h2>
+<p><a href="https://openai.com/blog/openai-codex/">OpenAI Codex</a><br />
+<a href="https://platform.openai.com/docs/guides/code/introduction">OpenAI Codex Doc</a><br />
+<a href="https://learn.microsoft.com/zh-tw/azure/cognitive-services/openai/how-to/work-with-code">azure codex介紹</a><br />
+<a href="https://github.com/features/copilot">Github Copilot</a> 商用，需付費</p>
+<p><a href="https://useadrenaline.com">Adrenaline</a><br />
+<a href="https://github.com/shobrook/adrenaline/">Adrenaline github</a></p>
+<h2 id="ai繪圖"><a class="header" href="#ai繪圖">AI繪圖</a></h2>
+<p><a href="https://openai.com/dall-e-2/">Dall-E</a><br />
+<a href="https://midjourney.com/home/?callbackUrl=%2Fapp%2F">Midjourney</a></p>
+<h2 id="large-language-model"><a class="header" href="#large-language-model">Large Language Model</a></h2>
+<p><a href="https://gpt-index.readthedocs.io/en/latest/how_to/custom_llms.html">GPT series</a><br />
+<a href="https://huggingface.co/bigscience/bloom">Bloom</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cert-認證考試"><a class="header" href="#cert-認證考試">Cert 認證考試</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="oscp證照學習筆記-offensive-security-certified-professional"><a class="header" href="#oscp證照學習筆記-offensive-security-certified-professional">OSCP證照學習筆記, Offensive Security Certified Professional</a></h1>
 <h2 id="1-考試資訊"><a class="header" href="#1-考試資訊">1. 考試資訊</a></h2>
@@ -286,6 +303,9 @@
 <p><a href="https://www.hackthebox.com/achievement/machine/1341051/461">Responder</a></p>
 </li>
 <li>
+<p><a href="https://www.hackthebox.com/achievement/machine/1341051/489">tree</a></p>
+</li>
+<li>
 <p>Local File Inclusion<br />
 插入主機端本地路徑，如  page=../../../etc/hosts</p>
 </li>
@@ -299,7 +319,103 @@
 gobuster<br />
 dirsearch<br />
 responder，監聽網路中的回應，NBT-NS (NetBIOS Name Service)，LLMNR，MDNS poisoner<br />
-evil-winrm</p>
+evil-winrm<br />
+aws-cli<br />
+nikto<br />
+crunch<br />
+tldr 
+dirbuster-wordlists<br />
+chrome plugin - json viewer<br />
+https://www.revshells.com</p>
+<h3 id="dns-工具"><a class="header" href="#dns-工具">DNS 工具</a></h3>
+<ul>
+<li>
+<p>Google dorks<br />
+site:thetoppers.htb</p>
+</li>
+<li>
+<p>DNS工具</p>
+<ul>
+<li>dig<br />
+zone transfer<br />
+Full transfer (AXFR)<br />
+Incremental transfer (IXFR)</li>
+<li>zone walk
+<ul>
+<li>DNSSEC NSEC</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>憑證
+<a href="https://certificate.transparency.dev">Certificate Transparency</a><br />
+<a href="https://crt.sh/">crt.sh</a><br />
+<a href="https://www.censys.io">censys</a></p>
+</li>
+</ul>
+<p>https://www.virustotal.com/gui/domain/{domain_name}/relations<br />
+searchcode<br />
+https://hackertarget.com<br />
+DNSDumpster</p>
+<ul>
+<li>
+<p>DNS字典檔<br />
+<a href="https://github.com/danielmiessler/SecLists/tree/master/Discovery/DNS">SecLists</a><br />
+<a href="https://github.com/assetnote/commonspeak2-wordlists">commonspeak2-wordlists</a><br />
+<a href="https://gist.github.com/jhaddix/86a06c5dc309d08580a018c66354a056">all.txt</a></p>
+</li>
+<li>
+<p>subdomain enumeration</p>
+<ul>
+<li><a href="https://github.com/OWASP/Amass">OWASP Amass</a> 一個智能的子域名探測和資訊收集工具</li>
+<li><a href="https://github.com/aboul3la/Sublist3r">Sublist3r</a> 一個使用多種來源（如搜索引擎、DNS伺服器等）找到子域名的工具</li>
+<li><a href="https://github.com/tomnomnom/assetfinder">assetfinder</a> 一個使用被動偵察方法找到子域名的開源工具</li>
+<li><a href="https://github.com/projectdiscovery/subfinder">Subfinder</a> 一個速度很快的子域名探測工具</li>
+<li><a href="https://github.com/ffuf/ffuf">ffuf</a> Fast web fuzzer written in Go</li>
+</ul>
+</li>
+<li>
+<p>passive recon<br />
+ldns-walk<br />
+nsec3walker<br />
+dnswalk<br />
+massDNS<br />
+<a href="https://github.com/infosec-au/altdns">altdns</a></p>
+</li>
+<li>
+<p>active recon<br />
+<a href="https://github.com/darkoperator/dnsrecon">dnsrecon</a><br />
+<a href="https://github.com/TheRook/subbrute">subbrute</a><br />
+<a href="https://github.com/TypeError/domained">domained</a></p>
+</li>
+</ul>
+<h3 id="指令"><a class="header" href="#指令">指令</a></h3>
+<p>nmap -T5 -v IP<br />
+nmap -sV -sC IP</p>
+<p>ffuf -c -w seclist.file -u http://thetoppers.htb -H &quot;Host: FUZZ.thetoppers.htb&quot;<br />
+crunch 2 2 &gt; 2bit.list</p>
+<p>gobuster vhost -u http://thetoppers.htb -w ~/Downloads/2bit.list<br />
+nikto -host http://s3.thetoppers.htb/</p>
+<p>gobuster dir -x php,txt -u http://s3.thetoppers.htb -w /usr/share/dict/directory-list-lowercase-2.3-medium.txt</p>
+<ul>
+<li>
+<p>enumeration tools</p>
+<ul>
+<li>subdomain</li>
+</ul>
+</li>
+<li>
+<p>s3<br />
+awscli<br />
+aws configure<br />
+aws s3 ls s3://thetoppers.htb</p>
+<pre><code>Could not connect to the endpoint URL: &quot;https://s3.a.amazonaws.com/thetoppers.htb?list-type=2&amp;prefix=shell&amp;delimiter=%2F&amp;encoding-type=url&quot;
+
+</code></pre>
+<p>aws s3 --endpoint=http://s3.thetoppers.htb ls s3://thetoppers.htb</p>
+</li>
+</ul>
 <h2 id="問題記錄"><a class="header" href="#問題記錄">問題記錄</a></h2>
 <ul>
 <li>ruby出現加密連線失敗
@@ -321,6 +437,16 @@ activate = 1
 <h2 id="參考網頁-1"><a class="header" href="#參考網頁-1">參考網頁</a></h2>
 <p><a href="https://forum.hackthebox.com/t/evil-winrm-error-on-connection-to-host/257342/14">evil-winrm執行錯誤</a><br />
 <a href="https://www.kali.org/tools/responder/">kali responder介紹</a></p>
+<ul>
+<li>
+<p>DNS
+https://tech-blog.cymetrics.io/posts/crystal/dns-hacking-3/</p>
+</li>
+<li>
+<p>解決方法教學<br />
+https://www.youtube.com/watch?v=sV9M4LKKT9s</p>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dbs-資料庫"><a class="header" href="#dbs-資料庫">Dbs 資料庫</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="desktop-桌面環境"><a class="header" href="#desktop-桌面環境">Desktop 桌面環境</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="browser"><a class="header" href="#browser">browser</a></h1>
@@ -1379,5 +1505,6 @@ http://sdf.org</p>
         });
         </script>
 
+    </div>
     </body>
 </html>
