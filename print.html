@@ -89,11 +89,33 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -183,7 +205,166 @@
 <h2 id="large-language-model"><a class="header" href="#large-language-model">Large Language Model</a></h2>
 <p><a href="https://gpt-index.readthedocs.io/en/latest/how_to/custom_llms.html">GPT series</a><br />
 <a href="https://huggingface.co/bigscience/bloom">Bloom</a></p>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="large-language-models"><a class="header" href="#large-language-models">Large Language Models</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><ul>
+<li><a href="LLM/LLM.html#large-language-models">Large Language Models</a></li>
+<li><a href="LLM/LLM.html#%E7%9B%B8%E9%97%9C%E6%8A%80%E8%A1%93">相關技術</a>
+<ul>
+<li><a href="LLM/LLM.html#cuda">CUDA</a>
+<ul>
+<li><a href="LLM/LLM.html#zluda-for-intel-cuda">ZLUDA for intel cuda</a></li>
+</ul>
+</li>
+<li><a href="LLM/LLM.html#pytorch">PyTorch</a>
+<ul>
+<li><a href="LLM/LLM.html#%E4%BB%8B%E7%B4%B9">介紹</a></li>
+<li><a href="LLM/LLM.html#%E6%B5%81%E7%A8%8B-train">流程 train</a></li>
+<li><a href="LLM/LLM.html#evaluation">evaluation</a></li>
+<li><a href="LLM/LLM.html#tensor">Tensor</a></li>
+<li><a href="LLM/LLM.html#%E5%8F%83%E6%95%B8%E8%AA%AA%E6%98%8E">參數說明</a></li>
+<li><a href="LLM/LLM.html#torch%E7%9B%B8%E9%97%9C%E7%B6%B2%E9%A0%81">Torch相關網頁</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="LLM/LLM.html#%E5%88%97%E8%A1%A8">列表</a></li>
+<li><a href="LLM/LLM.html#%E5%AE%89%E8%A3%9D">安裝</a></li>
+<li><a href="LLM/LLM.html#fine-tune">fine tune</a></li>
+<li><a href="LLM/LLM.html#%E5%AE%89%E8%A3%9D-1">安裝</a></li>
+<li><a href="LLM/LLM.html#error">Error</a></li>
+<li><a href="LLM/LLM.html#%E5%BE%AE%E8%AA%BF%E9%83%A8%E7%BD%B2">微調部署</a>
+<ul>
+<li><a href="LLM/LLM.html#hugging-face-library">Hugging Face Library</a></li>
+</ul>
+</li>
+<li><a href="LLM/LLM.html#%E5%8F%83%E8%80%83%E7%B6%B2%E9%A0%81">參考網頁</a></li>
+</ul>
+<hr />
+<h2 id="large-language-models"><a class="header" href="#large-language-models">Large Language Models</a></h2>
+<h2 id="相關技術"><a class="header" href="#相關技術">相關技術</a></h2>
+<ul>
+<li>CUDA</li>
+<li>Torch</li>
+<li>PyTorch介紹
+<ul>
+<li><a href="https://medium.com/pyladies-taiwan/%E6%B7%B1%E5%BA%A6%E5%AD%B8%E7%BF%92%E6%96%B0%E6%89%8B%E6%9D%91-pytorch%E5%85%A5%E9%96%80-511df3c1c025">深度學習新手村：PyTorch入門</a></li>
+</ul>
+</li>
+<li>基礎神經網絡</li>
+<li>反向傳播算法（Backpropagation）</li>
+</ul>
+<h3 id="cuda"><a class="header" href="#cuda">CUDA</a></h3>
+<h4 id="zluda-for-intel-cuda"><a class="header" href="#zluda-for-intel-cuda">ZLUDA for intel cuda</a></h4>
+<p>https://github.com/vosen/ZLUDA<br />
+https://hothardware.com/news/cuda-on-intel-gpus-zluda</p>
+<h3 id="pytorch"><a class="header" href="#pytorch">PyTorch</a></h3>
+<h4 id="介紹"><a class="header" href="#介紹">介紹</a></h4>
+<ul>
+<li>Data types
+<ul>
+<li>32-bit floating point</li>
+<li>64-bit fp</li>
+</ul>
+</li>
+</ul>
+<h4 id="流程-train"><a class="header" href="#流程-train">流程 train</a></h4>
+<ol>
+<li>Loading training data
+<ol>
+<li>training</li>
+<li>test data</li>
+</ol>
+</li>
+<li>Data preprocessing
+<ol>
+<li>Image
+<ol>
+<li>size</li>
+<li>color</li>
+<li>data augmentation</li>
+</ol>
+</li>
+<li>Text
+<ol>
+<li>word segmentation</li>
+<li>word to id mapping</li>
+<li>token</li>
+</ol>
+</li>
+<li>data/batch data轉換成tensor</li>
+</ol>
+</li>
+<li>Define network structure
+<ol>
+<li>network as Module</li>
+<li>Define structure and forward pass</li>
+</ol>
+</li>
+<li>Define training process
+<ol>
+<li>Loop over epochs</li>
+<li>Load data in batches</li>
+<li>Log output, loss, accuracy</li>
+<li>Save model</li>
+</ol>
+</li>
+<li>Run training script</li>
+</ol>
+<h4 id="evaluation"><a class="header" href="#evaluation">evaluation</a></h4>
+<ol>
+<li>Load test data</li>
+<li>Data preprocessin</li>
+<li>Load model</li>
+<li>Define testing process
+<ol>
+<li>Load data in batches</li>
+<li>Log output，loss, accuracy</li>
+</ol>
+</li>
+<li>Run test script</li>
+</ol>
+<h4 id="tensor"><a class="header" href="#tensor">Tensor</a></h4>
+<p>Scalar 0維<br />
+vector 1維<br />
+matrix 2維<br />
+tensor 任意維度<br />
+neural network 裡 data 基本上都需要轉化為 tensor 處理</p>
+<h4 id="參數說明"><a class="header" href="#參數說明">參數說明</a></h4>
+<p>max_tokens</p>
+<p>model AI引擎模組<br />
+prompt 要傳送的句子會詞彙<br />
+max_tokens AI回傳的最大字數(預設128)<br />
+temperature 隨機的文字組合(冒險程度,數值0～1 預設0.5)，0(不隨機)，1(完全隨機)<br />
+language 機器人處理的「程式語言」，預設 python，可設定 javascript、java、csharp、golang、ruby、php、cpp。
+top_p
+frequency_penalty -2.0~2.0 值越大越會懲罰出現頻率高的 token, 避免重複<br />
+presence_penalty -2.0~2.0 值越大越會懲罰用過的 token, 也就是鼓勵產生語句時使用新的 token<br />
+prompt
+stop 停止產生語句的字串陣列,最多可以設定 4 個<br />
+suffix AI 會在 prompt 與 suffix 之間補上適合的語句, 讓 prompt 和 suffix 的邏輯關係正確<br />
+best_of 讓 AI 產生 best_of 個回應, 然後傳回其中分數最高的<br />
+n 要回覆的語句數<br />
+return_attention_mask True/False<br />
+return_length True/False<br />
+do_sample</p>
+<h4 id="torch相關網頁"><a class="header" href="#torch相關網頁">Torch相關網頁</a></h4>
+<ul>
+<li>
+<p>offical<br />
+<a href="https://pytorch.org/tutorials/">PyTorch tutorials</a><br />
+<a href="https://github.com/pytorch/examples/tree/main/mnist">pytorch mnist example</a></p>
+</li>
+<li>
+<p>介紹<br />
+<a href="https://github.com/hunkim/PyTorchZeroToAll">Simple PyTorch Tutorials Zero to ALL</a><br />
+<a href="https://drive.google.com/drive/folders/0B41Zbb4c8HVyUndGdGdJSXd5d3M?resourcekey=0-s90CYmIbmbqbO1Mvtwmlog">PyTorchZeroToAll PPT</a><br />
+<a href="https://www.jiqizhixin.com/articles/2017-10-09-4">四天速成</a></p>
+</li>
+<li>
+<p>MNIST<br />
+<a href="http://yann.lecun.com/exdb/mnist/">MNIST 手寫數字訓練集</a><br />
+<a href="https://github.com/pyliaorachel/MNIST-pytorch-tensorflow-eager-interactive">MNIST-pytorch-tensorflow-eager-interactive</a></p>
+</li>
+</ul>
 <h2 id="列表"><a class="header" href="#列表">列表</a></h2>
 <ul>
 <li>
@@ -241,6 +422,43 @@ pip install accelerate bitsandbytes torch transformers
 <pre><code>1. 確認CUDA使用版本 XXX    
 2. cp ~/.local/lib/python3.11/site-packages/bitsandbytes/libbitsandbytes_cudaXXX.so ~/.local/lib/python3.11/site-packages/bitsandbytes/ibbitsandbytes_cpu.so  
 </code></pre>
+<h2 id="微調部署"><a class="header" href="#微調部署">微調部署</a></h2>
+<ol>
+<li>GPTQ Quantization</li>
+<li>bitsandbytes</li>
+<li>LoRA, Low-Rank Adaptation</li>
+<li>peft, Parameter-Efficient Fine-Tuning</li>
+</ol>
+<p>https://github.com/qwopqwop200/GPTQ-for-LLaMa<br />
+https://github.com/IST-DASLab/gptq<br />
+https://zhuanlan.zhihu.com/p/617433844<br />
+https://zhuanlan.zhihu.com/p/618073170</p>
+<ul>
+<li>GPU support Table and VRAM usage<br />
+https://github.com/stochasticai/xturing/tree/main/examples/int4_finetuning
+https://github.com/Stability-AI/StableLM/issues/17</li>
+</ul>
+<h3 id="hugging-face-library"><a class="header" href="#hugging-face-library">Hugging Face Library</a></h3>
+<ul>
+<li>
+<p>Transformer<br />
+https://github.com/huggingface/transformers</p>
+</li>
+<li>
+<p>Tokenizers<br />
+https://github.com/huggingface/tokenizers</p>
+</li>
+<li>
+<p>Datasets<br />
+https://github.com/huggingface/datasets</p>
+</li>
+<li>
+<p>Accelerate</p>
+</li>
+<li>
+<p>Optimum</p>
+</li>
+</ul>
 <h2 id="參考網頁"><a class="header" href="#參考網頁">參考網頁</a></h2>
 <ul>
 <li>
@@ -412,11 +630,13 @@ print(tokenizer.decode(tokens[0], skip_special_tokens=True))</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cert-認證考試"><a class="header" href="#cert-認證考試">Cert 認證考試</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="oscp證照學習筆記-offensive-security-certified-professional"><a class="header" href="#oscp證照學習筆記-offensive-security-certified-professional">OSCP證照學習筆記, Offensive Security Certified Professional</a></h1>
 <h2 id="1-考試資訊"><a class="header" href="#1-考試資訊">1. 考試資訊</a></h2>
-<p>費用： ＄1499
-機器： 5台
-分數： 70/100
-時間： 24H操作/24H報告
-課程內容：</p>
+<p>費用： ＄1499<br />
+機器： 5台<br />
+分數： 70/100<br />
+時間： 24H操作/24H報告</p>
+<ul>
+<li>課程內容：</li>
+</ul>
 <ol>
 <li>教材包
 <ol>
@@ -437,8 +657,7 @@ print(tokenizer.decode(tokens[0], skip_special_tokens=True))</p>
 </ol>
 <h2 id="3-實作操作"><a class="header" href="#3-實作操作">3. 實作操作</a></h2>
 <ol>
-<li>
-<p>資料收集</p>
+<li>資料收集
 <ol>
 <li>passive recon
 <ol>
@@ -455,8 +674,7 @@ print(tokenizer.decode(tokens[0], skip_special_tokens=True))</p>
 <li>Vulnerability scanning</li>
 </ol>
 </li>
-<li>
-<p>網頁攻擊</p>
+<li>網頁攻擊
 <ol>
 <li>XSS</li>
 <li>Directory traversal</li>
@@ -464,46 +682,34 @@ print(tokenizer.decode(tokens[0], skip_special_tokens=True))</p>
 <li>SQL injection</li>
 </ol>
 </li>
-<li>
-<p>Buffer Overflow</p>
+<li>Buffer Overflow
 <ol>
 <li>windows</li>
 <li>linux</li>
 <li>return address + shellcode</li>
 </ol>
 </li>
-<li>
-<p>Client-Side Attacks: HTA, Microsoft Word</p>
-</li>
-<li>
-<p>public exploit</p>
-</li>
-<li>
-<p>file transfer</p>
-</li>
-<li>
-<p>避開防毒</p>
-</li>
-<li>
-<p>Privilege Escalation</p>
-</li>
-<li>
-<p>密碼暴力破解</p>
-</li>
-<li>
-<p>port forwarding 跟 tunneling</p>
-</li>
-<li>
-<p>Metasploit</p>
-</li>
-<li>
-<p>Powershell Empire</p>
-</li>
+<li>Client-Side Attacks: HTA, Microsoft Word</li>
+<li>public exploit</li>
+<li>file transfer</li>
+<li>避開防毒</li>
+<li>Privilege Escalation</li>
+<li>密碼暴力破解</li>
+<li>port forwarding 跟 tunneling</li>
+<li>Metasploit</li>
+<li>Powershell Empire</li>
+<li>AD</li>
 </ol>
 <h2 id="參考網頁-2"><a class="header" href="#參考網頁-2">參考網頁</a></h2>
-<p><a href="https://tech-blog.cymetrics.io/posts/crystal/oscp-review/">我們與 OSCP 的距離</a></p>
-<p><a href="https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA">IppSec</a></p>
-<p><a href="https://0xdf.gitlab.io">Oxdf</a></p>
+<ul>
+<li>OSCP介紹<br />
+<a href="https://tech-blog.cymetrics.io/posts/crystal/oscp-review/">我們與 OSCP 的距離</a><br />
+<a href="https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA">IppSec</a></li>
+<li>Cheat Sheet(備忘單)/Prepration Guide(準備指引)<br />
+<a href="https://0xdf.gitlab.io">Oxdf</a><br />
+https://github.com/0xsyr0/OSCP<br />
+https://github.com/topics/oscp-guide</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cybersec-資訊安全"><a class="header" href="#cybersec-資訊安全">CyberSec 資訊安全</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="htb學習筆記"><a class="header" href="#htb學習筆記">HTB學習筆記</a></h1>
 <ul>

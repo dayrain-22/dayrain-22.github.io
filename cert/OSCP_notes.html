@@ -88,11 +88,33 @@
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
+        <!-- Track and set sidebar scroll position -->
+        <script>
+            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
+            sidebarScrollbox.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
+                }
+            }, { passive: true });
+            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
+            sessionStorage.removeItem('sidebar-scroll');
+            if (sidebarScrollTop) {
+                // preserve sidebar scroll position when navigating via links within sidebar
+                sidebarScrollbox.scrollTop = sidebarScrollTop;
+            } else {
+                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
+                var activeSection = document.querySelector('#sidebar .active');
+                if (activeSection) {
+                    activeSection.scrollIntoView({ block: 'center' });
+                }
+            }
+        </script>
+
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
                                 <div id="menu-bar-hover-placeholder"></div>
-                <div id="menu-bar" class="menu-bar sticky bordered">
+                <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
                             <i class="fa fa-bars"></i>
@@ -146,11 +168,13 @@
                     <main>
                         <h1 id="oscp證照學習筆記-offensive-security-certified-professional"><a class="header" href="#oscp證照學習筆記-offensive-security-certified-professional">OSCP證照學習筆記, Offensive Security Certified Professional</a></h1>
 <h2 id="1-考試資訊"><a class="header" href="#1-考試資訊">1. 考試資訊</a></h2>
-<p>費用： ＄1499
-機器： 5台
-分數： 70/100
-時間： 24H操作/24H報告
-課程內容：</p>
+<p>費用： ＄1499<br />
+機器： 5台<br />
+分數： 70/100<br />
+時間： 24H操作/24H報告</p>
+<ul>
+<li>課程內容：</li>
+</ul>
 <ol>
 <li>教材包
 <ol>
@@ -171,8 +195,7 @@
 </ol>
 <h2 id="3-實作操作"><a class="header" href="#3-實作操作">3. 實作操作</a></h2>
 <ol>
-<li>
-<p>資料收集</p>
+<li>資料收集
 <ol>
 <li>passive recon
 <ol>
@@ -189,8 +212,7 @@
 <li>Vulnerability scanning</li>
 </ol>
 </li>
-<li>
-<p>網頁攻擊</p>
+<li>網頁攻擊
 <ol>
 <li>XSS</li>
 <li>Directory traversal</li>
@@ -198,46 +220,34 @@
 <li>SQL injection</li>
 </ol>
 </li>
-<li>
-<p>Buffer Overflow</p>
+<li>Buffer Overflow
 <ol>
 <li>windows</li>
 <li>linux</li>
 <li>return address + shellcode</li>
 </ol>
 </li>
-<li>
-<p>Client-Side Attacks: HTA, Microsoft Word</p>
-</li>
-<li>
-<p>public exploit</p>
-</li>
-<li>
-<p>file transfer</p>
-</li>
-<li>
-<p>避開防毒</p>
-</li>
-<li>
-<p>Privilege Escalation</p>
-</li>
-<li>
-<p>密碼暴力破解</p>
-</li>
-<li>
-<p>port forwarding 跟 tunneling</p>
-</li>
-<li>
-<p>Metasploit</p>
-</li>
-<li>
-<p>Powershell Empire</p>
-</li>
+<li>Client-Side Attacks: HTA, Microsoft Word</li>
+<li>public exploit</li>
+<li>file transfer</li>
+<li>避開防毒</li>
+<li>Privilege Escalation</li>
+<li>密碼暴力破解</li>
+<li>port forwarding 跟 tunneling</li>
+<li>Metasploit</li>
+<li>Powershell Empire</li>
+<li>AD</li>
 </ol>
 <h2 id="參考網頁"><a class="header" href="#參考網頁">參考網頁</a></h2>
-<p><a href="https://tech-blog.cymetrics.io/posts/crystal/oscp-review/">我們與 OSCP 的距離</a></p>
-<p><a href="https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA">IppSec</a></p>
-<p><a href="https://0xdf.gitlab.io">Oxdf</a></p>
+<ul>
+<li>OSCP介紹<br />
+<a href="https://tech-blog.cymetrics.io/posts/crystal/oscp-review/">我們與 OSCP 的距離</a><br />
+<a href="https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA">IppSec</a></li>
+<li>Cheat Sheet(備忘單)/Prepration Guide(準備指引)<br />
+<a href="https://0xdf.gitlab.io">Oxdf</a><br />
+https://github.com/0xsyr0/OSCP<br />
+https://github.com/topics/oscp-guide</li>
+</ul>
 
                     </main>
 
