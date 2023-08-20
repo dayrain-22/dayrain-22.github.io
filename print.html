@@ -628,7 +628,25 @@ stopping_criteria=StoppingCriteriaList([StopOnTokens()])
 )
 print(tokenizer.decode(tokens[0], skip_special_tokens=True))</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="cert-認證考試"><a class="header" href="#cert-認證考試">Cert 認證考試</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="oscp證照學習筆記-offensive-security-certified-professional"><a class="header" href="#oscp證照學習筆記-offensive-security-certified-professional">OSCP證照學習筆記, Offensive Security Certified Professional</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><ul>
+<li><a href="cert/OSCP_notes.html#oscp%E8%AD%89%E7%85%A7%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-offensive-security-certified-professional">OSCP證照學習筆記, Offensive Security Certified Professional</a>
+<ul>
+<li><a href="cert/OSCP_notes.html#1-%E8%80%83%E8%A9%A6%E8%B3%87%E8%A8%8A">1. 考試資訊</a></li>
+<li><a href="cert/OSCP_notes.html#2-%E7%92%B0%E5%A2%83%E6%BA%96%E5%82%99">2. 環境準備</a></li>
+<li><a href="cert/OSCP_notes.html#3-%E5%AF%A6%E4%BD%9C%E6%93%8D%E4%BD%9C">3. 實作操作</a></li>
+<li><a href="cert/OSCP_notes.html#modules">Modules</a></li>
+<li><a href="cert/OSCP_notes.html#lab">Lab</a></li>
+<li><a href="cert/OSCP_notes.html#oscp%E6%95%99%E6%9D%90">OSCP教材</a>
+<ul>
+<li><a href="cert/OSCP_notes.html#ch2-ch3">Ch.2 Ch.3</a></li>
+</ul>
+</li>
+<li><a href="cert/OSCP_notes.html#%E5%8F%83%E8%80%83%E7%B6%B2%E9%A0%81">參考網頁</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="oscp證照學習筆記-offensive-security-certified-professional"><a class="header" href="#oscp證照學習筆記-offensive-security-certified-professional">OSCP證照學習筆記, Offensive Security Certified Professional</a></h1>
 <h2 id="1-考試資訊"><a class="header" href="#1-考試資訊">1. 考試資訊</a></h2>
 <p>費用： ＄1499<br />
 機器： 5台<br />
@@ -699,6 +717,313 @@ print(tokenizer.decode(tokens[0], skip_special_tokens=True))</p>
 <li>Metasploit</li>
 <li>Powershell Empire</li>
 <li>AD</li>
+</ol>
+<h2 id="modules"><a class="header" href="#modules">Modules</a></h2>
+<p>連線
+ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=no&quot; xxxx@192.168.yyy.zzz</p>
+<h2 id="lab"><a class="header" href="#lab">Lab</a></h2>
+<ol>
+<li>Kali Linux VM</li>
+<li>Learning Portal</li>
+<li>lab(containing deployable target machines)</li>
+<li>VPN</li>
+</ol>
+<ul>
+<li>練習</li>
+</ul>
+<ol>
+<li>HTB</li>
+<li>vulhub</li>
+</ol>
+<h2 id="oscp教材"><a class="header" href="#oscp教材">OSCP教材</a></h2>
+<h3 id="ch2-ch3"><a class="header" href="#ch2-ch3">Ch.2 Ch.3</a></h3>
+<ol>
+<li>學習模組</li>
+<li>演示模組</li>
+<li>應用模組</li>
+<li>頂點模組 capstone</li>
+<li>組裝模組
+<ol>
+<li>22個modules</li>
+<li>local.txt or proof.txt</li>
+<li>6台OSCP VM，每個挑戰
+<ol>
+<li>3台AD連接主機</li>
+<li>3台獨立主機</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>外圍攻擊
+<ol>
+<li>規避掃毒</li>
+</ol>
+</li>
+<li>權限提升，橫向移動
+<ol>
+<li>pivoting, move from one machine to another on the same network</li>
+<li>tunneling, move into another subnetwork</li>
+</ol>
+</li>
+<li>面對失敗的心態, Try Harder
+<ol>
+<li>代表目前的事實真相</li>
+<li>學習新的東西，改變方法，從錯誤中學習</li>
+</ol>
+</li>
+<li>了解攻擊者與防御者差異
+<ol>
+<li>類別</li>
+<li>個人/組織</li>
+</ol>
+</li>
+<li>風險
+<ol>
+<li>低影響，低風險</li>
+<li>低影響，高風險</li>
+<li>高影響，低風險</li>
+<li>高影響，高風險</li>
+</ol>
+</li>
+<li>威脅/漏洞
+<ol>
+<li>log4j</li>
+<li>攻擊面</li>
+<li>攻擊向量/媒介，特定漏洞vulnerability和利用exploitation</li>
+</ol>
+</li>
+<li>個人惡意行為者paige thompson</li>
+<li>惡意組織</li>
+<li>內部威脅</li>
+<li>社交工程Social Engineering</li>
+<li>網路釣魚phishing（大範圍）, 魚叉釣魚spearphishing</li>
+<li>勒索軟體ransonware</li>
+<li>憑據濫用Credential Abuse，solarwinds</li>
+<li>身份驗證繞過 Authentication Bypass</li>
+<li>CIA
+<ol>
+<li>機密性 Confidentiality，不應訪問系統或訊息的人是否可訪問
+<ol>
+<li>T-Mobiles</li>
+</ol>
+</li>
+<li>完整性 Integrity，數據或系統可以以某種非預期的方式進行修改
+<ol>
+<li>WhisperGate</li>
+</ol>
+</li>
+<li>可用性 Availability，數據或系統是否可以按照預期的時間和方式進行訪問
+<ol>
+<li>Viasat,AcidRain</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>安全 原則Principles/控制Controls/策略Strategies
+<ol>
+<li>深度防禦</li>
+<li>24/7保持警愓</li>
+<li>威脅建模</li>
+<li>討論表Table of discussions</li>
+<li>持續培訓</li>
+<li>持續自動修補</li>
+<li>持續供應鏈驗證</li>
+<li>安全編碼與設計</li>
+<li>每日日誌審查</li>
+<li>多層實施良好的安全控制</li>
+</ol>
+</li>
+<li>Shift-Left Security
+<ol>
+<li>設計整個系統，一開始將安全性內置服務架構內</li>
+</ol>
+</li>
+<li>行政劃區 
+<ol>
+<li>分段控制
+<ol>
+<li>應用程序管理團隊</li>
+<li>管理員之間權限分割</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>威脅建模/威脅情報
+<ol>
+<li>系統/軟體清單</li>
+<li>潛在威脅</li>
+</ol>
+</li>
+<li>桌面策略
+<ol>
+<li>跨組織討論
+<ol>
+<li>工程師</li>
+<li>利益關係者</li>
+<li>安全專業人員</li>
+<li>策略/技術/程序 TTP</li>
+<li>了解控制方面的弱點和差距</li>
+</ol>
+</li>
+<li>BCP，業務連續性規劃</li>
+</ol>
+</li>
+<li>持續補丁/供應鏈驗證</li>
+<li>日誌/混沌測試，BCP/Disaster recovery(DR) practice</li>
+<li>網路安全法律，法規，標準和框架
+<ol>
+<li>HIPAA醫療保健承保範圍和患者隱私健康訊息
+<ol>
+<li>PHI/e-PHI</li>
+<li>管理(指定安全官員，安全管理流程，定期評估)</li>
+<li>物理(設施訪問控制，設備安全)</li>
+<li>技術(訪問控制，傳輸安全)</li>
+<li>審計能力</li>
+</ol>
+</li>
+<li>FERPA家庭教育權利和隱私法案，學習者教育記錄的隱私
+<ol>
+<li>檢查記錄的權利</li>
+<li>不求修改不準確或誤導性記錄的權利</li>
+</ol>
+</li>
+<li>GLBA金融機構
+<ol>
+<li>消費者消費訊息</li>
+</ol>
+</li>
+<li>GDPR通用數據保護條例，規範數據隱私和安全
+<ol>
+<li>被遺忘權</li>
+<li>數據洩露通知</li>
+<li>數據可移殖性</li>
+</ol>
+</li>
+<li>Key disclosure laws(密鑰披露法)
+<ol>
+<li>特定條件下披露密鑰或密碼</li>
+<li>刑事調查</li>
+<li>RIPA調查權限監管法案</li>
+</ol>
+</li>
+<li>CCPA加洲消費者隱私法案
+<ol>
+<li>知情權，根據消費者要求披露哪些個人訊息被收集/使用/出售</li>
+<li>選擇退出權</li>
+<li>刪除權</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>標準/架構
+<ol>
+<li>PCI DSS，訊息安全標準，支付卡行業數據安全標準
+<ol>
+<li>確保支付數據得到保護，以降低信用卡詐欺</li>
+<li>要求2 禁止使用供應商提供的系統密碼和其他安全相關參數默認值</li>
+<li>要求3 可以儲存哪些類型的信用卡數據及如何保護</li>
+</ol>
+</li>
+<li>CIS Top 18網際網路安全控制措施
+<ol>
+<li>18項控制措施，提高組織的安全狀況</li>
+<li>3個實施組，幫助確保措施優先順序</li>
+<li>IG1</li>
+<li>IG2額外保護措施</li>
+<li>IG3</li>
+</ol>
+</li>
+<li>NIST Cybersecurity Framework網路安全框架
+<ol>
+<li>3個核心元件</li>
+<li>實施層
+<ol>
+<li>部份風險告知</li>
+<li>可重覆和自適應框架配置文件</li>
+</ol>
+</li>
+<li>配置文件</li>
+<li>5個高級功能
+<ol>
+<li>資產管理</li>
+<li>風險評估</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>ATT3CK and D3FEND
+<ol>
+<li>對威脅行為者依運作方式編項目和分類</li>
+<li>描繪防御者用於預防，檢測，緩解，應對攻擊的最佳實踐/行動/方法</li>
+</ol>
+</li>
+<li>Cyber Kill Chain，幫助防御者識別和防禦網路攻擊，攻擊生命週期
+<ol>
+<li>偵察，列舉可能被利用的潛存弱點</li>
+<li>武器化，識別利用此弱點的攻擊方法的過程</li>
+<li>傳遞,發起攻擊</li>
+<li>利用exploitation，在目標系統上執行有效負載payload</li>
+<li>安裝，惡意程式</li>
+<li>命令和控制，執行命令</li>
+<li>針對目標行動，數據竊取/修改/破壞</li>
+</ol>
+</li>
+<li>FedRAMP聯邦風險和授權管理計劃
+<ol>
+<li>為聯邦政府雲端服務提供標準化框架</li>
+<li>獲得單一授權，加速政府對雲服務的採用，並確保服務安全</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>網路安全的職業機會
+<ol>
+<li>攻擊，發現利用網路存在的漏洞
+<ol>
+<li>網路滲透測試人員</li>
+<li>網頁應用測試人員</li>
+<li>雲端測試人員</li>
+<li>Exploit 開發人員</li>
+<li>弱點研究員</li>
+</ol>
+</li>
+<li>防禦
+<ol>
+<li>SOC分析師，負責監控，分類，必要時升級受監控網路內產生的警報</li>
+<li>惡意程式分析，分析惡意程式樣本
+<ol>
+<li>EXP-301逆向工程和Windows API知識</li>
+</ol>
+</li>
+<li>數位鑑識分析，收集和分析入侵證據並恢復數據，調查網路安全事件</li>
+<li>事件響應者，對安全事件做出反應
+<ol>
+<li>確定事件原因，範圍，並建議採取措施遏止，消除，恢復</li>
+</ol>
+</li>
+<li>威脅獵手
+<ol>
+<li>主動搜集網路情報和系統中妥協指標(IoC)</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>建構
+<ol>
+<li>雲端工程師</li>
+<li>雲端架構師，設計和監督，業務目標和需求的策略實施</li>
+<li>開發者，編寫程式</li>
+<li>DevSecOps(開發/安全/營運)，將安全性集成到軟體開發生命週期的所有階段
+<ol>
+<li>自動化安全測試 CI/CD</li>
+</ol>
+</li>
+<li>Site Reliability Engineer站點可靠性工程師，確保和提高軟體可用性和性能</li>
+<li>System Hardener(System Administrator)系統強化者，配置系統以降低安全風險</li>
+</ol>
+</li>
+</ol>
+</li>
 </ol>
 <h2 id="參考網頁-2"><a class="header" href="#參考網頁-2">參考網頁</a></h2>
 <ul>
