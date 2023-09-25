@@ -643,6 +643,9 @@ print(tokenizer.decode(tokens[0], skip_special_tokens=True))</p>
 <li><a href="cert/OSCP_notes.html#ch5-%E6%92%B0%E5%AF%AB%E5%A0%B1%E5%91%8A">Ch.5 撰寫報告</a></li>
 <li><a href="cert/OSCP_notes.html#ch6-%E8%B3%87%E8%A8%8A%E8%92%90%E9%9B%86">Ch.6 資訊蒐集</a></li>
 <li><a href="cert/OSCP_notes.html#ch7-%E5%BC%B1%E9%BB%9E%E6%8E%83%E6%8F%8F">Ch.7 弱點掃描</a></li>
+<li><a href="cert/OSCP_notes.html#ch8-web-application-attacks">Ch.8 Web Application attacks</a></li>
+<li><a href="cert/OSCP_notes.html#ch9-common-web-application-attacks">Ch.9 Common Web Application attacks</a></li>
+<li><a href="cert/OSCP_notes.html#ch10-sql-injection-attacks">CH.10 SQL Injection attacks</a></li>
 </ul>
 </li>
 <li><a href="cert/OSCP_notes.html#oscp-pt-kali-%E5%BD%B1%E7%89%87%E6%95%99%E6%9D%90">OSCP PT Kali 影片教材</a>
@@ -1528,6 +1531,111 @@ snmpwalk -c public -v1 IP OID</p>
 </ol>
 </li>
 </ol>
+<h3 id="ch8-web-application-attacks"><a class="header" href="#ch8-web-application-attacks">Ch.8 Web Application attacks</a></h3>
+<ol>
+<li>列舉web
+<ol>
+<li>nmap -sV  --script=http-enum</li>
+<li>Wappalyzer - Technology profiler網頁技術分析工具</li>
+<li>Gobuster 目錄暴力列舉</li>
+<li>curl GET/POST</li>
+<li><a href="https://owasp.org/www-community/attacks/xss/">XSS，Cross-Site Scripting</a>
+<ol>
+<li>Stored XSS,將payload儲存在db中或cache</li>
+<li>Reflected XSS,payload利用提交請求或連結</li>
+<li><a href="https://owasp.org/www-community/attacks/DOM_Based_XSS">DOM-base XSS</a>
+<ol>
+<li>Client DOM Stored XSS,惡意指令碼被存儲在Server</li>
+<li>Client DOM XSS,攻擊中的惡意腳本並不會存入網站的資料庫中，而是直接嵌入到 URL 中
+<ol>
+<li>URL參數中的XSS,將javascript插入到變數值中
+<ol>
+<li>http://example.com/welcome?name=<script>stealCookies()</script></li>
+</ol>
+</li>
+<li>表單欄位中的XSS
+<ol>
+<li>留言欄中寫入javascript</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><a href="https://owasp.org/www-community/attacks/Code_Injection">Client DOM Code Injection</a>,攻擊者直接注入並執行惡意程式，而不需要儲存這些代碼到服務端
+<ol>
+<li>搜索框注入</li>
+<li>個人資料修改</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>http header, 將Encoded string放入User-Agent header</li>
+</ol>
+</li>
+<li><a href="https://owasp.org/www-community/controls/Content_Security_Policy">CSP,Content Security Policy 內容安全政策</a></li>
+<li>Secure flag, 指示瀏覽器僅使用HTTPS</li>
+<li>HttpOnly flag, 指示瀏覽器拒絕Javascript存取cookie</li>
+</ol>
+</li>
+<li>proxy原理</li>
+<li>Burp Suite proxy 網頁安全性測試</li>
+</ol>
+<h3 id="ch9-common-web-application-attacks"><a class="header" href="#ch9-common-web-application-attacks">Ch.9 Common Web Application attacks</a></h3>
+<ol>
+<li>目錄遍歷 Directory Traversal
+<ol>
+<li>絕對/相對路徑</li>
+<li>特殊字元編碼
+<ol>
+<li>URL/Percent encoding</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>檔案包含漏洞
+<ol>
+<li>LFI, local file inclusion, 本機檔案包含可執行內容</li>
+<li>PHP wrapper 繞過過濾器手法
+<ol>
+<li>php://filter</li>
+<li>data://</li>
+</ol>
+</li>
+<li>RFI, Remote file inclusion
+<ol>
+<li>PHP需要啟用allowed_url_include</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>檔案上傳攻擊漏洞
+<ol>
+<li>由web application上傳PHP程序</li>
+<li>上傳+目錄遍歷,覆蓋系統檔案</li>
+<li>上傳後有人員存取檔案</li>
+<li>使用可執行與不可執行檔的利用
+<ol>
+<li>powershell one-liner</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>指令注入
+<ol>
+<li>A&amp;&amp;B</li>
+</ol>
+</li>
+</ol>
+<h3 id="ch10-sql-injection-attacks"><a class="header" href="#ch10-sql-injection-attacks">CH.10 SQL Injection attacks</a></h3>
+<ol>
+<li>SQLi, SQL injection
+<ol>
+<li>impacket-mssqlclient</li>
+</ol>
+</li>
+<li>UNION SQLi payloads</li>
+<li>Error SQLi payloads</li>
+<li>Blind SQLi payloads</li>
+</ol>
 <h2 id="oscp-pt-kali-影片教材"><a class="header" href="#oscp-pt-kali-影片教材">OSCP PT Kali 影片教材</a></h2>
 <h3 id="episode2-episode3"><a class="header" href="#episode2-episode3">Episode.2 Episode.3</a></h3>
 <ol>
@@ -1940,11 +2048,11 @@ https://github.com/fortra/impacket/examples/mssqlclient.py<br />
 <ul>
 <li>winpeas
 <ul>
+<li><a href="https://github.com/carlospolop/PEASS-ng">peass-ng</a></li>
 <li>https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite</li>
 <li>https://vk9-sec.com/winpeas-windows-enum/</li>
 </ul>
 </li>
-<li>peass-ng</li>
 <li><a href="https://eternallybored.org/misc/netcat/">netcat</a>
 <ul>
 <li><a href="https://nmap.org/dist/ncat-portable-5.59BETA1.zip">binary檔</a></li>
