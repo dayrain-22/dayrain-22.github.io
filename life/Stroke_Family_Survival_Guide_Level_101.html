@@ -1,0 +1,678 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>中風家屬生存手冊 Level 101 - dayrain-technotes</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="highlight-css" href="../highlight.css">
+        <link rel="stylesheet" id="tomorrow-night-css" href="../tomorrow-night.css">
+        <link rel="stylesheet" id="ayu-highlight-css" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc.js"></script>
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var sidebar = null;
+            var sidebar_toggle = document.getElementById("sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            sidebar_toggle.checked = sidebar === 'visible';
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="sidebar-toggle" class="icon-button" for="sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </label>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">dayrain-technotes</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <ul>
+<li><a href="#%E4%B8%AD%E9%A2%A8%E5%AE%B6%E5%B1%AC%E7%94%9F%E5%AD%98%E6%89%8B%E5%86%8A-level-101stroke-family-survival-guide-level-101">中風家屬生存手冊 Level 101(Stroke Family Survival Guide Level 101)</a>
+<ul>
+<li><a href="#%E9%86%AB%E9%99%A2%E5%B1%85%E5%AE%B6%E9%95%B7%E7%85%A720%E8%AD%B7%E7%90%86%E4%B9%8B%E5%AE%B6-%E6%AF%94%E8%BC%83">醫院/居家長照2.0/護理之家 比較</a></li>
+<li><a href="#%E8%BC%94%E5%85%B7">輔具</a></li>
+<li><a href="#%E8%80%97%E6%9D%90">耗材</a>
+<ul>
+<li><a href="#%E5%B1%85%E4%BD%8F%E9%86%AB%E9%99%A2%E6%99%82">居住醫院時</a>
+<ul>
+<li><a href="#%E4%B8%80%E8%88%AC%E7%94%9F%E6%B4%BB%E8%80%97%E6%9D%90%E7%94%A8%E5%93%81">一般生活耗材/用品</a></li>
+<li><a href="#%E9%86%AB%E7%99%82%E8%80%97%E6%9D%90">醫療耗材</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B1%85%E5%AE%B6%E6%99%82">居家時</a>
+<ul>
+<li><a href="#%E4%B8%80%E8%88%AC%E7%94%9F%E6%B4%BB%E8%80%97%E6%9D%90%E7%94%A8%E5%93%81-1">一般生活耗材/用品</a></li>
+<li><a href="#%E9%86%AB%E7%99%82%E8%80%97%E6%9D%90%E7%94%A8%E5%93%81">醫療耗材/用品</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E8%87%A5%E5%BA%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85">臥床注意事項</a></li>
+<li><a href="#%E5%BE%A9%E5%81%A5">復健</a></li>
+<li><a href="#%E9%95%B7%E7%85%A720">長照2.0</a></li>
+<li><a href="#%E6%BA%96%E5%82%99%E4%BA%8B%E9%A0%85">準備事項</a></li>
+<li><a href="#%E9%86%AB%E9%99%A2">醫院</a>
+<ul>
+<li><a href="#%E5%B0%BF%E8%A2%8B">尿袋</a></li>
+<li><a href="#%E6%8E%92%E4%BE%BF">排便</a></li>
+<li><a href="#%E4%BE%BF%E7%A7%98">便秘</a></li>
+<li><a href="#%E8%BC%94%E5%8A%A9%E7%94%B3%E8%AB%8B">輔助申請</a></li>
+</ul>
+</li>
+<li><a href="#%E9%95%B7%E7%85%A7%E5%85%AC%E5%8F%B8">長照公司</a></li>
+<li><a href="#%E5%B1%85%E5%AE%B6">居家</a></li>
+<li><a href="#%E7%9B%B8%E9%97%9C%E8%B3%87%E6%BA%90">相關資源</a></li>
+<li><a href="#%E5%8F%83%E8%80%83%E7%B6%B2%E9%A0%81">參考網頁</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h1 id="中風家屬生存手冊-level-101stroke-family-survival-guide-level-101"><a class="header" href="#中風家屬生存手冊-level-101stroke-family-survival-guide-level-101">中風家屬生存手冊 Level 101(Stroke Family Survival Guide Level 101)</a></h1>
+<h2 id="醫院居家長照20護理之家-比較"><a class="header" href="#醫院居家長照20護理之家-比較">醫院/居家長照2.0/護理之家 比較</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>項目</th><th>醫院</th><th>居定長照2.0</th><th>護理之家</th></tr></thead><tbody>
+<tr><td>住宿時長</td><td>24H</td><td>24H</td><td>24H/3H or 4H喘息</td></tr>
+<tr><td>探視</td><td>AM 9 ~ AM 21H</td><td>N/A</td><td>0.5H/1H~1.5H/2H</td></tr>
+<tr><td>居服員</td><td>N/A</td><td>NT770/2H</td><td>N/A</td></tr>
+<tr><td>看護員</td><td>2800/天</td><td>N/A</td><td>3萬/月</td></tr>
+<tr><td>居家護理</td><td>N/A</td><td>NT250/次()車費</td><td>N/A</td></tr>
+<tr><td>居家看診</td><td>N/A</td><td>居定護理+ NT7X</td><td>N/A</td></tr>
+<tr><td>居定復能治療師</td><td>N/A</td><td>NT240/次</td><td>另計</td></tr>
+<tr><td>診斷證明</td><td>申請(保險用)</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>病歷摘要</td><td>申請</td><td>N/A</td><td>入院前評估用</td></tr>
+<tr><td>失能度評估</td><td>申請</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>巴氏評量表</td><td>申請(效期3個月)</td><td>N/A</td><td>N/A</td></tr>
+<tr><td>身障手冊</td><td>申請</td><td>N/A</td><td>N/A</td></tr>
+</tbody></table>
+</div>
+<h2 id="輔具"><a class="header" href="#輔具">輔具</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>項次</th><th>品項</th><th>長照</th><th>原價</th></tr></thead><tbody>
+<tr><td>1.</td><td>電動床</td><td>NT18000</td><td>NT32000</td></tr>
+<tr><td>2.</td><td>電動氣塾床塾</td><td>NT12000</td><td>NT12000</td></tr>
+<tr><td>3.</td><td>輪椅(B+A) NT7800</td><td>NT18500</td><td>NT</td></tr>
+<tr><td>4.</td><td>ㄇ字助行器</td><td>NT800</td><td>NT</td></tr>
+<tr><td>5.</td><td>便盆椅</td><td>NT</td><td>NT</td></tr>
+</tbody></table>
+</div>
+<ul>
+<li>1+2+3+4<br />
+18000+12000+18500+800=39300</li>
+</ul>
+<p>NT32000+NT18500+NT12000 = NT62500<br />
+政府輔助上限NT40000(身障人士),一般戶NT32500<br />
+NT62500-NT32500=NT30000(自費)</p>
+<h2 id="耗材"><a class="header" href="#耗材">耗材</a></h2>
+<h3 id="居住醫院時"><a class="header" href="#居住醫院時">居住醫院時</a></h3>
+<h4 id="一般生活耗材用品"><a class="header" href="#一般生活耗材用品">一般生活耗材/用品</a></h4>
+<ol>
+<li>指甲剪x1</li>
+<li>挖耳棒x1</li>
+<li>杯子x1</li>
+<li>毛巾(臉/身體/乾)x3</li>
+<li>牙膏(夜用型)x1</li>
+<li>牙刷x1</li>
+<li>潄口盆</li>
+<li>毛帽x1</li>
+<li>毛襪x2</li>
+<li>筷子x1</li>
+<li>湯匙x2</li>
+<li>筆記本x1</li>
+<li>眼罩x1</li>
+<li>牙線棒x100</li>
+</ol>
+<h4 id="醫療耗材"><a class="header" href="#醫療耗材">醫療耗材</a></h4>
+<ol>
+<li>臉盆(中)x1</li>
+<li>沖洗器x1</li>
+<li>彈性繃帶x2</li>
+<li>紙尿褲</li>
+<li>紙尿片(無尿管者)</li>
+<li>看護塾(醫院有中單可以用則免)</li>
+</ol>
+<h3 id="居家時"><a class="header" href="#居家時">居家時</a></h3>
+<h4 id="一般生活耗材用品-1"><a class="header" href="#一般生活耗材用品-1">一般生活耗材/用品</a></h4>
+<ol>
+<li>小夜燈x1</li>
+<li>監視器x2</li>
+<li>延長線x2</li>
+<li>水瓶x1</li>
+<li>耳溫槍x1</li>
+<li>護腰x1</li>
+<li>熱敷塾x1</li>
+<li>中頻電療機x1</li>
+<li>氣動式手部復健機x1</li>
+<li>復健機x1(可腳踏/手轉),電動或手動</li>
+<li>露營椅/折疊椅x1(供居服員坐)</li>
+<li>前開扣式上衣(uniqlo襯彬,好洗快乾)</li>
+<li>電暖器x1,可設定溫度控制者則佳</li>
+<li>餐盤x2</li>
+<li>3M小方巾x6</li>
+<li>加溼器x1</li>
+<li>牙線棒x100</li>
+<li>垃圾筒x1</li>
+<li>籃子/水瓶掛籃/水杯架,魔鬼氈固定在床邊,可找大創的廚房用具,瀝菜瓜布的籃子</li>
+<li>長條魔鬼氈x8,正反面二面的,大創或五金百貨</li>
+<li>束線(可解開式的)</li>
+<li>餐巾紙,一整捲</li>
+<li>保鮮袋x10</li>
+<li>保溫盒x3</li>
+<li>止滑塾x3,大/中/小/長條</li>
+<li>小枕頭x3</li>
+<li>洗衣籃x1</li>
+<li>不銹鋼夾子x4</li>
+<li>筆記本x1(居服員交接)</li>
+<li>生理記錄表,體溫/耳溫/血壓/血糖/心跳</li>
+</ol>
+<h4 id="醫療耗材用品"><a class="header" href="#醫療耗材用品">醫療耗材/用品</a></h4>
+<ol>
+<li>強力施美(溼疹)</li>
+<li>美康(溼疹)</li>
+<li>紙尿布/復健褲</li>
+<li>小尿布/紙尿片</li>
+<li>看護塾</li>
+<li>透氣膠帶,皮膚敏感者可改用嬰兒用膠帶</li>
+<li>凡士林(大罐x1</li>
+<li>保溼乳液x1</li>
+<li>馬油x1</li>
+<li>口含凝膠</li>
+<li>黑棗露, 便秘者</li>
+<li>蔓越莓汁</li>
+</ol>
+<h2 id="臥床注意事項"><a class="header" href="#臥床注意事項">臥床注意事項</a></h2>
+<ol>
+<li>枕頭切齊床塾邊</li>
+<li>房膀在第二節前的一個拳頭(視床塾長度而定),屁股位置在床中左右(視電動床曲折時中心點而定)</li>
+<li>電動氣塾床塾,頭部三節是固定充氣的,不會消</li>
+<li>搬動時,手勾或移動關結處是最省力的,肩關結/寬關結/膝關結</li>
+<li>床邊隔離,如手腳部要放枕頭或餐桌板,避免手腳掉出床邊</li>
+</ol>
+<h2 id="復健"><a class="header" href="#復健">復健</a></h2>
+<ol>
+<li>拍打按摩穴位/部位,刺激方式增加反應</li>
+<li>常翻身,有氣塾床也要注意氣塾床位置</li>
+<li>找出疼痛點,注意到神經/肌肉位置處,像是坐股神經痛,有痛或反射或觸感,持續加強觀察狀況</li>
+<li>說明精準
+<ol>
+<li>痛處位置</li>
+<li>痛處狀態</li>
+<li>疼痛點的情況
+<ol>
+<li>漲/酸/抽痛/刺痛</li>
+<li>持續痛/一陣一陣/偶爾/特殊姿勢時發生</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>每日進行的
+<ol>
+<li>次數,10次為一個單位,做5個單位</li>
+<li>力度,由輕持續加重,避免肌肉僵硬</li>
+<li>時間,每日1到2小時一次</li>
+</ol>
+</li>
+<li>讓病患自行做動作
+<ol>
+<li>吃飯</li>
+<li>擦嘴</li>
+<li>抓癢</li>
+<li>站立時,抱住上半身時,讓病患用腳支撑或進行曲膝動作</li>
+<li>將上身移動或換尿布時,讓病患用腳支撑抬高屁股,或是翻身動抓欄杆</li>
+</ol>
+</li>
+</ol>
+<h2 id="長照20"><a class="header" href="#長照20">長照2.0</a></h2>
+<ol>
+<li>居家照護,依長照服務項目來計算時間,依長照2.0時數加總,超過一定時數後就要自費</li>
+<li>喘息服務,全項目服務,
+<ol>
+<li>全自費項目</li>
+<li>補助,有次數限制</li>
+</ol>
+</li>
+<li>長照專車接送,每月8張票卷(來回4趟,面額NT100,單次可用多張),發放2~3個月份</li>
+<li>長照項目,參考政府公告的清單與細節
+<ol>
+<li>需使用的項目,項目說明裡的時間與頻率次數,服務內容</li>
+<li>留意長照公司所開的服務頻率和備註,有些列出項目為備用</li>
+<li>不在服務項目中的,居服員是不會予以協助的,像是協助進食不包含洗餐具</li>
+</ol>
+</li>
+</ol>
+<h2 id="準備事項"><a class="header" href="#準備事項">準備事項</a></h2>
+<ol>
+<li>物品清單</li>
+<li>活動範圍(居服員)
+<ol>
+<li>廚房</li>
+<li>臥室</li>
+<li>浴室/廁所</li>
+<li>客廳</li>
+</ol>
+</li>
+<li>攞放位置</li>
+<li>清潔衛生
+<ol>
+<li>吃飯用圍巾(圍嘟嘟),防水格紋的好用,有4號魔鬼氈黏貼往上對黏,可防止食物外流</li>
+<li>浴帽,防水流向眼睛,可以小孩用的來改</li>
+<li>溼紙巾</li>
+<li>衛生紙</li>
+<li>垃圾袋,小/中</li>
+<li>生理食鹽水x4</li>
+<li>紗布</li>
+<li>綿簽x10,中/大</li>
+</ol>
+</li>
+<li>輔具需求
+<ol>
+<li>輪椅
+<ol>
+<li>用餐</li>
+<li>移動</li>
+</ol>
+</li>
+<li>餐桌板
+<ol>
+<li>輸椅用</li>
+<li>病床用</li>
+</ol>
+</li>
+<li>便盆椅
+<ol>
+<li>大小便</li>
+<li>洗澡</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="醫院"><a class="header" href="#醫院">醫院</a></h2>
+<ol>
+<li>個管師
+<ol>
+<li>長照2.0,請向護理站提出申請</li>
+<li>輔助補助</li>
+<li>長照公司媒合</li>
+<li>失能鑑定申請</li>
+<li>相關申請</li>
+</ol>
+</li>
+<li>護理師
+<ol>
+<li>診斷證明申請</li>
+</ol>
+</li>
+<li>醫師
+<ol>
+<li>開藥</li>
+<li>居家看診</li>
+<li>巴氏評量表
+<ol>
+<li>外籍看護/幫傭
+<ol>
+<li>24H</li>
+<li>包吃住</li>
+<li>節日加班費</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>身障手冊(申請),首次評估需要醫院指定部門,</li>
+</ol>
+</li>
+<li>居定證理師
+<ol>
+<li>尿管拔除評估</li>
+<li>居家狀況評估</li>
+</ol>
+</li>
+<li>復能治療師
+<ol>
+<li>初期
+<ol>
+<li>基本上下床動作教學</li>
+<li>復健動作教學</li>
+<li>只做教學,不會進行復健療程</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>救護車
+<ol>
+<li>單趟NT1400,依各家醫院訂價</li>
+</ol>
+</li>
+</ol>
+<h3 id="尿袋"><a class="header" href="#尿袋">尿袋</a></h3>
+<ol>
+<li>管路平時需要揉搜,防止沉澱物附著在管路中或變色</li>
+<li>注意沉澱物或漂浮物</li>
+<li>顏色</li>
+<li>排尿量/喝水量</li>
+<li>分秘物
+<ol>
+<li>喝蔓越莓汁改善?</li>
+</ol>
+</li>
+<li>尿布疹,膠帶起疹子</li>
+</ol>
+<h3 id="排便"><a class="header" href="#排便">排便</a></h3>
+<ol>
+<li>軟硬度</li>
+<li>排放量,用常見大小描述量</li>
+<li>便盆可先鋪4張衛生紙成十字或X狀,中央部份交疊,讓大便不會直接附著黏在盆子上,可快速反扣倒入馬桶,用水沖時方便不殘留</li>
+</ol>
+<h3 id="便秘"><a class="header" href="#便秘">便秘</a></h3>
+<ol>
+<li>羽衣甘藍益生菌</li>
+<li>瀉劑(請醫生開)</li>
+<li>運動</li>
+<li>腹部按摩</li>
+<li>如有出血,停用抗凝血的藥,並向居家護理師與醫生咨詢</li>
+</ol>
+<h3 id="輔助申請"><a class="header" href="#輔助申請">輔助申請</a></h3>
+<ol>
+<li>個管師申請</li>
+<li>輔具評估的老師到府評估</li>
+<li>公文核發</li>
+<li>採購</li>
+<li>公文交付廠商(如果是向店家購買時)</li>
+</ol>
+<h2 id="長照公司"><a class="header" href="#長照公司">長照公司</a></h2>
+<ol>
+<li>自費(16%),按各項目計時計費</li>
+<li>喘息服務,2小時/次(100%自費)</li>
+<li>付費,隔月底前轉帳結清</li>
+</ol>
+<h2 id="居家"><a class="header" href="#居家">居家</a></h2>
+<ol>
+<li>地形圖</li>
+<li>物品清單,依各地區列表</li>
+<li>交接注意事項</li>
+<li>生理記錄</li>
+<li>耗材存放位置</li>
+<li>食物存放位置
+<ol>
+<li>餐桌,
+<ol>
+<li>水果</li>
+<li>零食</li>
+<li>奶粉</li>
+<li>燕麥粥/玉米濃湯</li>
+</ol>
+</li>
+<li>冰箱,食物清單</li>
+<li>開飲機</li>
+<li>飲水杯,水瓶定期清理,否則會有生長生物黏膜,摸起來觸怠滑滑的即是生物黏膜</li>
+</ol>
+</li>
+<li>衛生清潔物品位置
+<ol>
+<li>抹布</li>
+<li>毛巾
+<ol>
+<li>不同區域用顏色,衛生安全考量</li>
+</ol>
+</li>
+<li>尿布</li>
+<li>餐具</li>
+<li>保鮮盒</li>
+<li>垃圾袋</li>
+<li>餐盤
+<ol>
+<li>搭配圍巾後,可放在肚子或胸口上吃,方便快速乾淨</li>
+</ol>
+</li>
+<li>陽台
+<ol>
+<li>洗衣機</li>
+<li>晾衣服位置</li>
+</ol>
+</li>
+<li>衣架,室內晾毛巾,浴室盡量不要放毛巾牙刷等物品,容易會生長紅色黴菌</li>
+</ol>
+</li>
+<li>衣服位置</li>
+<li>連絡工具/方式</li>
+<li>手機</li>
+<li>Line/其他</li>
+<li>智慧燈泡,方便手機App可控制</li>
+<li>電扇</li>
+<li>冷氣開關</li>
+<li>電視開關,固定在床邊欄杆</li>
+<li>電動床開關,固定在床邊欄杆</li>
+<li>溫溼度計</li>
+<li>露營或軍用毛毯,厚在內,薄的在外</li>
+<li>一般厚毛毯</li>
+<li>窗戶通風</li>
+<li>便盆椅
+<ol>
+<li>可加一個高的小椅子在前面踩著,讓膝蓋高過骨盆,呈現蹲姿會更加幫排便</li>
+</ol>
+</li>
+<li>斜坡格,方便便盆椅進出浴室,量好相關高度寬度長度(斜度),可去特力屋訂製木頭的,NT1000以內左右</li>
+<li>決定權
+<ol>
+<li>事物決定由誰為主</li>
+<li>非家屬人員進出,居服員需先通知家屬</li>
+<li>缺少或需求物品,由誰決定,誰採買</li>
+</ol>
+</li>
+<li>居服員上下班前處理事項
+<ol>
+<li>補充水瓶水</li>
+<li>床鋪整理</li>
+<li>蓋好棉被</li>
+</ol>
+</li>
+<li>洗澡
+<ol>
+<li>洗潔精用哪些</li>
+<li>臉盆大小</li>
+<li>用哪條毛巾洗臉,哪條擦身體,哪條擦乾</li>
+<li>洗完後,便盆椅建議用電風扇吹乾</li>
+</ol>
+</li>
+<li>一個2分升塑膠桶,排尿時用</li>
+</ol>
+<h2 id="相關資源"><a class="header" href="#相關資源">相關資源</a></h2>
+<ol>
+<li>PAC(Post-acute Care) 急性後期之醫療整合照護模式</li>
+<li>政府長照專線 1966</li>
+<li>長照2.0
+<ol>
+<li>個管師,協調且整合病患的醫療、心理、社會和其他相關需求，提供全面的健康照護和支持。並與其家屬制定治療計畫、協調醫療團隊、維護病患權益等。</li>
+<li>失能等級評鑑,達到足夠等級才能申請一些項目</li>
+<li>輔具輔助評鑑(購買)</li>
+</ol>
+</li>
+<li>巴氏評量表,申請外籍看護,可在醫院時就先向醫師提出申請</li>
+<li>身障手冊,地方區公所,社會科領取申請表
+<ol>
+<li>3個月內照片1~3張</li>
+<li>申請人身份證</li>
+<li>申請人印章</li>
+<li>將申請表交至醫院醫師,交付前需先確認該醫師會接收</li>
+<li>首次申請的第一次評估會在醫院,需申請人到場</li>
+<li>4~6週後等通知</li>
+</ol>
+</li>
+<li>輔具中心(現公扺押,借用),各大縣市</li>
+</ol>
+<h2 id="參考網頁"><a class="header" href="#參考網頁">參考網頁</a></h2>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../desktop/vscode.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next prefetch" href="../learning/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../desktop/vscode.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next prefetch" href="../learning/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

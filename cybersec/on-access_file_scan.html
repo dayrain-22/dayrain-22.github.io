@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>工具網站, Tools Bookmark - dayrain-technotes</title>
+        <title>系統檔案-即時掃描 - dayrain-technotes</title>
 
 
         <!-- Custom HTML head -->
@@ -152,29 +152,72 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="工具網站-tools-bookmark"><a class="header" href="#工具網站-tools-bookmark">工具網站, Tools Bookmark</a></h1>
-<h2 id="證照認證-cert"><a class="header" href="#證照認證-cert">證照/認證, Cert</a></h2>
-<h3 id="課程研討會-course--conference"><a class="header" href="#課程研討會-course--conference">課程/研討會, Course / Conference</a></h3>
-<p><a href="https://www.brighttalk.com">BrightTALK 註解：看完課程有上課證明下載，可做為證照持續學習點數使用</a></p>
-<h2 id="資訊安全-cybersecurity"><a class="header" href="#資訊安全-cybersecurity">資訊安全, CyberSecurity</a></h2>
-<h3 id="ctf"><a class="header" href="#ctf">CTF</a></h3>
-<p><a href="https://ctftime.org">CTFTIME 註解：CTF世界概況</a><br />
-<a href="https://pwn.college">pwn.college 註解：供學生（和其他相關方）以實踐方式學習和實踐核心網絡安全概念</a><br />
-<a href="https://crackmes.one">crackmes.one 註解：提高您的逆向工程技能</a></p>
-<h3 id="逆向工程-reverse-engine"><a class="header" href="#逆向工程-reverse-engine">逆向工程， Reverse engine</a></h3>
-<p><a href="https://bin.re">bin.re</a></p>
-<h3 id="雜誌-magazine"><a class="header" href="#雜誌-magazine">雜誌， Magazine</a></h3>
-<p><a href="https://www.infosecurity-magazine.com">infosecurity-magazine</a></p>
+                        <h1 id="on-access-file-scan"><a class="header" href="#on-access-file-scan">on-access file scan</a></h1>
+<p>SSDT<br />
+Minifilter<br />
+NTDLL</p>
+<h2 id="ntdll"><a class="header" href="#ntdll">NTDLL</a></h2>
+<pre><code>1.KiEtw系列：本系列内核函数用于系统内核，这些函数只能从内核的内部进行调用，常用的 有：KiUserCallbackDispatcher、KiRaiseUserExceptionDispatcher、 KiUserApcDispatcher、KiUserExceptionDispatcher等。
+
+2.Csr系列：此系列函数用于客户机和服务器运行时，如果您想拦截客户机/服务器方面的操作，那么就需要对Csr系列内核函数做进一步的了解。 常见的有：CsrClientCallServer、CsrCaptureMessageBuffer、 CsrConnectClientToServer和CrsNewThread等。
+
+3.Ldr系列：本系列内核函数用于加载程序管理器，如果你打算拦截加载程序的话，那么请进一步考察这组以Ldr为前缀的函数，常用的 有：LdrInitializeThunk、LdrLockLoaderLock、LdrUnlockLoaderLock、 LdrGetDllHandle、LdrGetProcedureAddress等。
+
+4.Dbg系列：本系列内核函数用于调试管理，如果打算拦截调试操作的话，那么请进一步考察这组以Dbg为前缀的函数，常用的函数包括：、DbgBreakPoint、DbgUserBreakPoint、DbgPrint和DbgUiConnectToDbg等。
+
+5.Etw系列：本系列内核函数用于追踪窗口事件，如果你打算拦截追踪之类的操作的话,那么请进一步考察这组以Etw为前缀的函数。常用的函数包 括：EtwTraceEvent、EtwEnableTrace、EtwGetTraceEnableLevel和 EtwGetTraceEnableFlags等。
+
+6.Rtl系列：本系列内核函数用于运行时库，以Rtl为前缀的函数可以完成多种操作，例如字符串、线程、资源、临界区、安全对象的初始化和使用，内存、进程异常和数据类型的处理，还用于完成定时器、堆、IPv4和IPv6方面的操作，以及压缩和解压缩等。
+
+7.Pfx系列：本系列内核函数用于ANSI字符串操作，如果你打算拦截ASNI串表方面的操作的话，就需要进一步了解这些函数。常用的包括：PfxInitialize、PfxRemovePrefix、PfxInsertPrefix、PfxFindPrefix等。
+
+8.Zw系列：本系列内核函数用于文件和注册表方面的操作，比如文件操作、注册表操作、访问进程、事件操作、令牌操作、进程操作和端口操作等。
+</code></pre>
+<h2 id="參考網頁"><a class="header" href="#參考網頁">參考網頁</a></h2>
+<ul>
+<li>
+<p>EDR<br />
+https://github.com/SitinCloud/Owlyshield.git<br />
+https://github.com/rabbitstack/fibratus<br />
+https://github.com/0xrawsec/whids<br />
+https://github.com/0xrawsec/gene<br />
+https://github.com/ion-storm/sysmon-edr<br />
+https://github.com/WhiteBeamSec/WhiteBeam</p>
+</li>
+<li>
+<p>antivirus</p>
+<ul>
+<li>https://github.com/armadito/armadito-av</li>
+</ul>
+</li>
+</ul>
+<p>https://github.com/zeroperil/HookDump</p>
+<ul>
+<li>
+<p>non-open source<br />
+https://github.com/wecooperate/iMonitorSDK</p>
+</li>
+<li>
+<p>blue team<br />
+https://github.com/ION28/BLUESPAWN</p>
+</li>
+<li>
+<p>偵測，分析<br />
+https://github.com/RoomaSec/RmEye</p>
+</li>
+</ul>
+<p>https://github.com/CMEPW/BypassAV</p>
+<p><a href="https://blog.csdn.net/shifters/article/details/6937782?spm=1001.2101.3001.4242.5&amp;utm_relevant_index=11">rootkit基础</a></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../learning/IT_skill_tree.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../cybersec/HTB.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next prefetch" href="../learning/self-learning.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../cybersec/U2F.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
 
@@ -184,11 +227,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../learning/IT_skill_tree.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../cybersec/HTB.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next prefetch" href="../learning/self-learning.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../cybersec/U2F.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
