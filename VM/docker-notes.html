@@ -154,44 +154,44 @@
                     <main>
                         <h1 id="docker"><a class="header" href="#docker">docker</a></h1>
 <h2 id="架構說明"><a class="header" href="#架構說明">架構說明</a></h2>
-<p>從架構來看 docker本身是個應用,非VM,有人把它當vm使用,但結構上來說他就是個應用 ,即使是 container 中運行,也就是使用主系統核心的部份,起了一個應用程式,進行主機資源的使用<br />
+<p>從架構來看 docker 本身是個應用,非 VM, 有人把它當 VM 使用,但結構上來說他就是個應用, 即使是 container 中運行,也就是使用主系統核心的部份, 起了一個應用程式, 進行主機資源的使用<br />
 OS 是由 kernel+package(lib+app) 而運行的<br />
 然而 docker 執行的 package = lib+app = image<br />
-Image內容沒有kernel ,而是docker運行時讀取外層主系統的部份kernel功能</p>
+Image 內容沒有 kernel ,而是 docker 運行時讀取外層主系統的部份kernel功能</p>
 <ol>
-<li>kernel是共享資源,經過docker請求進行分配</li>
-<li>VM則是模擬硬體層,所以才需要kernel+image(package)</li>
-<li>所以docker沒有開機過程,而是直接運行app,所以才可以這麼快啟動</li>
-<li>所以docker自己打包要自己寫entryporint做啟動配置</li>
-<li>讀同一個kernel,只是分配不同的user space資源, 就好像同一棟大樓,但不同樓層,經同樣的電梯或樓梯溝通,這構通則是透過docker這個管理員,所以docker才被稱為微服務,專注在應用服務層,把每個服務打包起來單一化,才不會在系統中過度相依而難以變動,也不會像VM要的那麼多資源才能運作</li>
+<li>kernel 是共享資源,經過 docker 請求進行分配</li>
+<li>VM 則是模擬硬體層,所以才需要 kernel+image(package)</li>
+<li>所以 docker 沒有開機過程,而是直接運行 app, 所以才可以這麼快啟動</li>
+<li>所以 docker 自己打包要自己寫 entryporint 做啟動配置</li>
+<li>讀同一個 kernel,只是分配不同的 user space 資源, 就好像同一棟大樓,但不同樓層,經同樣的電梯或樓梯溝通,這構通則是透過 docker 這個管理員,所以 docker 才被稱為微服務,專注在應用服務層,把每個服務打包起來單一化,才不會在系統中過度相依而難以變動,也不會像VM要的那麼多資源才能運作</li>
 </ol>
 <h2 id="常用的image"><a class="header" href="#常用的image">常用的Image</a></h2>
 <h3 id="alpine"><a class="header" href="#alpine">alpine</a></h3>
-<p>alpine只是linux的一種套件包組合<br />
-所有linux,不管是redhat ubuntu archlinux alpine都只是不同人維護的各版本套件包,加上搭配不同版本的linux knerel<br />
-所以app基本上都可以跑在同一個kernel版本<br />
-嚴格上應該要說GNU+linux kernel, GNU就是各種package組成的,每個社群/公司團隊各自打包就各自命名自己的統稱名字,kernel是只有一個維護團隊,那就是linus大神領導的<br />
-ubuntu也有mysql套件可用,alpine也有有mysql套件可用,但image內環境各團隊調整的不太一樣,就看習慣用哪套<br />
+<p>alpine 只是 Linux 的一種套件包組合<br />
+所有 Linux,不管是 Redhat ubuntu archlinux alpine 都只是不同人維護的各版本套件包,加上搭配不同版本的 Linux knerel<br />
+所以 App 基本上都可以跑在同一個 kernel 版本<br />
+嚴格上應該要說 GNU + Linux kernel, GNU 就是各種 package 組成的,每個社群/公司團隊各自打包就各自命名自己的統稱名字, kernel 是只有一個維護團隊,那就是 linus 大神領導的<br />
+Ubuntu 也有 MySQL 套件可用,alpine也有有mysql套件可用,但image內環境各團隊調整的不太一樣,就看習慣用哪套<br />
 alpine打包的image很精小,所以省空間</p>
-<p>app己經由docker隔離,所以存取不到host os上ubuntu的檔案<br />
-當你的docker app需要環境才能跑<br />
-假設你啟動的alpine nginx需要某個lib的1.1版,但alpine mysql需要這個lib的1.0版,但這lib無法同時存在1.0 1.1<br />
-這時就能跑二個,一個跑alpine+lib1.0+nginx ,一個跑alpine+lib1.1+mysql或是跑個ubuntu+lib1.0+mysql</p>
-<p>我來舉個image實例可能會比較清楚<br />
-當你要打包一個docker nginx服務時,需要以下</p>
+<p>app 己經由 docker 隔離,所以存取不到 host os 上 ubuntu 的檔案<br />
+當你的 docker app 需要環境才能跑<br />
+假設你啟動的 alpine nginx 需要某個 lib 的1.1版, 但 alpine MySQL 需要這個 lib 的1.0版,但這 lib 無法同時存在1.0 1.1<br />
+這時就能跑二個,一個跑 alpine + lib1.0 + Nginx , 一個跑 alpine+lib 1.1 + MySQL 或是跑個 Ubuntu + lib1.0 + MySQL</p>
+<p>我來舉個 image 實例可能會比較清楚<br />
+當你要打包一個 docker nginx 服務時,需要以下</p>
 <ol>
 <li>base OS , /dev /var /etc /lib /bin /sbin.... 基本系統運作需求</li>
 <li>nginx 官方package</li>
 <li>nginx 相依的其他 lib</li>
 <li>nginx 設定</li>
-<li>啟動nginx所需的環境初始化script<br />
-當你選則alpine當base OS, 時,只會有最低OS運作的檔案, 你要自行補上2,3,4,5 , 2,3,4,5就是可以替換成任何你要的服務<br />
-但不是每個服務都能好好相容alpine , 有時package可能比較適應 ubuntu , 選ubuntu當base OS就不用改與不用補太多3. lib東西進去<br />
-alpine我記得最小好像只有幾M到10多M, ubuntu要100多M ,  如果你只是想放你自己寫的小程式, 又不需要相依太多環境lib , 那就會選最小的alpine就足夠<br />
-所以dockr的概念就像積木,你可以選任一基底image,用別人或自己包好的image<br />
-從app來看, alpine的nginx ,跟ubuntu nginx在服務上是沒有差異的(同一個版本nginx),</li>
+<li>啟動 nginx 所需的環境初始化 script</li>
 </ol>
-<p>整個image並不會載入到記憶體, 主要是你app用到多少算多少, 如以下我自己nextcloud例子<br />
+<p>當你選則 alpine 當 base OS, 時,只會有最低 OS 運作的檔案, 你要自行補上2,3,4,5 , 2,3,4,5就是可以替換成任何你要的服務<br />
+但不是每個服務都能好好相容 alpine , 有時 package 可能比較適應 ubuntu , 選 ubuntu 當 base OS 就不用改與不用補太多 3. lib東西進去<br />
+alpine 我記得最小好像只有幾M到10多M, ubuntu要100多M ,  如果你只是想放你自己寫的小程式, 又不需要相依太多環境 lib , 那就會選最小的 alpine 就足夠<br />
+所以 dockr 的概念就像積木,你可以選任一基底 image ,用別人或自己包好的 image<br />
+從 app 來看, alpine 的 nginx ,跟 ubuntu nginx 在服務上是沒有差異的(同一個版本 nginx ),</p>
+<p>整個 image 並不會載入到記憶體, 主要是你 app 用到多少算多少, 如以下我自己 nextcloud 例子<br />
 docker images</p>
 <pre><code>REPOSITORY  TAG   IMAGE ID            CREATED             SIZE
 nextcloud      22.1.1 zzzzzzzzzz            9 months ago        969MB
@@ -201,13 +201,18 @@ CONTAINER ID      NAME          CPU %   MEM USAGE / LIMIT    MEM %  NET I/O     
 xxxxxxxxxxxx        nextcloud       0.00%    102.8MiB / 5.85GiB   1.72%   549MB / 54.3MB    245MB / 197kB       11
 
 </code></pre>
-<p>大小主要是內容包了多少需要的東西<br />
-就像寫了一支獨立小程式,本身只用了10M記憶體,<br />
-跟nextcloud可能會要用到nginx + php-fpm服務才能服務運作,光nginx加上相依的lib , 還有php-fpm相依的lib 啟動這二個服務可能就要用到幾十M或上百M<br />
-反之,你要把這些包進alpine裡,大小也會變大,這體積與記憶體用量是無法消除的, 當然還是能用一定程度優化能改善<br />
-優化就要靠自己或各image團隊的手法了<br />
+<p>Image 大小主要是內容包了多少需要的東西<br />
+就像寫了一支獨立小程式,本身只用了 10M 記憶體,<br />
+像是 nextcloud 可能會要用到 nginx + php-fpm 服務才能服務運作,光 nginx 加上相依的 lib , 還有 php-fpm 相依的 lib 啟動這二個服務可能就要用到幾十M或上百M<br />
+反之,你要把這些包進 alpine 裡,大小也會變大,這體積與記憶體用量是無法消除的, 當然還是能用一定程度優化能改善<br />
+優化就要靠自己或各 image 團隊的手法了<br />
 啟動速度我倒是沒比較過<br />
-但import/export或是build的速度會影響到營運方式,像有架構的是服務需求進來才生成docker啟動/還原之類的,那就有所影響</p>
+但 import/export 或是 build 的速度會影響到營運方式,像有架構的是服務需求進來才生成docker啟動/還原之類的,那就有所影響</p>
+<h2 id="參考網頁"><a class="header" href="#參考網頁">參考網頁</a></h2>
+<p><a href="https://docs.docker.com/get-started/docker-overview/">What is Docker</a><br />
+<a href="https://aws.amazon.com/tw/docker/">什麼是Docker</a><br />
+<a href="https://zh.wikipedia.org/zh-tw/Docker">docker wiki</a><br />
+<a href="https://philipzheng.gitbook.io/docker_practice">《Docker —— 從入門到實踐­》</a></p>
 
                     </main>
 
